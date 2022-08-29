@@ -1,0 +1,9 @@
+# This is a placeholder for the required github actions workflows
+#
+# Workflow should be created to build and test all pulls to "main".
+#
+# Additional workflows may be created as needed for deployment and documentation.
+#
+# Don't forget to create badges for the top-level README.md.
+
+name: "Template"
