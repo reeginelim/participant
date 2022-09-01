@@ -1,5 +1,7 @@
 Welcome the project documentation.
 
+The current design mockup is located at https://balsamiq.cloud/szgs48z/p76hh01/rD0CE.
+
 This readme will walk you through the structure and build process for this project's documentation.
 
 # Prerequisites
