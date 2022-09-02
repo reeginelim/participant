@@ -1,4 +1,4 @@
-Welcome the project documentation.
+Welcome to the project documentation.
 
 The current design mockup is located at https://balsamiq.cloud/szgs48z/p76hh01/rD0CE.
 
