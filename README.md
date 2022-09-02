@@ -1,4 +1,4 @@
-Welcome the TESS PROJECT_NAME
+Welcome the TESS Participant App
 
 DESCRIBE_PROJECT_HERE
 
