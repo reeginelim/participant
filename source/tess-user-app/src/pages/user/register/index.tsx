@@ -15,17 +15,17 @@ const InputGroup = Input.Group;
 const passwordStatusMap = {
   ok: (
     <div className={styles.success}>
-      <span>强度：强</span>
+      <span>Strong</span>
     </div>
   ),
   pass: (
     <div className={styles.warning}>
-      <span>强度：中</span>
+      <span>Medium</span>
     </div>
   ),
   poor: (
     <div className={styles.error}>
-      <span>强度：太短</span>
+      <span>Weak</span>
     </div>
   ),
 };
@@ -148,22 +148,74 @@ const Register: FC = () => {
 
   return (
     <div className={styles.main}>
-      <h3>注册</h3>
+      <h3>Sign Up</h3>
       <Form form={form} name="UserRegister" onFinish={onFinish}>
         <FormItem
-          name="mail"
+          name="username"
+          label="Username"
           rules={[
             {
               required: true,
-              message: '请输入邮箱地址!',
-            },
-            {
-              type: 'email',
-              message: '邮箱地址格式错误!',
+              message: 'Please input your username',
             },
           ]}
         >
-          <Input size="large" placeholder="邮箱" />
+          <Input size="large" />
+        </FormItem>
+
+        <FormItem
+          name="firstname"
+          label="First Name"
+          rules={[
+            {
+              required: true,
+              message: '',
+            },
+          ]}
+        >
+          <Input size="large" placeholder="" />
+        </FormItem>
+
+        <FormItem
+          name="lastname"
+          label="Last Name"
+          rules={[
+            {
+              required: true,
+              message: '',
+            },
+          ]}
+        >
+          <Input size="large" placeholder="" />
+        </FormItem>
+
+        <FormItem
+          name="mail"
+          label="Email Address"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your email address',
+            },
+            {
+              type: 'email',
+              message: 'Wrong email address format!',
+            },
+          ]}
+        >
+          <Input size="large" />
+        </FormItem>
+        <FormItem
+          name="accountno"
+          label="Utility Account No."
+          rules={[
+            {
+              required: true,
+              message: '',
+            },
+          ]}
+        >
+          <Input size="large" placeholder="" />
         </FormItem>
         <Popover
           getPopupContainer={(node) => {
@@ -178,17 +230,18 @@ const Register: FC = () => {
                 {passwordStatusMap[getPasswordStatus()]}
                 {renderPasswordProgress()}
                 <div style={{ marginTop: 10 }}>
-                  <span>请至少输入 6 个字符。请不要使用容易被猜到的密码。</span>
+                  <span>Please check password rules!</span>
                 </div>
               </div>
             )
           }
           overlayStyle={{ width: 240 }}
           placement="right"
-          visible={visible}
+          open={visible}
         >
           <FormItem
             name="password"
+            label="Password"
             className={
               form.getFieldValue('password') &&
               form.getFieldValue('password').length > 0 &&
@@ -196,28 +249,31 @@ const Register: FC = () => {
             }
             rules={[
               {
+                required: true,
                 validator: checkPassword,
               },
             ]}
           >
-            <Input size="large" type="password" placeholder="至少6位密码，区分大小写" />
+            <Input size="large" type="password" placeholder="" />
           </FormItem>
         </Popover>
         <FormItem
           name="confirm"
+          label="Confirm Password"
           rules={[
             {
               required: true,
-              message: '确认密码',
+              message: 'Confirm password',
             },
             {
               validator: checkConfirm,
             },
           ]}
         >
-          <Input size="large" type="password" placeholder="确认密码" />
+          <Input size="large" type="password" placeholder="Confirm password" />
         </FormItem>
-        <InputGroup compact>
+
+        {/* <InputGroup compact>
           <Select size="large" value={prefix} onChange={changePrefix} style={{ width: '20%' }}>
             <Option value="86">+86</Option>
             <Option value="87">+87</Option>
@@ -238,8 +294,8 @@ const Register: FC = () => {
           >
             <Input size="large" placeholder="手机号" />
           </FormItem>
-        </InputGroup>
-        <Row gutter={8}>
+        </InputGroup> */}
+        {/* <Row gutter={8}>
           <Col span={16}>
             <FormItem
               name="captcha"
@@ -263,7 +319,7 @@ const Register: FC = () => {
               {count ? `${count} s` : '获取验证码'}
             </Button>
           </Col>
-        </Row>
+        </Row> */}
         <FormItem>
           <Button
             size="large"
@@ -272,10 +328,10 @@ const Register: FC = () => {
             type="primary"
             htmlType="submit"
           >
-            <span>注册</span>
+            <span>Submit</span>
           </Button>
           <Link className={styles.login} to="/user/login">
-            <span>使用已有账户登录</span>
+            <span>Have an account? Login</span>
           </Link>
         </FormItem>
       </Form>
