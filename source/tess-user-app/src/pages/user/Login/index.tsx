@@ -50,7 +50,7 @@ const Login: React.FC = () => {
     try {
       // 登录
       const msg = await login({ ...values, type });
-      if (true || msg.status === 'ok') {
+      if (msg.status === 'ok') {
         // TODO: accepts any username/password in dev
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
@@ -76,6 +76,7 @@ const Login: React.FC = () => {
       message.error(defaultLoginFailureMessage);
     }
   };
+
   const { status, type: loginType } = userLoginState;
 
   return (
