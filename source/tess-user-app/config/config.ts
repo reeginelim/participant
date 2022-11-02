@@ -3,6 +3,7 @@ import { defineConfig } from 'umi';
 import { join } from 'path';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
+import component from '@/locales/en-US/component';
 
 const { REACT_APP_ENV } = process.env;
 
@@ -284,6 +285,11 @@ export default defineConfig({
       redirect: '/dashboard/analysis',
     },
     {
+      name: 'Home',
+      path: '/home',
+      component: './home',
+    },
+    {
       name: 'Heating & Cooling',
       icon: 'user',
       path: '/heating-and-cooling',
@@ -310,6 +316,7 @@ export default defineConfig({
         },
       ],
     },
+
     // New page routes need to be placed before 404,
     // or the page will always display 404
     {
