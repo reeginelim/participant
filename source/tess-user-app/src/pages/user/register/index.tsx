@@ -100,7 +100,7 @@ const Register: FC = () => {
   const checkConfirm = (_: any, value: string) => {
     const promise = Promise;
     if (value && value !== form.getFieldValue('password')) {
-      return promise.reject('两次输入的密码不匹配!');
+      return promise.reject('Password not match!');
     }
     return promise.resolve();
   };
@@ -110,7 +110,7 @@ const Register: FC = () => {
     // 没有值的情况
     if (!value) {
       setVisible(!!value);
-      return promise.reject('请输入密码!');
+      return promise.reject('Please input password!');
     }
     // 有值的情况
     if (!visible) {
@@ -148,22 +148,35 @@ const Register: FC = () => {
 
   return (
     <div className={styles.main}>
-      <h3>注册</h3>
+      <h3>Register</h3>
+      <FormItem name="username" label="User Name">
+        <Input size="large" placeholder="" />
+      </FormItem>
       <Form form={form} name="UserRegister" onFinish={onFinish}>
         <FormItem
           name="mail"
+          label="Email"
           rules={[
             {
               required: true,
-              message: '请输入邮箱地址!',
+              message: 'Plase input email address!',
             },
             {
               type: 'email',
-              message: '邮箱地址格式错误!',
+              message: 'Wrong email address format!',
             },
           ]}
         >
-          <Input size="large" placeholder="邮箱" />
+          <Input size="large" placeholder="" />
+        </FormItem>
+        <FormItem name="firstname" label="First Name">
+          <Input size="large" placeholder="" />
+        </FormItem>
+        <FormItem name="lastname" label="Last Name">
+          <Input size="large" placeholder="" />
+        </FormItem>
+        <FormItem name="utility_account" label="Utility Account">
+          <Input size="large" placeholder="" />
         </FormItem>
         <Popover
           getPopupContainer={(node) => {
@@ -178,7 +191,7 @@ const Register: FC = () => {
                 {passwordStatusMap[getPasswordStatus()]}
                 {renderPasswordProgress()}
                 <div style={{ marginTop: 10 }}>
-                  <span>请至少输入 6 个字符。请不要使用容易被猜到的密码。</span>
+                  <span>Please use a strong password!</span>
                 </div>
               </div>
             )
@@ -189,6 +202,7 @@ const Register: FC = () => {
         >
           <FormItem
             name="password"
+            label="Password"
             className={
               form.getFieldValue('password') &&
               form.getFieldValue('password').length > 0 &&
@@ -200,24 +214,25 @@ const Register: FC = () => {
               },
             ]}
           >
-            <Input size="large" type="password" placeholder="至少6位密码，区分大小写" />
+            <Input size="large" type="password" placeholder="" />
           </FormItem>
         </Popover>
         <FormItem
           name="confirm"
+          label="Confirm Password"
           rules={[
             {
               required: true,
-              message: '确认密码',
+              message: '',
             },
             {
               validator: checkConfirm,
             },
           ]}
         >
-          <Input size="large" type="password" placeholder="确认密码" />
+          <Input size="large" type="password" placeholder="" />
         </FormItem>
-        <InputGroup compact>
+        {/* <InputGroup compact>
           <Select size="large" value={prefix} onChange={changePrefix} style={{ width: '20%' }}>
             <Option value="86">+86</Option>
             <Option value="87">+87</Option>
@@ -238,8 +253,8 @@ const Register: FC = () => {
           >
             <Input size="large" placeholder="手机号" />
           </FormItem>
-        </InputGroup>
-        <Row gutter={8}>
+        </InputGroup> */}
+        {/* <Row gutter={8}>
           <Col span={16}>
             <FormItem
               name="captcha"
@@ -263,7 +278,7 @@ const Register: FC = () => {
               {count ? `${count} s` : '获取验证码'}
             </Button>
           </Col>
-        </Row>
+        </Row> */}
         <FormItem>
           <Button
             size="large"
@@ -272,10 +287,10 @@ const Register: FC = () => {
             type="primary"
             htmlType="submit"
           >
-            <span>注册</span>
+            <span>Register</span>
           </Button>
           <Link className={styles.login} to="/user/login">
-            <span>使用已有账户登录</span>
+            <span>Have an account? Login</span>
           </Link>
         </FormItem>
       </Form>
