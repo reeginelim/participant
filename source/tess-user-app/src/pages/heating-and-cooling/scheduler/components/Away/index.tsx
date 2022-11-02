@@ -1,4 +1,3 @@
-import { Card } from 'antd';
 import BasicScheduler from '../Basic';
 
 const AwayScheduler = () => {

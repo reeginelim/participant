@@ -1,13 +1,8 @@
-import { PlusOutlined, HomeOutlined, ContactsOutlined, ClusterOutlined } from '@ant-design/icons';
-import { Avatar, Card, Col, Divider, Input, Row, Tag } from 'antd';
-import React, { useState, useRef } from 'react';
-import { GridContent } from '@ant-design/pro-layout';
-import { Link, useRequest } from 'umi';
+import { Card } from 'antd';
+import React, { useState } from 'react';
+import { useRequest } from 'umi';
 import type { RouteChildrenProps } from 'react-router';
-import Projects from './components/Projects';
-import Articles from './components/Articles';
-import Applications from './components/Applications';
-import type { CurrentUser, TagType, tabKeyType } from './data';
+import type { tabKeyType } from './data.d';
 import { queryCurrent } from './service';
 import styles from './Center.less';
 import BasicScheduler from './components/Basic';
@@ -93,9 +88,9 @@ const Center: React.FC<RouteChildrenProps> = () => {
   const [tabKey, setTabKey] = useState<tabKeyType>('home');
 
   //  获取用户信息
-  const { data: currentUser, loading } = useRequest(() => {
-    return queryCurrent();
-  });
+  // const { data: currentUser, loading } = useRequest(() => {
+  //   return queryCurrent();
+  // });
 
   // 渲染tab切换
   const renderChildrenByTabKey = (tabValue: tabKeyType) => {

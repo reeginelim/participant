@@ -1,13 +1,5 @@
-import { Card, Form, Input, Checkbox, Button, DatePicker, Space } from 'antd';
-import IntegerStep from '../IntegerStep';
-import { SliderMarks } from 'antd/lib/slider';
-import React from 'react';
-import {
-  ProFormDateRangePicker,
-  ProFormDateTimePicker,
-  ProFormDigit,
-  ProFormSlider,
-} from '@ant-design/pro-form';
+import { Card, Form, Button, DatePicker, Space } from 'antd';
+import { ProFormDateRangePicker, ProFormDigit, ProFormSlider } from '@ant-design/pro-form';
 const { RangePicker } = DatePicker;
 
 const BasicForm = () => {

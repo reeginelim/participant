@@ -280,40 +280,11 @@ export default defineConfig({
       ],
     },
     {
-      name: 'editor',
-      icon: 'highlight',
-      path: '/editor',
-      routes: [
-        {
-          path: '/editor',
-          redirect: '/editor/flow',
-        },
-        {
-          name: 'flow',
-          icon: 'smile',
-          path: '/editor/flow',
-          component: './editor/flow',
-        },
-        {
-          name: 'mind',
-          icon: 'smile',
-          path: '/editor/mind',
-          component: './editor/mind',
-        },
-        {
-          name: 'koni',
-          icon: 'smile',
-          path: '/editor/koni',
-          component: './editor/koni',
-        },
-      ],
-    },
-    {
       path: '/',
       redirect: '/dashboard/analysis',
     },
     {
-      name: 'heating-and-cooling',
+      name: 'Heating & Cooling',
       icon: 'user',
       path: '/heating-and-cooling',
       routes: [
@@ -322,10 +293,20 @@ export default defineConfig({
           redirect: '/heating-and-cooling/general',
         },
         {
-          name: 'scheduler',
+          name: 'General',
+          path: '/heating-and-cooling/general',
+          component: './heating-and-cooling/general',
+        },
+        {
+          name: 'Scheduler',
           icon: 'smile',
           path: '/heating-and-cooling/scheduler',
           component: './heating-and-cooling/scheduler',
+        },
+        {
+          name: 'Price History',
+          path: '/heating-and-cooling/price-history',
+          component: './heating-and-cooling/price-history',
         },
       ],
     },
