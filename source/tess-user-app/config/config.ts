@@ -339,6 +339,12 @@ export default defineConfig({
           path: '/electric-vehicle-charger/settings',
           component: './electric-vehicle-charger/settings',
         },
+        {
+          name: 'General',
+          icon: 'smile',
+          path: '/electric-vehicle-charger/general',
+          component: './electric-vehicle-charger/general',
+        },
       ],
     },
     {

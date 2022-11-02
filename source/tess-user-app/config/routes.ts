@@ -51,6 +51,12 @@
         path: '/electric-vehicle-charger/schedule',
         component: './electric-vehicle-charger/settings',
       },
+      {
+        name: 'General',
+        icon: 'smile',
+        path: '/electric-vehicle-charger/schedule',
+        component: './electric-vehicle-charger/general',
+      },
     ],
   },
   {
