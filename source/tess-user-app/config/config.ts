@@ -67,30 +67,36 @@ export default defineConfig({
     },
     {
       path: '/dashboard',
-      name: 'dashboard',
+      name: 'Home',
       icon: 'dashboard',
       routes: [
         {
           path: '/dashboard',
-          redirect: '/dashboard/analysis',
+          redirect: '/dashboard/dash',
         },
+        // {
+        //   name: 'analysis',
+        //   icon: 'smile',
+        //   path: '/dashboard/analysis',
+        //   component: './dashboard/analysis',
+        // },
+        // {
+        //   name: 'monitor',
+        //   icon: 'smile',
+        //   path: '/dashboard/monitor',
+        //   component: './dashboard/monitor',
+        // },
+        // {
+        //   name: 'workplace',
+        //   icon: 'smile',
+        //   path: '/dashboard/workplace',
+        //   component: './dashboard/workplace',
+        // },
         {
-          name: 'analysis',
+          name: 'Dashboard',
           icon: 'smile',
-          path: '/dashboard/analysis',
-          component: './dashboard/analysis',
-        },
-        {
-          name: 'monitor',
-          icon: 'smile',
-          path: '/dashboard/monitor',
-          component: './dashboard/monitor',
-        },
-        {
-          name: 'workplace',
-          icon: 'smile',
-          path: '/dashboard/workplace',
-          component: './dashboard/workplace',
+          path: '/dashboard/dash',
+          component: './dashboard/dash',
         },
       ],
     },
@@ -309,6 +315,122 @@ export default defineConfig({
     //   ],
     // },
     {
+      path: '/',
+      name: 'Heating & Cooling',
+      icon: 'profile',
+      routes: [
+        {
+          path: '/battery',
+          redirect: '/battery/general',
+        },
+        {
+          name: 'General Info',
+          icon: 'smile',
+          path: '/battery/general',
+          component: './battery/general',
+        },
+        {
+          name: 'Cost',
+          icon: 'smile',
+          path: '/battery/cost',
+          component: './battery/cost',
+        },
+        {
+          name: 'Settings',
+          icon: 'smile',
+          path: '/battery/settings',
+          component: './battery/settings',
+        },
+      ],
+    },
+    {
+      path: '/',
+      name: 'Water Heater',
+      icon: 'profile',
+      routes: [
+        {
+          path: '/battery',
+          redirect: '/battery/general',
+        },
+        {
+          name: 'General Info',
+          icon: 'smile',
+          path: '/battery/general',
+          component: './battery/general',
+        },
+        {
+          name: 'Cost',
+          icon: 'smile',
+          path: '/battery/cost',
+          component: './battery/cost',
+        },
+        {
+          name: 'Settings',
+          icon: 'smile',
+          path: '/battery/settings',
+          component: './battery/settings',
+        },
+      ],
+    },
+    {
+      path: '/',
+      name: 'Solar Panels',
+      icon: 'profile',
+      routes: [
+        {
+          path: '/battery',
+          redirect: '/battery/general',
+        },
+        {
+          name: 'General Info',
+          icon: 'smile',
+          path: '/battery/general',
+          component: './battery/general',
+        },
+        {
+          name: 'Cost',
+          icon: 'smile',
+          path: '/battery/cost',
+          component: './battery/cost',
+        },
+        {
+          name: 'Settings',
+          icon: 'smile',
+          path: '/battery/settings',
+          component: './battery/settings',
+        },
+      ],
+    },
+    {
+      path: '/',
+      name: 'EV & Charger',
+      icon: 'profile',
+      routes: [
+        {
+          path: '/battery',
+          redirect: '/battery/general',
+        },
+        {
+          name: 'General Info',
+          icon: 'smile',
+          path: '/battery/general',
+          component: './battery/general',
+        },
+        {
+          name: 'Cost',
+          icon: 'smile',
+          path: '/battery/cost',
+          component: './battery/cost',
+        },
+        {
+          name: 'Settings',
+          icon: 'smile',
+          path: '/battery/settings',
+          component: './battery/settings',
+        },
+      ],
+    },
+    {
       path: '/battery',
       name: 'Battery',
       icon: 'profile',
@@ -326,8 +448,8 @@ export default defineConfig({
         {
           name: 'Cost',
           icon: 'smile',
-          path: '/battery/advanced',
-          component: './profile/advanced',
+          path: '/battery/cost',
+          component: './battery/cost',
         },
         {
           name: 'Settings',
@@ -339,7 +461,7 @@ export default defineConfig({
     },
     {
       path: '/',
-      redirect: '/dashboard/analysis',
+      redirect: '/dashboard/dash',
     },
     {
       component: '404',
