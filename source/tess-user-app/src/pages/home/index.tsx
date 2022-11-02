@@ -1,3 +1,4 @@
+import { PageContainer } from '@ant-design/pro-layout';
 import { Table, Typography } from 'antd';
 const { Title } = Typography;
 import React from 'react';
@@ -42,8 +43,7 @@ const data: DataType[] = [
 ];
 
 const HomeList = () => (
-  <>
-    <Title>Home</Title>
+  <PageContainer>
     <Table dataSource={data}>
       <Column title="Device" dataIndex="device" key="device" />
       <Column
@@ -55,7 +55,7 @@ const HomeList = () => (
       <Column title="Load" dataIndex="load" key="load" />
       <Column title="Cost" dataIndex="cost" key="cost" />
     </Table>
-  </>
+  </PageContainer>
 );
 
 export default HomeList;

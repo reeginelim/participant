@@ -9,6 +9,7 @@ import BasicScheduler from './components/Basic';
 import SleepScheduler from './components/Sleep';
 import AwayScheduler from './components/Away';
 import VacationScheduler from './components/Vacation';
+import { PageContainer } from '@ant-design/pro-layout';
 
 const sceneTabList = [
   {
@@ -110,17 +111,19 @@ const Center: React.FC<RouteChildrenProps> = () => {
   };
 
   return (
-    <Card
-      className={styles.tabsCard}
-      bordered={false}
-      tabList={sceneTabList}
-      activeTabKey={tabKey}
-      onTabChange={(_tabKey: string) => {
-        setTabKey(_tabKey as tabKeyType);
-      }}
-    >
-      {renderChildrenByTabKey(tabKey)}
-    </Card>
+    <PageContainer>
+      <Card
+        className={styles.tabsCard}
+        bordered={false}
+        tabList={sceneTabList}
+        activeTabKey={tabKey}
+        onTabChange={(_tabKey: string) => {
+          setTabKey(_tabKey as tabKeyType);
+        }}
+      >
+        {renderChildrenByTabKey(tabKey)}
+      </Card>
+    </PageContainer>
   );
 };
 export default Center;
