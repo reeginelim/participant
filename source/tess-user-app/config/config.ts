@@ -313,6 +313,25 @@ export default defineConfig({
       redirect: '/dashboard/analysis',
     },
     {
+      name: 'heating-and-cooling',
+      icon: 'user',
+      path: '/heating-and-cooling',
+      routes: [
+        {
+          path: '/heating-and-cooling',
+          redirect: '/heating-and-cooling/general',
+        },
+        {
+          name: 'scheduler',
+          icon: 'smile',
+          path: '/heating-and-cooling/scheduler',
+          component: './heating-and-cooling/scheduler',
+        },
+      ],
+    },
+    // New page routes need to be placed before 404,
+    // or the page will always display 404
+    {
       component: '404',
     },
   ],
