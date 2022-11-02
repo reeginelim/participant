@@ -313,6 +313,35 @@ export default defineConfig({
       redirect: '/dashboard/analysis',
     },
     {
+      name: 'electric-vehicle-charger',
+      icon: 'user',
+      path: '/electric-vehicle-charger',
+      routes: [
+        {
+          path: '/electric-vehicle-charger',
+          redirect: '/electric-vehicle-charger/schedule',
+        },
+        {
+          name: 'Schedule',
+          icon: 'smile',
+          path: '/electric-vehicle-charger/schedule',
+          component: './electric-vehicle-charger/schedule',
+        },
+        {
+          name: 'Cost',
+          icon: 'smile',
+          path: '/electric-vehicle-charger/cost',
+          component: './electric-vehicle-charger/cost',
+        },
+        {
+          name: 'Settings',
+          icon: 'smile',
+          path: '/electric-vehicle-charger/settings',
+          component: './electric-vehicle-charger/settings',
+        },
+      ],
+    },
+    {
       component: '404',
     },
   ],

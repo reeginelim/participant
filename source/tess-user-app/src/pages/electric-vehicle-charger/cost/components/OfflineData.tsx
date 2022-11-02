@@ -16,9 +16,9 @@ const CustomTab = ({
     <Col span={12}>
       <NumberInfo
         title={data.name}
-        subTitle="转化率"
+        subTitle="Price"
         gap={2}
-        total={`${data.cvr * 100}%`}
+        total={`$${data.cvr*10}`}
         theme={currentKey !== data.name ? 'light' : undefined}
       />
     </Col>

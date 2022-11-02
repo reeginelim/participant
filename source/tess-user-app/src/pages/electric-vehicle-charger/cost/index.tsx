@@ -81,9 +81,9 @@ const Analysis: FC<AnalysisProps> = () => {
   return (
     <GridContent>
       <>
-        <Suspense fallback={<PageLoading />}>
+        {/* <Suspense fallback={<PageLoading />}>
           <IntroduceRow loading={loading} visitData={data?.visitData || []} />
-        </Suspense>
+        </Suspense> */}
 
         
 

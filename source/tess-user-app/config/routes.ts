@@ -19,10 +19,39 @@
     ],
   },
   {
-    path: '/welcome',
-    name: 'welcome',
+    path: '/electric-vehicle-charger',
+    name: 'ev',
     icon: 'smile',
-    component: './Welcome',
+    component: './electric-vehicle-charger',
+  },
+  {
+    name: 'electric-vehicle-charger',
+    icon: 'user',
+    path: '/electric-vehicle-charger',
+    routes: [
+      {
+        path: '/electric-vehicle-charger',
+        redirect: '/electric-vehicle-charger/schedule',
+      },
+      {
+        name: 'Schedule',
+        icon: 'smile',
+        path: '/electric-vehicle-charger/schedule',
+        component: './electric-vehicle-charger/schedule',
+      },
+      {
+        name: 'Cost',
+        icon: 'smile',
+        path: '/electric-vehicle-charger/schedule',
+        component: './electric-vehicle-charger/cost',
+      },
+      {
+        name: 'Setting',
+        icon: 'smile',
+        path: '/electric-vehicle-charger/schedule',
+        component: './electric-vehicle-charger/settings',
+      },
+    ],
   },
   {
     path: '/admin',
