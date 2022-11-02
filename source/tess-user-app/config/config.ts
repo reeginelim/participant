@@ -70,6 +70,7 @@ export default defineConfig({
       path: '/dashboard',
       name: 'dashboard',
       icon: 'dashboard',
+      hideInMenu: true,
       routes: [
         {
           path: '/dashboard',
@@ -99,6 +100,7 @@ export default defineConfig({
       path: '/form',
       icon: 'form',
       name: 'form',
+      hideInMenu: true,
       routes: [
         {
           path: '/form',
@@ -128,6 +130,7 @@ export default defineConfig({
       path: '/list',
       icon: 'table',
       name: 'list',
+      hideInMenu: true,
       routes: [
         {
           path: '/list/search',
@@ -186,6 +189,7 @@ export default defineConfig({
       path: '/profile',
       name: 'profile',
       icon: 'profile',
+      hideInMenu: true,
       routes: [
         {
           path: '/profile',
@@ -209,6 +213,7 @@ export default defineConfig({
       name: 'result',
       icon: 'CheckCircleOutlined',
       path: '/result',
+      hideInMenu: true,
       routes: [
         {
           path: '/result',
@@ -232,6 +237,7 @@ export default defineConfig({
       name: 'exception',
       icon: 'warning',
       path: '/exception',
+      hideInMenu: true,
       routes: [
         {
           path: '/exception',
@@ -261,6 +267,7 @@ export default defineConfig({
       name: 'account',
       icon: 'user',
       path: '/account',
+      hideInMenu: true,
       routes: [
         {
           path: '/account',
@@ -286,6 +293,7 @@ export default defineConfig({
     },
     {
       name: 'Home',
+      icon: 'dashboard',
       path: '/home',
       component: './home',
     },
