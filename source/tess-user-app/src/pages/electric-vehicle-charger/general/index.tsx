@@ -6,6 +6,8 @@ import {
   Button,
   Card,
   Col,
+  Descriptions,
+  Divider,
   Dropdown,
   Input,
   List,
@@ -14,6 +16,8 @@ import {
   Progress,
   Radio,
   Row,
+  Slider,
+  Switch,
 } from 'antd';
 
 import { PageContainer } from '@ant-design/pro-layout';
@@ -23,6 +27,7 @@ import OperationModal from './components/OperationModal';
 import { addFakeList, queryFakeList, removeFakeList, updateFakeList } from './service';
 import type { BasicListItemDataType } from './data';
 import styles from './style.less';
+
 
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -164,93 +169,30 @@ export const BasicList: FC = () => {
   };
 
   return (
-    <div>
-      <PageContainer>
-        <div className={styles.standardList}>
-          
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title="State of Charge" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
-
-          <Info title="" value="" bordered />
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title=" Costs" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
-
-          <Info title="" value="" bordered />
-
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title=" Charging" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
-
-          <Info title="" value="" bordered />
-
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title=" Current Limit for AC charging" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
-
-          <Info title="" value="" bordered />
-
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title=" Charger" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
-
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title=" Model" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
-
-
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title=" Manufacturer" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
-          <Info title="" value="" bordered />
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title=" Input Voltage" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
-
-          <Card bordered={false}>
-            <Row>
-              <Col sm={8} xs={24}>
-                <Info title=" Status of Health" value="" bordered />
-              </Col>
-            </Row>
-          </Card>
+    <PageContainer>
+    <Card bordered={false}>
+      <Descriptions title="Electric Vehicle & Charger" style={{ marginBottom: 32 }}>
+        <Descriptions.Item label="State of Charge"><Switch checkedChildren="On" unCheckedChildren="Off" defaultChecked /> <Descriptions.Item label="State of Charge"><Switch checkedChildren="Auto" unCheckedChildren="Off" defaultChecked /></Descriptions.Item>77%</Descriptions.Item>
+        <Descriptions.Item label="Charging"> </Descriptions.Item>
+        <Descriptions.Item label="Current Cost"> </Descriptions.Item>
+        <Descriptions.Item label="Current limit for AC charging"> 18kwh(80%)</Descriptions.Item>
+      </Descriptions>
+      
+      <Divider style={{ marginBottom: 35}} />
+      <Descriptions title="Additional Info" style={{ marginBottom: 32 }}>
+        <Descriptions.Item label="Charger"> </Descriptions.Item>
+        <Descriptions.Item label="Model">xxfffhhf</Descriptions.Item>
+        <Descriptions.Item label="Manufacturer">unknown</Descriptions.Item>
+  
+        <Descriptions.Item label="Input Voltage"> </Descriptions.Item>
+        <Descriptions.Item label="State of Health"> </Descriptions.Item>
+      </Descriptions>
+    </Card>
+  </PageContainer>
 
 
 
-          {/* <Card
+          /* <Card
             className={styles.listCard}
             bordered={false}
             title="基本列表"
@@ -288,27 +230,7 @@ export const BasicList: FC = () => {
                 </List.Item>
               )}
             />
-          </Card> */}
-        </div>
-      </PageContainer>
-      {/* <Button
-        type="dashed"
-        onClick={() => {
-          setVisible(true);
-        }}
-        style={{ width: '100%', marginBottom: 8 }}
-      >
-        <PlusOutlined />
-        添加
-      </Button> */}
-      <OperationModal
-        done={done}
-        visible={visible}
-        current={current}
-        onDone={handleDone}
-        onSubmit={handleSubmit}
-      />
-    </div>
+          </Card> */
   );
 };
 
