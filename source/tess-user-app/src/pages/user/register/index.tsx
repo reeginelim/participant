@@ -1,31 +1,36 @@
 import type { FC } from 'react';
 import { useState, useEffect } from 'react';
-import { Form, Button, Col, Input, Popover, Progress, Row, Select, message } from 'antd';
+import { Form, Button, Col, Input, Popover, Progress, Row, Select, message, Card } from 'antd';
 import type { Store } from 'antd/es/form/interface';
 import { Link, useRequest, history } from 'umi';
 import type { StateType } from './service';
 import { fakeRegister } from './service';
 
-import styles from './style.less';
+import styles from './index.less';
 
 const FormItem = Form.Item;
 const { Option } = Select;
 const InputGroup = Input.Group;
 
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 24 },
+};
+
 const passwordStatusMap = {
   ok: (
     <div className={styles.success}>
-      <span>强度：强</span>
+      <span>Strong</span>
     </div>
   ),
   pass: (
     <div className={styles.warning}>
-      <span>强度：中</span>
+      <span>Medium</span>
     </div>
   ),
   poor: (
     <div className={styles.error}>
-      <span>强度：太短</span>
+      <span>Weak</span>
     </div>
   ),
 };
@@ -147,92 +152,127 @@ const Register: FC = () => {
   };
 
   return (
-    <div className={styles.main}>
-      <h3>Register</h3>
-      <FormItem name="username" label="User Name">
-        <Input size="large" placeholder="" />
-      </FormItem>
-      <Form form={form} name="UserRegister" onFinish={onFinish}>
-        <FormItem
-          name="mail"
-          label="Email"
-          rules={[
-            {
-              required: true,
-              message: 'Plase input email address!',
-            },
-            {
-              type: 'email',
-              message: 'Wrong email address format!',
-            },
-          ]}
-        >
-          <Input size="large" placeholder="" />
-        </FormItem>
-        <FormItem name="firstname" label="First Name">
-          <Input size="large" placeholder="" />
-        </FormItem>
-        <FormItem name="lastname" label="Last Name">
-          <Input size="large" placeholder="" />
-        </FormItem>
-        <FormItem name="utility_account" label="Utility Account">
-          <Input size="large" placeholder="" />
-        </FormItem>
-        <Popover
-          getPopupContainer={(node) => {
-            if (node && node.parentNode) {
-              return node.parentNode as HTMLElement;
-            }
-            return node;
-          }}
-          content={
-            visible && (
-              <div style={{ padding: '4px 0' }}>
-                {passwordStatusMap[getPasswordStatus()]}
-                {renderPasswordProgress()}
-                <div style={{ marginTop: 10 }}>
-                  <span>Please use a strong password!</span>
-                </div>
-              </div>
-            )
-          }
-          overlayStyle={{ width: 240 }}
-          placement="right"
-          visible={visible}
-        >
-          <FormItem
-            name="password"
-            label="Password"
-            className={
-              form.getFieldValue('password') &&
-              form.getFieldValue('password').length > 0 &&
-              styles.password
-            }
-            rules={[
-              {
-                validator: checkPassword,
-              },
-            ]}
-          >
-            <Input size="large" type="password" placeholder="" />
-          </FormItem>
-        </Popover>
-        <FormItem
-          name="confirm"
-          label="Confirm Password"
-          rules={[
-            {
-              required: true,
-              message: '',
-            },
-            {
-              validator: checkConfirm,
-            },
-          ]}
-        >
-          <Input size="large" type="password" placeholder="" />
-        </FormItem>
-        {/* <InputGroup compact>
+    <div className={styles.container}>
+      <div className={styles.main}>
+        <Card>
+          <h3>Register</h3>
+          <Form {...layout} form={form} name="UserRegister" onFinish={onFinish}>
+            <FormItem
+              name="username"
+              label="User Name"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input size="large" placeholder="" />
+            </FormItem>
+            <FormItem
+              name="mail"
+              label="Email"
+              rules={[
+                {
+                  required: true,
+                  message: 'Plase input email address!',
+                },
+                {
+                  type: 'email',
+                  message: 'Wrong email address format!',
+                },
+              ]}
+            >
+              <Input size="large" placeholder="" />
+            </FormItem>
+            <FormItem
+              name="firstname"
+              label="First Name"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input size="large" placeholder="" />
+            </FormItem>
+            <FormItem
+              name="lastname"
+              label="Last Name"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input size="large" placeholder="" />
+            </FormItem>
+            <FormItem
+              name="utility_account"
+              label="Utility Account"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input size="large" placeholder="" />
+            </FormItem>
+            <Popover
+              getPopupContainer={(node) => {
+                if (node && node.parentNode) {
+                  return node.parentNode as HTMLElement;
+                }
+                return node;
+              }}
+              content={
+                visible && (
+                  <div style={{ padding: '4px 0' }}>
+                    {passwordStatusMap[getPasswordStatus()]}
+                    {renderPasswordProgress()}
+                    <div style={{ marginTop: 10 }}>
+                      <span>Please use a strong password!</span>
+                    </div>
+                  </div>
+                )
+              }
+              overlayStyle={{ width: 240 }}
+              placement="right"
+              visible={visible}
+            >
+              <FormItem
+                name="password"
+                label="Password"
+                className={
+                  form.getFieldValue('password') &&
+                  form.getFieldValue('password').length > 0 &&
+                  styles.password
+                }
+                rules={[
+                  {
+                    required: true,
+                    validator: checkPassword,
+                  },
+                ]}
+              >
+                <Input size="large" type="password" placeholder="" />
+              </FormItem>
+            </Popover>
+            <FormItem
+              name="confirm"
+              label="Confirm Password"
+              rules={[
+                {
+                  required: true,
+                  message: '',
+                },
+                {
+                  validator: checkConfirm,
+                },
+              ]}
+            >
+              <Input size="large" type="password" placeholder="" />
+            </FormItem>
+            {/* <InputGroup compact>
           <Select size="large" value={prefix} onChange={changePrefix} style={{ width: '20%' }}>
             <Option value="86">+86</Option>
             <Option value="87">+87</Option>
@@ -254,7 +294,7 @@ const Register: FC = () => {
             <Input size="large" placeholder="手机号" />
           </FormItem>
         </InputGroup> */}
-        {/* <Row gutter={8}>
+            {/* <Row gutter={8}>
           <Col span={16}>
             <FormItem
               name="captcha"
@@ -279,21 +319,23 @@ const Register: FC = () => {
             </Button>
           </Col>
         </Row> */}
-        <FormItem>
-          <Button
-            size="large"
-            loading={submitting}
-            className={styles.submit}
-            type="primary"
-            htmlType="submit"
-          >
-            <span>Register</span>
-          </Button>
-          <Link className={styles.login} to="/user/login">
-            <span>Have an account? Login</span>
-          </Link>
-        </FormItem>
-      </Form>
+            <FormItem>
+              <Button
+                size="large"
+                loading={submitting}
+                className={styles.submit}
+                type="primary"
+                htmlType="submit"
+              >
+                <span>Submit</span>
+              </Button>
+              <Link className={styles.login} to="/user/login">
+                <span>Have an account? Login</span>
+              </Link>
+            </FormItem>
+          </Form>
+        </Card>
+      </div>
     </div>
   );
 };
