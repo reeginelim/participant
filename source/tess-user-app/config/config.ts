@@ -67,7 +67,7 @@ export default defineConfig({
     },
     {
       path: '/dashboard',
-      name: 'dashboard',
+      name: 'Home',
       icon: 'dashboard',
       routes: [
         {
@@ -96,8 +96,8 @@ export default defineConfig({
     },
     {
       path: '/form',
-      icon: 'form',
-      name: 'form',
+      icon: 'profile',
+      name: 'Heating & Cooling',
       routes: [
         {
           path: '/form',
@@ -125,8 +125,8 @@ export default defineConfig({
     },
     {
       path: '/list',
-      icon: 'table',
-      name: 'list',
+      icon: 'profile',
+      name: 'Water Heater',
       routes: [
         {
           path: '/list/search',
@@ -182,144 +182,150 @@ export default defineConfig({
       ],
     },
     {
-      path: '/profile',
-      name: 'profile',
+      path: '/solar-panels',
+      name: 'Solar Panels',
       icon: 'profile',
       routes: [
         {
-          path: '/profile',
-          redirect: '/profile/basic',
+          path: '/solar-panels',
+          redirect: '/solar-panels/general',
         },
         {
-          name: 'basic',
+          name: 'General Info',
           icon: 'smile',
-          path: '/profile/basic',
-          component: './profile/basic',
+          path: '/solar-panels/general',
+          component: './solar-panels/general',
         },
         {
-          name: 'advanced',
+          name: 'Cost',
           icon: 'smile',
-          path: '/profile/advanced',
-          component: './profile/advanced',
+          path: '/solar-panels/cost',
+          component: './solar-panels/cost',
         },
       ],
     },
-    {
-      name: 'result',
-      icon: 'CheckCircleOutlined',
-      path: '/result',
-      routes: [
-        {
-          path: '/result',
-          redirect: '/result/success',
-        },
-        {
-          name: 'success',
-          icon: 'smile',
-          path: '/result/success',
-          component: './result/success',
-        },
-        {
-          name: 'fail',
-          icon: 'smile',
-          path: '/result/fail',
-          component: './result/fail',
-        },
-      ],
-    },
-    {
-      name: 'exception',
-      icon: 'warning',
-      path: '/exception',
-      routes: [
-        {
-          path: '/exception',
-          redirect: '/exception/403',
-        },
-        {
-          name: '403',
-          icon: 'smile',
-          path: '/exception/403',
-          component: './exception/403',
-        },
-        {
-          name: '404',
-          icon: 'smile',
-          path: '/exception/404',
-          component: './exception/404',
-        },
-        {
-          name: '500',
-          icon: 'smile',
-          path: '/exception/500',
-          component: './exception/500',
-        },
-      ],
-    },
-    {
-      name: 'account',
-      icon: 'user',
-      path: '/account',
-      routes: [
-        {
-          path: '/account',
-          redirect: '/account/center',
-        },
-        {
-          name: 'center',
-          icon: 'smile',
-          path: '/account/center',
-          component: './account/center',
-        },
-        {
-          name: 'settings',
-          icon: 'smile',
-          path: '/account/settings',
-          component: './account/settings',
-        },
-      ],
-    },
-    {
-      name: 'editor',
-      icon: 'highlight',
-      path: '/editor',
-      routes: [
-        {
-          path: '/editor',
-          redirect: '/editor/flow',
-        },
-        {
-          name: 'flow',
-          icon: 'smile',
-          path: '/editor/flow',
-          component: './editor/flow',
-        },
-        {
-          name: 'mind',
-          icon: 'smile',
-          path: '/editor/mind',
-          component: './editor/mind',
-        },
-        {
-          name: 'koni',
-          icon: 'smile',
-          path: '/editor/koni',
-          component: './editor/koni',
-        },
-      ],
-    },
+    // {
+    //   name: 'result',
+    //   icon: 'CheckCircleOutlined',
+    //   path: '/result',
+    //   routes: [
+    //     {
+    //       path: '/result',
+    //       redirect: '/result/success',
+    //     },
+    //     {
+    //       name: 'success',
+    //       icon: 'smile',
+    //       path: '/result/success',
+    //       component: './result/success',
+    //     },
+    //     {
+    //       name: 'fail',
+    //       icon: 'smile',
+    //       path: '/result/fail',
+    //       component: './result/fail',
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: 'exception',
+    //   icon: 'warning',
+    //   path: '/exception',
+    //   routes: [
+    //     {
+    //       path: '/exception',
+    //       redirect: '/exception/403',
+    //     },
+    //     {
+    //       name: '403',
+    //       icon: 'smile',
+    //       path: '/exception/403',
+    //       component: './exception/403',
+    //     },
+    //     {
+    //       name: '404',
+    //       icon: 'smile',
+    //       path: '/exception/404',
+    //       component: './exception/404',
+    //     },
+    //     {
+    //       name: '500',
+    //       icon: 'smile',
+    //       path: '/exception/500',
+    //       component: './exception/500',
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: 'account',
+    //   icon: 'user',
+    //   path: '/account',
+    //   routes: [
+    //     {
+    //       path: '/account',
+    //       redirect: '/account/center',
+    //     },
+    //     {
+    //       name: 'center',
+    //       icon: 'smile',
+    //       path: '/account/center',
+    //       component: './account/center',
+    //     },
+    //     {
+    //       name: 'settings',
+    //       icon: 'smile',
+    //       path: '/account/settings',
+    //       component: './account/settings',
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: 'editor',
+    //   icon: 'highlight',
+    //   path: '/editor',
+    //   routes: [
+    //     {
+    //       path: '/editor',
+    //       redirect: '/editor/flow',
+    //     },
+    //     {
+    //       name: 'flow',
+    //       icon: 'smile',
+    //       path: '/editor/flow',
+    //       component: './editor/flow',
+    //     },
+    //     {
+    //       name: 'mind',
+    //       icon: 'smile',
+    //       path: '/editor/mind',
+    //       component: './editor/mind',
+    //     },
+    //     {
+    //       name: 'koni',
+    //       icon: 'smile',
+    //       path: '/editor/koni',
+    //       component: './editor/koni',
+    //     },
+    //   ],
+    // },
     {
       path: '/',
       redirect: '/dashboard/analysis',
     },
     {
-      name: 'electric-vehicle-charger',
+      name: 'EV & Charger',
       icon: 'user',
       path: '/electric-vehicle-charger',
       routes: [
         {
           path: '/electric-vehicle-charger',
           redirect: '/electric-vehicle-charger/schedule',
+        },
+        {
+          name: 'General Info',
+          icon: 'smile',
+          path: '/electric-vehicle-charger/general',
+          component: './electric-vehicle-charger/general',
         },
         {
           name: 'Schedule',
@@ -333,17 +339,34 @@ export default defineConfig({
           path: '/electric-vehicle-charger/cost',
           component: './electric-vehicle-charger/cost',
         },
+        // {
+        //   name: 'Settings',
+        //   icon: 'smile',
+        //   path: '/electric-vehicle-charger/settings',
+        //   component: './electric-vehicle-charger/settings',
+        // },
+      ],
+    },
+    {
+      path: '/dashboard',
+      name: 'Battery',
+      icon: 'profile',
+      routes: [
         {
-          name: 'Settings',
-          icon: 'smile',
-          path: '/electric-vehicle-charger/settings',
-          component: './electric-vehicle-charger/settings',
+          path: '/dashboard/monitor',
+          component: './dashboard/monitor',
         },
         {
-          name: 'General',
+          name: 'General Info',
           icon: 'smile',
-          path: '/electric-vehicle-charger/general',
-          component: './electric-vehicle-charger/general',
+          path: '/dashboard/monitor',
+          component: './dashboard/monitor',
+        },
+        {
+          name: 'Cost',
+          icon: 'smile',
+          path: '/dashboard/monitor',
+          component: './dashboard/monitor',
         },
       ],
     },
