@@ -315,37 +315,31 @@ export default defineConfig({
     //   ],
     // },
     {
-      path: '/',
-      name: 'Heating & Cooling',
+      path: '/waterheater',
+      name: 'Water Heater',
       icon: 'profile',
       routes: [
         {
-          path: '/battery',
-          redirect: '/battery/general',
+          path: '/waterheater',
+          redirect: '/waterheater/general',
         },
         {
           name: 'General Info',
           icon: 'smile',
-          path: '/battery/general',
-          component: './battery/general',
+          path: '/waterheater/general',
+          component: './waterheater/general',
         },
         {
           name: 'Cost',
           icon: 'smile',
-          path: '/battery/cost',
-          component: './battery/cost',
-        },
-        {
-          name: 'Settings',
-          icon: 'smile',
-          path: '/battery/settings',
-          component: './battery/settings',
+          path: '/waterheater/cost',
+          component: './waterheater/cost',
         },
       ],
     },
     {
       path: '/',
-      name: 'Water Heater',
+      name: 'Heating & Cooling',
       icon: 'profile',
       routes: [
         {
@@ -451,12 +445,12 @@ export default defineConfig({
           path: '/battery/cost',
           component: './battery/cost',
         },
-        {
-          name: 'Settings',
-          icon: 'smile',
-          path: '/battery/settings',
-          component: './battery/settings',
-        },
+        // {
+        //   name: 'Settings',
+        //   icon: 'smile',
+        //   path: '/battery/settings',
+        //   component: './battery/settings',
+        // },
       ],
     },
     {
