@@ -3,6 +3,7 @@ import { defineConfig } from 'umi';
 import { join } from 'path';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
+import component from '@/locales/en-US/component';
 
 const { REACT_APP_ENV } = process.env;
 
@@ -69,6 +70,7 @@ export default defineConfig({
       path: '/dashboard',
       name: 'dashboard',
       icon: 'dashboard',
+      hideInMenu: true,
       routes: [
         {
           path: '/dashboard',
@@ -98,6 +100,7 @@ export default defineConfig({
       path: '/form',
       icon: 'form',
       name: 'form',
+      hideInMenu: true,
       routes: [
         {
           path: '/form',
@@ -127,6 +130,7 @@ export default defineConfig({
       path: '/list',
       icon: 'table',
       name: 'list',
+      hideInMenu: true,
       routes: [
         {
           path: '/list/search',
@@ -185,6 +189,7 @@ export default defineConfig({
       path: '/profile',
       name: 'profile',
       icon: 'profile',
+      hideInMenu: true,
       routes: [
         {
           path: '/profile',
@@ -208,6 +213,7 @@ export default defineConfig({
       name: 'result',
       icon: 'CheckCircleOutlined',
       path: '/result',
+      hideInMenu: true,
       routes: [
         {
           path: '/result',
@@ -231,6 +237,7 @@ export default defineConfig({
       name: 'exception',
       icon: 'warning',
       path: '/exception',
+      hideInMenu: true,
       routes: [
         {
           path: '/exception',
@@ -260,6 +267,7 @@ export default defineConfig({
       name: 'account',
       icon: 'user',
       path: '/account',
+      hideInMenu: true,
       routes: [
         {
           path: '/account',
@@ -280,38 +288,45 @@ export default defineConfig({
       ],
     },
     {
-      name: 'editor',
-      icon: 'highlight',
-      path: '/editor',
-      routes: [
-        {
-          path: '/editor',
-          redirect: '/editor/flow',
-        },
-        {
-          name: 'flow',
-          icon: 'smile',
-          path: '/editor/flow',
-          component: './editor/flow',
-        },
-        {
-          name: 'mind',
-          icon: 'smile',
-          path: '/editor/mind',
-          component: './editor/mind',
-        },
-        {
-          name: 'koni',
-          icon: 'smile',
-          path: '/editor/koni',
-          component: './editor/koni',
-        },
-      ],
-    },
-    {
       path: '/',
       redirect: '/dashboard/analysis',
     },
+    {
+      name: 'Home',
+      icon: 'dashboard',
+      path: '/home',
+      component: './home',
+    },
+    {
+      name: 'Heating & Cooling',
+      icon: 'user',
+      path: '/heating-and-cooling',
+      routes: [
+        {
+          path: '/heating-and-cooling',
+          redirect: '/heating-and-cooling/general',
+        },
+        {
+          name: 'General',
+          path: '/heating-and-cooling/general',
+          component: './heating-and-cooling/general',
+        },
+        {
+          name: 'Scheduler',
+          icon: 'smile',
+          path: '/heating-and-cooling/scheduler',
+          component: './heating-and-cooling/scheduler',
+        },
+        {
+          name: 'Price History',
+          path: '/heating-and-cooling/price-history',
+          component: './heating-and-cooling/price-history',
+        },
+      ],
+    },
+
+    // New page routes need to be placed before 404,
+    // or the page will always display 404
     {
       component: '404',
     },
