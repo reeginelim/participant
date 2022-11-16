@@ -88,6 +88,23 @@
     redirect: '/welcome',
   },
   {
+    name: 'heating-and-cooling',
+    icon: 'user',
+    path: '/heating-and-cooling',
+    routes: [
+      {
+        path: '/heating-and-cooling',
+        redirect: '/heating-and-cooling/center',
+      },
+      {
+        name: 'general',
+        icon: 'smile',
+        path: '/heating-and-cooling/center',
+        component: './heating-and-cooling/center',
+      },
+    ],
+  },
+  {
     component: './404',
   },
 ];

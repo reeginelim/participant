@@ -3,6 +3,7 @@ import { defineConfig } from 'umi';
 import { join } from 'path';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
+import component from '@/locales/en-US/component';
 
 const { REACT_APP_ENV } = process.env;
 
@@ -67,8 +68,9 @@ export default defineConfig({
     },
     {
       path: '/dashboard',
-      name: 'Home',
+      name: 'dashboard',
       icon: 'dashboard',
+      hideInMenu: true,
       routes: [
         {
           path: '/dashboard',
@@ -96,8 +98,9 @@ export default defineConfig({
     },
     {
       path: '/form',
-      icon: 'profile',
-      name: 'Heating & Cooling',
+      icon: 'form',
+      name: 'form',
+      hideInMenu: true,
       routes: [
         {
           path: '/form',
@@ -125,8 +128,9 @@ export default defineConfig({
     },
     {
       path: '/list',
-      icon: 'profile',
-      name: 'Water Heater',
+      icon: 'table',
+      name: 'list',
+      hideInMenu: true,
       routes: [
         {
           path: '/list/search',
@@ -182,194 +186,147 @@ export default defineConfig({
       ],
     },
     {
-      path: '/solar-panels',
-      name: 'Solar Panels',
+      path: '/profile',
+      name: 'profile',
       icon: 'profile',
+      hideInMenu: true,
       routes: [
         {
-          path: '/solar-panels',
-          redirect: '/solar-panels/general',
+          path: '/profile',
+          redirect: '/profile/basic',
         },
         {
-          name: 'General Info',
+          name: 'basic',
           icon: 'smile',
-          path: '/solar-panels/general',
-          component: './solar-panels/general',
+          path: '/profile/basic',
+          component: './profile/basic',
         },
         {
-          name: 'Cost',
+          name: 'advanced',
           icon: 'smile',
-          path: '/solar-panels/cost',
-          component: './solar-panels/cost',
+          path: '/profile/advanced',
+          component: './profile/advanced',
         },
       ],
     },
-    // {
-    //   name: 'result',
-    //   icon: 'CheckCircleOutlined',
-    //   path: '/result',
-    //   routes: [
-    //     {
-    //       path: '/result',
-    //       redirect: '/result/success',
-    //     },
-    //     {
-    //       name: 'success',
-    //       icon: 'smile',
-    //       path: '/result/success',
-    //       component: './result/success',
-    //     },
-    //     {
-    //       name: 'fail',
-    //       icon: 'smile',
-    //       path: '/result/fail',
-    //       component: './result/fail',
-    //     },
-    //   ],
-    // },
-    // {
-    //   name: 'exception',
-    //   icon: 'warning',
-    //   path: '/exception',
-    //   routes: [
-    //     {
-    //       path: '/exception',
-    //       redirect: '/exception/403',
-    //     },
-    //     {
-    //       name: '403',
-    //       icon: 'smile',
-    //       path: '/exception/403',
-    //       component: './exception/403',
-    //     },
-    //     {
-    //       name: '404',
-    //       icon: 'smile',
-    //       path: '/exception/404',
-    //       component: './exception/404',
-    //     },
-    //     {
-    //       name: '500',
-    //       icon: 'smile',
-    //       path: '/exception/500',
-    //       component: './exception/500',
-    //     },
-    //   ],
-    // },
-    // {
-    //   name: 'account',
-    //   icon: 'user',
-    //   path: '/account',
-    //   routes: [
-    //     {
-    //       path: '/account',
-    //       redirect: '/account/center',
-    //     },
-    //     {
-    //       name: 'center',
-    //       icon: 'smile',
-    //       path: '/account/center',
-    //       component: './account/center',
-    //     },
-    //     {
-    //       name: 'settings',
-    //       icon: 'smile',
-    //       path: '/account/settings',
-    //       component: './account/settings',
-    //     },
-    //   ],
-    // },
-    // {
-    //   name: 'editor',
-    //   icon: 'highlight',
-    //   path: '/editor',
-    //   routes: [
-    //     {
-    //       path: '/editor',
-    //       redirect: '/editor/flow',
-    //     },
-    //     {
-    //       name: 'flow',
-    //       icon: 'smile',
-    //       path: '/editor/flow',
-    //       component: './editor/flow',
-    //     },
-    //     {
-    //       name: 'mind',
-    //       icon: 'smile',
-    //       path: '/editor/mind',
-    //       component: './editor/mind',
-    //     },
-    //     {
-    //       name: 'koni',
-    //       icon: 'smile',
-    //       path: '/editor/koni',
-    //       component: './editor/koni',
-    //     },
-    //   ],
-    // },
+    {
+      name: 'result',
+      icon: 'CheckCircleOutlined',
+      path: '/result',
+      hideInMenu: true,
+      routes: [
+        {
+          path: '/result',
+          redirect: '/result/success',
+        },
+        {
+          name: 'success',
+          icon: 'smile',
+          path: '/result/success',
+          component: './result/success',
+        },
+        {
+          name: 'fail',
+          icon: 'smile',
+          path: '/result/fail',
+          component: './result/fail',
+        },
+      ],
+    },
+    {
+      name: 'exception',
+      icon: 'warning',
+      path: '/exception',
+      hideInMenu: true,
+      routes: [
+        {
+          path: '/exception',
+          redirect: '/exception/403',
+        },
+        {
+          name: '403',
+          icon: 'smile',
+          path: '/exception/403',
+          component: './exception/403',
+        },
+        {
+          name: '404',
+          icon: 'smile',
+          path: '/exception/404',
+          component: './exception/404',
+        },
+        {
+          name: '500',
+          icon: 'smile',
+          path: '/exception/500',
+          component: './exception/500',
+        },
+      ],
+    },
+    {
+      name: 'account',
+      icon: 'user',
+      path: '/account',
+      hideInMenu: true,
+      routes: [
+        {
+          path: '/account',
+          redirect: '/account/center',
+        },
+        {
+          name: 'center',
+          icon: 'smile',
+          path: '/account/center',
+          component: './account/center',
+        },
+        {
+          name: 'settings',
+          icon: 'smile',
+          path: '/account/settings',
+          component: './account/settings',
+        },
+      ],
+    },
     {
       path: '/',
       redirect: '/dashboard/analysis',
     },
     {
-      name: 'EV & Charger',
-      icon: 'user',
-      path: '/electric-vehicle-charger',
-      routes: [
-        {
-          path: '/electric-vehicle-charger',
-          redirect: '/electric-vehicle-charger/schedule',
-        },
-        {
-          name: 'General Info',
-          icon: 'smile',
-          path: '/electric-vehicle-charger/general',
-          component: './electric-vehicle-charger/general',
-        },
-        {
-          name: 'Schedule',
-          icon: 'smile',
-          path: '/electric-vehicle-charger/schedule',
-          component: './electric-vehicle-charger/schedule',
-        },
-        {
-          name: 'Cost',
-          icon: 'smile',
-          path: '/electric-vehicle-charger/cost',
-          component: './electric-vehicle-charger/cost',
-        },
-        // {
-        //   name: 'Settings',
-        //   icon: 'smile',
-        //   path: '/electric-vehicle-charger/settings',
-        //   component: './electric-vehicle-charger/settings',
-        // },
-      ],
+      name: 'Home',
+      icon: 'dashboard',
+      path: '/home',
+      component: './home',
     },
     {
-      path: '/dashboard',
-      name: 'Battery',
-      icon: 'profile',
+      name: 'Heating & Cooling',
+      icon: 'user',
+      path: '/heating-and-cooling',
       routes: [
         {
-          path: '/dashboard/monitor',
-          component: './dashboard/monitor',
+          path: '/heating-and-cooling',
+          redirect: '/heating-and-cooling/general',
         },
         {
-          name: 'General Info',
-          icon: 'smile',
-          path: '/dashboard/monitor',
-          component: './dashboard/monitor',
+          name: 'General',
+          path: '/heating-and-cooling/general',
+          component: './heating-and-cooling/general',
         },
         {
-          name: 'Cost',
+          name: 'Scheduler',
           icon: 'smile',
-          path: '/dashboard/monitor',
-          component: './dashboard/monitor',
+          path: '/heating-and-cooling/scheduler',
+          component: './heating-and-cooling/scheduler',
+        },
+        {
+          name: 'Price History',
+          path: '/heating-and-cooling/price-history',
+          component: './heating-and-cooling/price-history',
         },
       ],
     },
+
+    // New page routes need to be placed before 404,
+    // or the page will always display 404
     {
       component: '404',
     },
