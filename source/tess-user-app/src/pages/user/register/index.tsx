@@ -336,6 +336,7 @@ const Register: FC = () => {
           </Form>
         </Card>
       </div>
+
     </div>
   );
 };
