@@ -3,6 +3,7 @@ import { defineConfig } from 'umi';
 import { join } from 'path';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
+import component from '@/locales/en-US/component';
 
 const { REACT_APP_ENV } = process.env;
 
@@ -69,6 +70,7 @@ export default defineConfig({
       path: '/dashboard',
       name: 'Home',
       icon: 'dashboard',
+      hideInMenu: true,
       routes: [
         {
           path: '/dashboard',
@@ -370,6 +372,7 @@ export default defineConfig({
       path: '/',
       name: 'Solar Panels',
       icon: 'profile',
+      hideInMenu: true,
       routes: [
         {
           path: '/battery',
@@ -384,8 +387,20 @@ export default defineConfig({
         {
           name: 'Cost',
           icon: 'smile',
-          path: '/battery/cost',
-          component: './battery/cost',
+          path: '/profile/advanced',
+          component: './profile/advanced',
+        },
+      ],
+    },
+    {
+      name: 'result',
+      icon: 'CheckCircleOutlined',
+      path: '/result',
+      hideInMenu: true,
+      routes: [
+        {
+          path: '/result',
+          redirect: '/result/success',
         },
         {
           name: 'Settings',
@@ -407,8 +422,20 @@ export default defineConfig({
         {
           name: 'General Info',
           icon: 'smile',
-          path: '/battery/general',
-          component: './battery/general',
+          path: '/exception/500',
+          component: './exception/500',
+        },
+      ],
+    },
+    {
+      name: 'account',
+      icon: 'user',
+      path: '/account',
+      hideInMenu: true,
+      routes: [
+        {
+          path: '/account',
+          redirect: '/account/center',
         },
         {
           name: 'Cost',
@@ -457,6 +484,47 @@ export default defineConfig({
       path: '/',
       redirect: '/dashboard/dash',
     },
+
+      path: '/',
+      redirect: '/dashboard/analysis',
+    },
+    {
+      name: 'Home',
+      icon: 'dashboard',
+      path: '/home',
+      component: './home',
+    },
+    {
+      name: 'Heating & Cooling',
+      icon: 'user',
+      path: '/heating-and-cooling',
+      routes: [
+        {
+          path: '/heating-and-cooling',
+          redirect: '/heating-and-cooling/general',
+        },
+        {
+          name: 'General',
+          path: '/heating-and-cooling/general',
+          component: './heating-and-cooling/general',
+        },
+        {
+          name: 'Scheduler',
+          icon: 'smile',
+          path: '/heating-and-cooling/scheduler',
+          component: './heating-and-cooling/scheduler',
+        },
+        {
+          name: 'Price History',
+          path: '/heating-and-cooling/price-history',
+          component: './heating-and-cooling/price-history',
+        },
+      ],
+    },
+
+    // New page routes need to be placed before 404,
+    // or the page will always display 404
+
     {
       component: '404',
     },
