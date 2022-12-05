@@ -35,6 +35,7 @@ export default defineConfig({
   },
   // umi routes: https://umijs.org/docs/routing
   routes: [
+    { path: '/', redirect: '/dashboard' },
     {
       path: '/user',
       layout: false,
@@ -49,59 +50,33 @@ export default defineConfig({
           path: '/user',
           redirect: '/user/login',
         },
-        {
-          name: 'register-result',
-          icon: 'smile',
-          path: '/user/register-result',
-          component: './user/register-result',
-        },
-        {
-          name: 'register',
-          icon: 'smile',
-          path: '/user/register',
-          component: './user/register',
-        },
-        {
-          component: '404',
-        },
       ],
     },
     {
       path: '/dashboard',
       name: 'Home',
       icon: 'dashboard',
-      routes: [
-        {
-          path: '/dashboard',
-          redirect: '/dashboard/dash',
-        },
-        {
-          name: 'Dashboard',
-          icon: 'smile',
-          path: '/dashboard/dash',
-          component: './dashboard/dash',
-        },
-      ],
+      component: './dashboard',
     },
     {
-      path: '/waterheater',
+      path: '/water-heater',
       name: 'Water Heater',
       icon: 'profile',
       routes: [
         {
-          path: '/waterheater',
+          path: '/water-heater',
           redirect: '/waterheater/general',
         },
         {
           name: 'General Info',
           icon: 'smile',
-          path: '/waterheater/general',
+          path: '/water-heater/general',
           component: './waterheater/general',
         },
         {
           name: 'Cost',
           icon: 'smile',
-          path: '/waterheater/cost',
+          path: '/water-heater/cost',
           component: './waterheater/cost',
         },
       ],

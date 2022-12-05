@@ -1,0 +1,5 @@
+type TestDataModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  description: String
+}
+ 

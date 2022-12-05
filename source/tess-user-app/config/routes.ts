@@ -1,58 +1,35 @@
-﻿export default [
+export default [
   {
     path: '/user',
     layout: false,
     routes: [
-      {
-        name: 'login',
-        path: '/user/login',
-        component: './user/Login',
-      },
-      {
-        name: 'register',
-        path: '/user/register',
-        component: './user/register',
-      },
-      {
-        component: './404',
-      },
+      { name: '登录', path: '/user/login', component: './user/Login' },
+      { name: '注册', path: '/user/register', component: './user/register' },
+      { component: './404' },
     ],
   },
+  { path: '/electric-vehicle-charger', icon: 'smile', component: './electric-vehicle-charger' },
   {
-    path: '/electric-vehicle-charger',
-    name: 'ev',
-    icon: 'smile',
-    component: './electric-vehicle-charger',
-  },
-  {
-    name: 'electric-vehicle-charger',
     icon: 'user',
     path: '/electric-vehicle-charger',
     routes: [
+      { path: '/electric-vehicle-charger', redirect: '/electric-vehicle-charger/schedule' },
       {
-        path: '/electric-vehicle-charger',
-        redirect: '/electric-vehicle-charger/schedule',
-      },
-      {
-        name: 'Schedule',
         icon: 'smile',
         path: '/electric-vehicle-charger/schedule',
         component: './electric-vehicle-charger/schedule',
       },
       {
-        name: 'Cost',
         icon: 'smile',
         path: '/electric-vehicle-charger/schedule',
         component: './electric-vehicle-charger/cost',
       },
       {
-        name: 'Setting',
         icon: 'smile',
         path: '/electric-vehicle-charger/schedule',
         component: './electric-vehicle-charger/settings',
       },
       {
-        name: 'General',
         icon: 'smile',
         path: '/electric-vehicle-charger/schedule',
         component: './electric-vehicle-charger/general',
@@ -61,50 +38,28 @@
   },
   {
     path: '/admin',
-    name: 'admin',
+    name: '管理页',
     icon: 'crown',
     access: 'canAdmin',
     component: './Admin',
     routes: [
-      {
-        path: '/admin/sub-page',
-        name: 'sub-page',
-        icon: 'smile',
-        component: './Welcome',
-      },
-      {
-        component: './404',
-      },
+      { path: '/admin/sub-page', name: '二级管理页', icon: 'smile', component: './Welcome' },
+      { component: './404' },
     ],
   },
+  { name: '查询表格', icon: 'table', path: '/list', component: './TableList' },
+  { path: '/', redirect: '/welcome' },
   {
-    name: 'list.table-list',
-    icon: 'table',
-    path: '/list',
-    component: './TableList',
-  },
-  {
-    path: '/',
-    redirect: '/welcome',
-  },
-  {
-    name: 'heating-and-cooling',
     icon: 'user',
     path: '/heating-and-cooling',
     routes: [
+      { path: '/heating-and-cooling', redirect: '/heating-and-cooling/center' },
       {
-        path: '/heating-and-cooling',
-        redirect: '/heating-and-cooling/center',
-      },
-      {
-        name: 'general',
         icon: 'smile',
         path: '/heating-and-cooling/center',
         component: './heating-and-cooling/center',
       },
     ],
   },
-  {
-    component: './404',
-  },
+  { component: './404' },
 ];
