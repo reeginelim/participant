@@ -8,7 +8,9 @@ import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 import defaultSettings from '../config/defaultSettings';
-
+import { Amplify, Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 const registerPath = '/user/register';
@@ -27,17 +29,26 @@ export async function getInitialState(): Promise<{
   loading?: boolean;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
+  console.log('testtesttest!!!!!!!');
+  // Auth.currentUserInfo().then((val) => console.log(val));
   const fetchUserInfo = async () => {
     try {
       const msg = await queryCurrentUser();
-      return msg.data;
+      console.log('msg!!!!', msg);
+      const ret: API.CurrentUser = {
+        name: msg.username,
+        access: 'user',
+      };
+      console.log('ret!!!!!', ret);
+      return ret;
     } catch (error) {
       history.push(loginPath);
+      console.log('here');
     }
     return undefined;
   };
   // 如果不是登录页面，执行
-  if (history.location.pathname !== loginPath && history.location.pathname !== registerPath) {
+  if (history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -61,13 +72,9 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
-      if (
-        !initialState?.currentUser &&
-        location.pathname !== loginPath &&
-        history.location.pathname !== registerPath
-      ) {
-        history.push(loginPath);
-      }
+      // if (!initialState?.currentUser && location.pathname !== loginPath) {
+      //   history.push(loginPath);
+      // }
     },
     // links: isDev
     //   ? [
