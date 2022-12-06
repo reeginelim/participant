@@ -2,6 +2,61 @@ import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 // @ts-ignore
 import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
+export enum ScheduleType {
+  HOME = "HOME",
+  AWAY = "AWAY",
+  SLEEP = "SLEEP",
+  VACATION = "VACATION"
+}
+
+type EagerEvSchedFields = {
+  readonly comfort?: number | null;
+  readonly state_of_charge?: number | null;
+  readonly desired_time_to_leave?: number | null;
+  readonly time_to_finish_charge?: number | null;
+  readonly health?: number | null;
+  readonly type?: ScheduleType | keyof typeof ScheduleType | null;
+}
+
+type LazyEvSchedFields = {
+  readonly comfort?: number | null;
+  readonly state_of_charge?: number | null;
+  readonly desired_time_to_leave?: number | null;
+  readonly time_to_finish_charge?: number | null;
+  readonly health?: number | null;
+  readonly type?: ScheduleType | keyof typeof ScheduleType | null;
+}
+
+export declare type EvSchedFields = LazyLoading extends LazyLoadingDisabled ? EagerEvSchedFields : LazyEvSchedFields
+
+export declare const EvSchedFields: (new (init: ModelInit<EvSchedFields>) => EvSchedFields)
+
+type EagerHcSchedFields = {
+  readonly comfort?: number | null;
+  readonly min_temp?: number | null;
+  readonly max_temp?: number | null;
+  readonly start_time?: number | null;
+  readonly end_time?: number | null;
+  readonly type?: ScheduleType | keyof typeof ScheduleType | null;
+}
+
+type LazyHcSchedFields = {
+  readonly comfort?: number | null;
+  readonly min_temp?: number | null;
+  readonly max_temp?: number | null;
+  readonly start_time?: number | null;
+  readonly end_time?: number | null;
+  readonly type?: ScheduleType | keyof typeof ScheduleType | null;
+}
+
+export declare type HcSchedFields = LazyLoading extends LazyLoadingDisabled ? EagerHcSchedFields : LazyHcSchedFields
+
+export declare const HcSchedFields: (new (init: ModelInit<HcSchedFields>) => HcSchedFields)
+
+type EvDataMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type SolarDataMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -24,6 +79,46 @@ type HcDataMetaData = {
 
 type TestDataModelMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type EagerEvData = {
+  readonly id: string;
+  readonly device_id?: string | null;
+  readonly state_of_charge?: string | null;
+  readonly charging?: string | null;
+  readonly cost?: number | null;
+  readonly current_limit?: number | null;
+  readonly load?: string | null;
+  readonly charger_name?: string | null;
+  readonly model?: string | null;
+  readonly manufacturer?: string | null;
+  readonly input_voltage?: string | null;
+  readonly health?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyEvData = {
+  readonly id: string;
+  readonly device_id?: string | null;
+  readonly state_of_charge?: string | null;
+  readonly charging?: string | null;
+  readonly cost?: number | null;
+  readonly current_limit?: number | null;
+  readonly load?: string | null;
+  readonly charger_name?: string | null;
+  readonly model?: string | null;
+  readonly manufacturer?: string | null;
+  readonly input_voltage?: string | null;
+  readonly health?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type EvData = LazyLoading extends LazyLoadingDisabled ? EagerEvData : LazyEvData
+
+export declare const EvData: (new (init: ModelInit<EvData, EvDataMetaData>) => EvData) & {
+  copyOf(source: EvData, mutator: (draft: MutableModel<EvData, EvDataMetaData>) => MutableModel<EvData, EvDataMetaData> | void): EvData;
 }
 
 type EagerSolarData = {
@@ -59,13 +154,15 @@ export declare const SolarData: (new (init: ModelInit<SolarData, SolarDataMetaDa
 type EagerBatteryData = {
   readonly id: string;
   readonly device_id?: string | null;
-  readonly battery_info?: string | null;
-  readonly charger_info?: string | null;
+  readonly state_of_charge?: string | null;
   readonly charging?: string | null;
   readonly cost?: string | null;
-  readonly desired_status?: string | null;
+  readonly desired_state_of_charge?: string | null;
   readonly flexibility?: string | null;
-  readonly status?: string | null;
+  readonly charger_name?: string | null;
+  readonly model?: string | null;
+  readonly capacity?: string | null;
+  readonly health?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -73,13 +170,15 @@ type EagerBatteryData = {
 type LazyBatteryData = {
   readonly id: string;
   readonly device_id?: string | null;
-  readonly battery_info?: string | null;
-  readonly charger_info?: string | null;
+  readonly state_of_charge?: string | null;
   readonly charging?: string | null;
   readonly cost?: string | null;
-  readonly desired_status?: string | null;
+  readonly desired_state_of_charge?: string | null;
   readonly flexibility?: string | null;
-  readonly status?: string | null;
+  readonly charger_name?: string | null;
+  readonly model?: string | null;
+  readonly capacity?: string | null;
+  readonly health?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -93,10 +192,7 @@ export declare const BatteryData: (new (init: ModelInit<BatteryData, BatteryData
 type EagerEvSchedule = {
   readonly id: string;
   readonly device_id?: string | null;
-  readonly away?: string | null;
-  readonly home?: string | null;
-  readonly sleep?: string | null;
-  readonly vacation?: string | null;
+  readonly schedule?: EvSchedFields | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -104,10 +200,7 @@ type EagerEvSchedule = {
 type LazyEvSchedule = {
   readonly id: string;
   readonly device_id?: string | null;
-  readonly away?: string | null;
-  readonly home?: string | null;
-  readonly sleep?: string | null;
-  readonly vacation?: string | null;
+  readonly schedule?: EvSchedFields | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -121,10 +214,7 @@ export declare const EvSchedule: (new (init: ModelInit<EvSchedule, EvScheduleMet
 type EagerHcSchedule = {
   readonly id: string;
   readonly device_id?: string | null;
-  readonly away?: string | null;
-  readonly home?: string | null;
-  readonly sleep?: string | null;
-  readonly vacation?: string | null;
+  readonly schedule?: HcSchedFields | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -132,10 +222,7 @@ type EagerHcSchedule = {
 type LazyHcSchedule = {
   readonly id: string;
   readonly device_id?: string | null;
-  readonly away?: string | null;
-  readonly home?: string | null;
-  readonly sleep?: string | null;
-  readonly vacation?: string | null;
+  readonly schedule?: HcSchedFields | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

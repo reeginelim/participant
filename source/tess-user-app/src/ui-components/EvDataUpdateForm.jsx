@@ -7,13 +7,14 @@
 /* eslint-disable */
 import * as React from "react";
 import { fetchByPath, validateField } from "./utils";
-import { BatteryData } from "../models";
+import { EvData } from "../models";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
-export default function BatteryDataCreateForm(props) {
+export default function EvDataUpdateForm(props) {
   const {
-    clearOnSuccess = true,
+    id,
+    evData,
     onSuccess,
     onError,
     onSubmit,
@@ -28,11 +29,12 @@ export default function BatteryDataCreateForm(props) {
     state_of_charge: undefined,
     charging: undefined,
     cost: undefined,
-    desired_state_of_charge: undefined,
-    flexibility: undefined,
+    current_limit: undefined,
+    load: undefined,
     charger_name: undefined,
     model: undefined,
-    capacity: undefined,
+    manufacturer: undefined,
+    input_voltage: undefined,
     health: undefined,
   };
   const [device_id, setDevice_id] = React.useState(initialValues.device_id);
@@ -41,42 +43,57 @@ export default function BatteryDataCreateForm(props) {
   );
   const [charging, setCharging] = React.useState(initialValues.charging);
   const [cost, setCost] = React.useState(initialValues.cost);
-  const [desired_state_of_charge, setDesired_state_of_charge] = React.useState(
-    initialValues.desired_state_of_charge
+  const [current_limit, setCurrent_limit] = React.useState(
+    initialValues.current_limit
   );
-  const [flexibility, setFlexibility] = React.useState(
-    initialValues.flexibility
-  );
+  const [load, setLoad] = React.useState(initialValues.load);
   const [charger_name, setCharger_name] = React.useState(
     initialValues.charger_name
   );
   const [model, setModel] = React.useState(initialValues.model);
-  const [capacity, setCapacity] = React.useState(initialValues.capacity);
+  const [manufacturer, setManufacturer] = React.useState(
+    initialValues.manufacturer
+  );
+  const [input_voltage, setInput_voltage] = React.useState(
+    initialValues.input_voltage
+  );
   const [health, setHealth] = React.useState(initialValues.health);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setDevice_id(initialValues.device_id);
-    setState_of_charge(initialValues.state_of_charge);
-    setCharging(initialValues.charging);
-    setCost(initialValues.cost);
-    setDesired_state_of_charge(initialValues.desired_state_of_charge);
-    setFlexibility(initialValues.flexibility);
-    setCharger_name(initialValues.charger_name);
-    setModel(initialValues.model);
-    setCapacity(initialValues.capacity);
-    setHealth(initialValues.health);
+    const cleanValues = { ...initialValues, ...evDataRecord };
+    setDevice_id(cleanValues.device_id);
+    setState_of_charge(cleanValues.state_of_charge);
+    setCharging(cleanValues.charging);
+    setCost(cleanValues.cost);
+    setCurrent_limit(cleanValues.current_limit);
+    setLoad(cleanValues.load);
+    setCharger_name(cleanValues.charger_name);
+    setModel(cleanValues.model);
+    setManufacturer(cleanValues.manufacturer);
+    setInput_voltage(cleanValues.input_voltage);
+    setHealth(cleanValues.health);
     setErrors({});
   };
+  const [evDataRecord, setEvDataRecord] = React.useState(evData);
+  React.useEffect(() => {
+    const queryData = async () => {
+      const record = id ? await DataStore.query(EvData, id) : evData;
+      setEvDataRecord(record);
+    };
+    queryData();
+  }, [id, evData]);
+  React.useEffect(resetStateValues, [evDataRecord]);
   const validations = {
     device_id: [],
     state_of_charge: [],
     charging: [],
     cost: [],
-    desired_state_of_charge: [],
-    flexibility: [],
+    current_limit: [],
+    load: [],
     charger_name: [],
     model: [],
-    capacity: [],
+    manufacturer: [],
+    input_voltage: [],
     health: [],
   };
   const runValidationTasks = async (fieldName, value) => {
@@ -101,11 +118,12 @@ export default function BatteryDataCreateForm(props) {
           state_of_charge,
           charging,
           cost,
-          desired_state_of_charge,
-          flexibility,
+          current_limit,
+          load,
           charger_name,
           model,
-          capacity,
+          manufacturer,
+          input_voltage,
           health,
         };
         const validationResponses = await Promise.all(
@@ -131,12 +149,13 @@ export default function BatteryDataCreateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
-          await DataStore.save(new BatteryData(modelFields));
+          await DataStore.save(
+            EvData.copyOf(evDataRecord, (updated) => {
+              Object.assign(updated, modelFields);
+            })
+          );
           if (onSuccess) {
             onSuccess(modelFields);
-          }
-          if (clearOnSuccess) {
-            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -145,12 +164,13 @@ export default function BatteryDataCreateForm(props) {
         }
       }}
       {...rest}
-      {...getOverrideProps(overrides, "BatteryDataCreateForm")}
+      {...getOverrideProps(overrides, "EvDataUpdateForm")}
     >
       <TextField
         label="Device id"
         isRequired={false}
         isReadOnly={false}
+        defaultValue={device_id}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -159,11 +179,12 @@ export default function BatteryDataCreateForm(props) {
               state_of_charge,
               charging,
               cost,
-              desired_state_of_charge,
-              flexibility,
+              current_limit,
+              load,
               charger_name,
               model,
-              capacity,
+              manufacturer,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
@@ -183,6 +204,7 @@ export default function BatteryDataCreateForm(props) {
         label="State of charge"
         isRequired={false}
         isReadOnly={false}
+        defaultValue={state_of_charge}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -191,11 +213,12 @@ export default function BatteryDataCreateForm(props) {
               state_of_charge: value,
               charging,
               cost,
-              desired_state_of_charge,
-              flexibility,
+              current_limit,
+              load,
               charger_name,
               model,
-              capacity,
+              manufacturer,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
@@ -215,6 +238,7 @@ export default function BatteryDataCreateForm(props) {
         label="Charging"
         isRequired={false}
         isReadOnly={false}
+        defaultValue={charging}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -223,11 +247,12 @@ export default function BatteryDataCreateForm(props) {
               state_of_charge,
               charging: value,
               cost,
-              desired_state_of_charge,
-              flexibility,
+              current_limit,
+              load,
               charger_name,
               model,
-              capacity,
+              manufacturer,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
@@ -247,19 +272,30 @@ export default function BatteryDataCreateForm(props) {
         label="Cost"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
+        defaultValue={cost}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = parseInt(e.target.value);
+          if (isNaN(value)) {
+            setErrors((errors) => ({
+              ...errors,
+              cost: "Value must be a valid number",
+            }));
+            return;
+          }
           if (onChange) {
             const modelFields = {
               device_id,
               state_of_charge,
               charging,
               cost: value,
-              desired_state_of_charge,
-              flexibility,
+              current_limit,
+              load,
               charger_name,
               model,
-              capacity,
+              manufacturer,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
@@ -276,43 +312,53 @@ export default function BatteryDataCreateForm(props) {
         {...getOverrideProps(overrides, "cost")}
       ></TextField>
       <TextField
-        label="Desired state of charge"
+        label="Current limit"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
+        defaultValue={current_limit}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = parseInt(e.target.value);
+          if (isNaN(value)) {
+            setErrors((errors) => ({
+              ...errors,
+              current_limit: "Value must be a valid number",
+            }));
+            return;
+          }
           if (onChange) {
             const modelFields = {
               device_id,
               state_of_charge,
               charging,
               cost,
-              desired_state_of_charge: value,
-              flexibility,
+              current_limit: value,
+              load,
               charger_name,
               model,
-              capacity,
+              manufacturer,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
-            value = result?.desired_state_of_charge ?? value;
+            value = result?.current_limit ?? value;
           }
-          if (errors.desired_state_of_charge?.hasError) {
-            runValidationTasks("desired_state_of_charge", value);
+          if (errors.current_limit?.hasError) {
+            runValidationTasks("current_limit", value);
           }
-          setDesired_state_of_charge(value);
+          setCurrent_limit(value);
         }}
-        onBlur={() =>
-          runValidationTasks("desired_state_of_charge", desired_state_of_charge)
-        }
-        errorMessage={errors.desired_state_of_charge?.errorMessage}
-        hasError={errors.desired_state_of_charge?.hasError}
-        {...getOverrideProps(overrides, "desired_state_of_charge")}
+        onBlur={() => runValidationTasks("current_limit", current_limit)}
+        errorMessage={errors.current_limit?.errorMessage}
+        hasError={errors.current_limit?.hasError}
+        {...getOverrideProps(overrides, "current_limit")}
       ></TextField>
       <TextField
-        label="Flexibility"
+        label="Load"
         isRequired={false}
         isReadOnly={false}
+        defaultValue={load}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -321,30 +367,32 @@ export default function BatteryDataCreateForm(props) {
               state_of_charge,
               charging,
               cost,
-              desired_state_of_charge,
-              flexibility: value,
+              current_limit,
+              load: value,
               charger_name,
               model,
-              capacity,
+              manufacturer,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
-            value = result?.flexibility ?? value;
+            value = result?.load ?? value;
           }
-          if (errors.flexibility?.hasError) {
-            runValidationTasks("flexibility", value);
+          if (errors.load?.hasError) {
+            runValidationTasks("load", value);
           }
-          setFlexibility(value);
+          setLoad(value);
         }}
-        onBlur={() => runValidationTasks("flexibility", flexibility)}
-        errorMessage={errors.flexibility?.errorMessage}
-        hasError={errors.flexibility?.hasError}
-        {...getOverrideProps(overrides, "flexibility")}
+        onBlur={() => runValidationTasks("load", load)}
+        errorMessage={errors.load?.errorMessage}
+        hasError={errors.load?.hasError}
+        {...getOverrideProps(overrides, "load")}
       ></TextField>
       <TextField
         label="Charger name"
         isRequired={false}
         isReadOnly={false}
+        defaultValue={charger_name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -353,11 +401,12 @@ export default function BatteryDataCreateForm(props) {
               state_of_charge,
               charging,
               cost,
-              desired_state_of_charge,
-              flexibility,
+              current_limit,
+              load,
               charger_name: value,
               model,
-              capacity,
+              manufacturer,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
@@ -377,6 +426,7 @@ export default function BatteryDataCreateForm(props) {
         label="Model"
         isRequired={false}
         isReadOnly={false}
+        defaultValue={model}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -385,11 +435,12 @@ export default function BatteryDataCreateForm(props) {
               state_of_charge,
               charging,
               cost,
-              desired_state_of_charge,
-              flexibility,
+              current_limit,
+              load,
               charger_name,
               model: value,
-              capacity,
+              manufacturer,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
@@ -406,9 +457,10 @@ export default function BatteryDataCreateForm(props) {
         {...getOverrideProps(overrides, "model")}
       ></TextField>
       <TextField
-        label="Capacity"
+        label="Manufacturer"
         isRequired={false}
         isReadOnly={false}
+        defaultValue={manufacturer}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -417,30 +469,66 @@ export default function BatteryDataCreateForm(props) {
               state_of_charge,
               charging,
               cost,
-              desired_state_of_charge,
-              flexibility,
+              current_limit,
+              load,
               charger_name,
               model,
-              capacity: value,
+              manufacturer: value,
+              input_voltage,
               health,
             };
             const result = onChange(modelFields);
-            value = result?.capacity ?? value;
+            value = result?.manufacturer ?? value;
           }
-          if (errors.capacity?.hasError) {
-            runValidationTasks("capacity", value);
+          if (errors.manufacturer?.hasError) {
+            runValidationTasks("manufacturer", value);
           }
-          setCapacity(value);
+          setManufacturer(value);
         }}
-        onBlur={() => runValidationTasks("capacity", capacity)}
-        errorMessage={errors.capacity?.errorMessage}
-        hasError={errors.capacity?.hasError}
-        {...getOverrideProps(overrides, "capacity")}
+        onBlur={() => runValidationTasks("manufacturer", manufacturer)}
+        errorMessage={errors.manufacturer?.errorMessage}
+        hasError={errors.manufacturer?.hasError}
+        {...getOverrideProps(overrides, "manufacturer")}
+      ></TextField>
+      <TextField
+        label="Input voltage"
+        isRequired={false}
+        isReadOnly={false}
+        defaultValue={input_voltage}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              device_id,
+              state_of_charge,
+              charging,
+              cost,
+              current_limit,
+              load,
+              charger_name,
+              model,
+              manufacturer,
+              input_voltage: value,
+              health,
+            };
+            const result = onChange(modelFields);
+            value = result?.input_voltage ?? value;
+          }
+          if (errors.input_voltage?.hasError) {
+            runValidationTasks("input_voltage", value);
+          }
+          setInput_voltage(value);
+        }}
+        onBlur={() => runValidationTasks("input_voltage", input_voltage)}
+        errorMessage={errors.input_voltage?.errorMessage}
+        hasError={errors.input_voltage?.hasError}
+        {...getOverrideProps(overrides, "input_voltage")}
       ></TextField>
       <TextField
         label="Health"
         isRequired={false}
         isReadOnly={false}
+        defaultValue={health}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -449,11 +537,12 @@ export default function BatteryDataCreateForm(props) {
               state_of_charge,
               charging,
               cost,
-              desired_state_of_charge,
-              flexibility,
+              current_limit,
+              load,
               charger_name,
               model,
-              capacity,
+              manufacturer,
+              input_voltage,
               health: value,
             };
             const result = onChange(modelFields);
@@ -474,10 +563,10 @@ export default function BatteryDataCreateForm(props) {
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Clear"
+          children="Reset"
           type="reset"
           onClick={resetStateValues}
-          {...getOverrideProps(overrides, "ClearButton")}
+          {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
           gap="15px"

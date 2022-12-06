@@ -14,35 +14,41 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type BatteryDataCreateFormInputValues = {
     device_id?: string;
-    battery_info?: string;
-    charger_info?: string;
+    state_of_charge?: string;
     charging?: string;
     cost?: string;
-    desired_status?: string;
+    desired_state_of_charge?: string;
     flexibility?: string;
-    status?: string;
+    charger_name?: string;
+    model?: string;
+    capacity?: string;
+    health?: string;
 };
 export declare type BatteryDataCreateFormValidationValues = {
     device_id?: ValidationFunction<string>;
-    battery_info?: ValidationFunction<string>;
-    charger_info?: ValidationFunction<string>;
+    state_of_charge?: ValidationFunction<string>;
     charging?: ValidationFunction<string>;
     cost?: ValidationFunction<string>;
-    desired_status?: ValidationFunction<string>;
+    desired_state_of_charge?: ValidationFunction<string>;
     flexibility?: ValidationFunction<string>;
-    status?: ValidationFunction<string>;
+    charger_name?: ValidationFunction<string>;
+    model?: ValidationFunction<string>;
+    capacity?: ValidationFunction<string>;
+    health?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type BatteryDataCreateFormOverridesProps = {
     BatteryDataCreateFormGrid?: FormProps<GridProps>;
     device_id?: FormProps<TextFieldProps>;
-    battery_info?: FormProps<TextFieldProps>;
-    charger_info?: FormProps<TextFieldProps>;
+    state_of_charge?: FormProps<TextFieldProps>;
     charging?: FormProps<TextFieldProps>;
     cost?: FormProps<TextFieldProps>;
-    desired_status?: FormProps<TextFieldProps>;
+    desired_state_of_charge?: FormProps<TextFieldProps>;
     flexibility?: FormProps<TextFieldProps>;
-    status?: FormProps<TextFieldProps>;
+    charger_name?: FormProps<TextFieldProps>;
+    model?: FormProps<TextFieldProps>;
+    capacity?: FormProps<TextFieldProps>;
+    health?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type BatteryDataCreateFormProps = React.PropsWithChildren<{
     overrides?: BatteryDataCreateFormOverridesProps | undefined | null;

@@ -26,24 +26,12 @@ export default function EvScheduleUpdateForm(props) {
   } = props;
   const initialValues = {
     device_id: undefined,
-    away: undefined,
-    home: undefined,
-    sleep: undefined,
-    vacation: undefined,
   };
   const [device_id, setDevice_id] = React.useState(initialValues.device_id);
-  const [away, setAway] = React.useState(initialValues.away);
-  const [home, setHome] = React.useState(initialValues.home);
-  const [sleep, setSleep] = React.useState(initialValues.sleep);
-  const [vacation, setVacation] = React.useState(initialValues.vacation);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...evScheduleRecord };
     setDevice_id(cleanValues.device_id);
-    setAway(cleanValues.away);
-    setHome(cleanValues.home);
-    setSleep(cleanValues.sleep);
-    setVacation(cleanValues.vacation);
     setErrors({});
   };
   const [evScheduleRecord, setEvScheduleRecord] = React.useState(evSchedule);
@@ -57,10 +45,6 @@ export default function EvScheduleUpdateForm(props) {
   React.useEffect(resetStateValues, [evScheduleRecord]);
   const validations = {
     device_id: [],
-    away: [],
-    home: [],
-    sleep: [],
-    vacation: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -81,10 +65,6 @@ export default function EvScheduleUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           device_id,
-          away,
-          home,
-          sleep,
-          vacation,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -136,10 +116,6 @@ export default function EvScheduleUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               device_id: value,
-              away,
-              home,
-              sleep,
-              vacation,
             };
             const result = onChange(modelFields);
             value = result?.device_id ?? value;
@@ -153,118 +129,6 @@ export default function EvScheduleUpdateForm(props) {
         errorMessage={errors.device_id?.errorMessage}
         hasError={errors.device_id?.hasError}
         {...getOverrideProps(overrides, "device_id")}
-      ></TextField>
-      <TextField
-        label="Away"
-        isRequired={false}
-        isReadOnly={false}
-        defaultValue={away}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              device_id,
-              away: value,
-              home,
-              sleep,
-              vacation,
-            };
-            const result = onChange(modelFields);
-            value = result?.away ?? value;
-          }
-          if (errors.away?.hasError) {
-            runValidationTasks("away", value);
-          }
-          setAway(value);
-        }}
-        onBlur={() => runValidationTasks("away", away)}
-        errorMessage={errors.away?.errorMessage}
-        hasError={errors.away?.hasError}
-        {...getOverrideProps(overrides, "away")}
-      ></TextField>
-      <TextField
-        label="Home"
-        isRequired={false}
-        isReadOnly={false}
-        defaultValue={home}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              device_id,
-              away,
-              home: value,
-              sleep,
-              vacation,
-            };
-            const result = onChange(modelFields);
-            value = result?.home ?? value;
-          }
-          if (errors.home?.hasError) {
-            runValidationTasks("home", value);
-          }
-          setHome(value);
-        }}
-        onBlur={() => runValidationTasks("home", home)}
-        errorMessage={errors.home?.errorMessage}
-        hasError={errors.home?.hasError}
-        {...getOverrideProps(overrides, "home")}
-      ></TextField>
-      <TextField
-        label="Sleep"
-        isRequired={false}
-        isReadOnly={false}
-        defaultValue={sleep}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              device_id,
-              away,
-              home,
-              sleep: value,
-              vacation,
-            };
-            const result = onChange(modelFields);
-            value = result?.sleep ?? value;
-          }
-          if (errors.sleep?.hasError) {
-            runValidationTasks("sleep", value);
-          }
-          setSleep(value);
-        }}
-        onBlur={() => runValidationTasks("sleep", sleep)}
-        errorMessage={errors.sleep?.errorMessage}
-        hasError={errors.sleep?.hasError}
-        {...getOverrideProps(overrides, "sleep")}
-      ></TextField>
-      <TextField
-        label="Vacation"
-        isRequired={false}
-        isReadOnly={false}
-        defaultValue={vacation}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              device_id,
-              away,
-              home,
-              sleep,
-              vacation: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.vacation ?? value;
-          }
-          if (errors.vacation?.hasError) {
-            runValidationTasks("vacation", value);
-          }
-          setVacation(value);
-        }}
-        onBlur={() => runValidationTasks("vacation", vacation)}
-        errorMessage={errors.vacation?.errorMessage}
-        hasError={errors.vacation?.hasError}
-        {...getOverrideProps(overrides, "vacation")}
       ></TextField>
       <Flex
         justifyContent="space-between"

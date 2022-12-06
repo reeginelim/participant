@@ -5,7 +5,6 @@
  **************************************************************************/
 
 import * as React from "react";
-import { BatteryData } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type ValidationResponse = {
@@ -13,54 +12,56 @@ export declare type ValidationResponse = {
     errorMessage?: string;
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
-export declare type BatteryDataUpdateFormInputValues = {
+export declare type EvDataCreateFormInputValues = {
     device_id?: string;
     state_of_charge?: string;
     charging?: string;
-    cost?: string;
-    desired_state_of_charge?: string;
-    flexibility?: string;
+    cost?: number;
+    current_limit?: number;
+    load?: string;
     charger_name?: string;
     model?: string;
-    capacity?: string;
+    manufacturer?: string;
+    input_voltage?: string;
     health?: string;
 };
-export declare type BatteryDataUpdateFormValidationValues = {
+export declare type EvDataCreateFormValidationValues = {
     device_id?: ValidationFunction<string>;
     state_of_charge?: ValidationFunction<string>;
     charging?: ValidationFunction<string>;
-    cost?: ValidationFunction<string>;
-    desired_state_of_charge?: ValidationFunction<string>;
-    flexibility?: ValidationFunction<string>;
+    cost?: ValidationFunction<number>;
+    current_limit?: ValidationFunction<number>;
+    load?: ValidationFunction<string>;
     charger_name?: ValidationFunction<string>;
     model?: ValidationFunction<string>;
-    capacity?: ValidationFunction<string>;
+    manufacturer?: ValidationFunction<string>;
+    input_voltage?: ValidationFunction<string>;
     health?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type BatteryDataUpdateFormOverridesProps = {
-    BatteryDataUpdateFormGrid?: FormProps<GridProps>;
+export declare type EvDataCreateFormOverridesProps = {
+    EvDataCreateFormGrid?: FormProps<GridProps>;
     device_id?: FormProps<TextFieldProps>;
     state_of_charge?: FormProps<TextFieldProps>;
     charging?: FormProps<TextFieldProps>;
     cost?: FormProps<TextFieldProps>;
-    desired_state_of_charge?: FormProps<TextFieldProps>;
-    flexibility?: FormProps<TextFieldProps>;
+    current_limit?: FormProps<TextFieldProps>;
+    load?: FormProps<TextFieldProps>;
     charger_name?: FormProps<TextFieldProps>;
     model?: FormProps<TextFieldProps>;
-    capacity?: FormProps<TextFieldProps>;
+    manufacturer?: FormProps<TextFieldProps>;
+    input_voltage?: FormProps<TextFieldProps>;
     health?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
-export declare type BatteryDataUpdateFormProps = React.PropsWithChildren<{
-    overrides?: BatteryDataUpdateFormOverridesProps | undefined | null;
+export declare type EvDataCreateFormProps = React.PropsWithChildren<{
+    overrides?: EvDataCreateFormOverridesProps | undefined | null;
 } & {
-    id?: string;
-    batteryData?: BatteryData;
-    onSubmit?: (fields: BatteryDataUpdateFormInputValues) => BatteryDataUpdateFormInputValues;
-    onSuccess?: (fields: BatteryDataUpdateFormInputValues) => void;
-    onError?: (fields: BatteryDataUpdateFormInputValues, errorMessage: string) => void;
+    clearOnSuccess?: boolean;
+    onSubmit?: (fields: EvDataCreateFormInputValues) => EvDataCreateFormInputValues;
+    onSuccess?: (fields: EvDataCreateFormInputValues) => void;
+    onError?: (fields: EvDataCreateFormInputValues, errorMessage: string) => void;
     onCancel?: () => void;
-    onChange?: (fields: BatteryDataUpdateFormInputValues) => BatteryDataUpdateFormInputValues;
-    onValidate?: BatteryDataUpdateFormValidationValues;
+    onChange?: (fields: EvDataCreateFormInputValues) => EvDataCreateFormInputValues;
+    onValidate?: EvDataCreateFormValidationValues;
 } & React.CSSProperties>;
-export default function BatteryDataUpdateForm(props: BatteryDataUpdateFormProps): React.ReactElement;
+export default function EvDataCreateForm(props: EvDataCreateFormProps): React.ReactElement;

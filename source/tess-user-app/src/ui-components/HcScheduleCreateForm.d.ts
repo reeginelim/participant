@@ -14,26 +14,14 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type HcScheduleCreateFormInputValues = {
     device_id?: string;
-    away?: string;
-    home?: string;
-    sleep?: string;
-    vacation?: string;
 };
 export declare type HcScheduleCreateFormValidationValues = {
     device_id?: ValidationFunction<string>;
-    away?: ValidationFunction<string>;
-    home?: ValidationFunction<string>;
-    sleep?: ValidationFunction<string>;
-    vacation?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type HcScheduleCreateFormOverridesProps = {
     HcScheduleCreateFormGrid?: FormProps<GridProps>;
     device_id?: FormProps<TextFieldProps>;
-    away?: FormProps<TextFieldProps>;
-    home?: FormProps<TextFieldProps>;
-    sleep?: FormProps<TextFieldProps>;
-    vacation?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type HcScheduleCreateFormProps = React.PropsWithChildren<{
     overrides?: HcScheduleCreateFormOverridesProps | undefined | null;

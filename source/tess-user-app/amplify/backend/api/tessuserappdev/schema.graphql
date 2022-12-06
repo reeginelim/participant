@@ -1,3 +1,43 @@
+type EvData @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  device_id: String
+  state_of_charge: String
+  charging: String
+  cost: Int
+  current_limit: Int
+  load: String
+  charger_name: String
+  model: String
+  manufacturer: String
+  input_voltage: String
+  health: String
+}
+
+type EvSchedFields {
+  comfort: Int
+  state_of_charge: Int
+  desired_time_to_leave: AWSTimestamp
+  time_to_finish_charge: AWSTimestamp
+  health: Int
+  type: ScheduleType
+}
+
+enum ScheduleType {
+  HOME
+  AWAY
+  SLEEP
+  VACATION
+}
+
+type HcSchedFields {
+  comfort: Int
+  min_temp: Int
+  max_temp: Int
+  start_time: AWSTimestamp
+  end_time: AWSTimestamp
+  type: ScheduleType
+}
+
 type SolarData @model @auth(rules: [{allow: public}]) {
   id: ID!
   device_id: String
@@ -11,31 +51,27 @@ type SolarData @model @auth(rules: [{allow: public}]) {
 type BatteryData @model @auth(rules: [{allow: public}]) {
   id: ID!
   device_id: String
-  battery_info: String
-  charger_info: String
+  state_of_charge: String
   charging: String
   cost: String
-  desired_status: String
+  desired_state_of_charge: String
   flexibility: String
-  status: String
+  charger_name: String
+  model: String
+  capacity: String
+  health: String
 }
 
 type EvSchedule @model @auth(rules: [{allow: public}]) {
   id: ID!
   device_id: String
-  away: String
-  home: String
-  sleep: String
-  vacation: String
+  schedule: EvSchedFields
 }
 
 type HcSchedule @model @auth(rules: [{allow: public}]) {
   id: ID!
   device_id: String
-  away: String
-  home: String
-  sleep: String
-  vacation: String
+  schedule: HcSchedFields
 }
 
 type HcData @model @auth(rules: [{allow: public}]) {

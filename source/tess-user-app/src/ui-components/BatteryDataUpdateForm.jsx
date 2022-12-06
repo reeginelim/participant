@@ -26,41 +26,47 @@ export default function BatteryDataUpdateForm(props) {
   } = props;
   const initialValues = {
     device_id: undefined,
-    battery_info: undefined,
-    charger_info: undefined,
+    state_of_charge: undefined,
     charging: undefined,
     cost: undefined,
-    desired_status: undefined,
+    desired_state_of_charge: undefined,
     flexibility: undefined,
-    status: undefined,
+    charger_name: undefined,
+    model: undefined,
+    capacity: undefined,
+    health: undefined,
   };
   const [device_id, setDevice_id] = React.useState(initialValues.device_id);
-  const [battery_info, setBattery_info] = React.useState(
-    initialValues.battery_info
-  );
-  const [charger_info, setCharger_info] = React.useState(
-    initialValues.charger_info
+  const [state_of_charge, setState_of_charge] = React.useState(
+    initialValues.state_of_charge
   );
   const [charging, setCharging] = React.useState(initialValues.charging);
   const [cost, setCost] = React.useState(initialValues.cost);
-  const [desired_status, setDesired_status] = React.useState(
-    initialValues.desired_status
+  const [desired_state_of_charge, setDesired_state_of_charge] = React.useState(
+    initialValues.desired_state_of_charge
   );
   const [flexibility, setFlexibility] = React.useState(
     initialValues.flexibility
   );
-  const [status, setStatus] = React.useState(initialValues.status);
+  const [charger_name, setCharger_name] = React.useState(
+    initialValues.charger_name
+  );
+  const [model, setModel] = React.useState(initialValues.model);
+  const [capacity, setCapacity] = React.useState(initialValues.capacity);
+  const [health, setHealth] = React.useState(initialValues.health);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...batteryDataRecord };
     setDevice_id(cleanValues.device_id);
-    setBattery_info(cleanValues.battery_info);
-    setCharger_info(cleanValues.charger_info);
+    setState_of_charge(cleanValues.state_of_charge);
     setCharging(cleanValues.charging);
     setCost(cleanValues.cost);
-    setDesired_status(cleanValues.desired_status);
+    setDesired_state_of_charge(cleanValues.desired_state_of_charge);
     setFlexibility(cleanValues.flexibility);
-    setStatus(cleanValues.status);
+    setCharger_name(cleanValues.charger_name);
+    setModel(cleanValues.model);
+    setCapacity(cleanValues.capacity);
+    setHealth(cleanValues.health);
     setErrors({});
   };
   const [batteryDataRecord, setBatteryDataRecord] = React.useState(batteryData);
@@ -74,13 +80,15 @@ export default function BatteryDataUpdateForm(props) {
   React.useEffect(resetStateValues, [batteryDataRecord]);
   const validations = {
     device_id: [],
-    battery_info: [],
-    charger_info: [],
+    state_of_charge: [],
     charging: [],
     cost: [],
-    desired_status: [],
+    desired_state_of_charge: [],
     flexibility: [],
-    status: [],
+    charger_name: [],
+    model: [],
+    capacity: [],
+    health: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -101,13 +109,15 @@ export default function BatteryDataUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           device_id,
-          battery_info,
-          charger_info,
+          state_of_charge,
           charging,
           cost,
-          desired_status,
+          desired_state_of_charge,
           flexibility,
-          status,
+          charger_name,
+          model,
+          capacity,
+          health,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -159,13 +169,15 @@ export default function BatteryDataUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               device_id: value,
-              battery_info,
-              charger_info,
+              state_of_charge,
               charging,
               cost,
-              desired_status,
+              desired_state_of_charge,
               flexibility,
-              status,
+              charger_name,
+              model,
+              capacity,
+              health,
             };
             const result = onChange(modelFields);
             value = result?.device_id ?? value;
@@ -181,66 +193,37 @@ export default function BatteryDataUpdateForm(props) {
         {...getOverrideProps(overrides, "device_id")}
       ></TextField>
       <TextField
-        label="Battery info"
+        label="State of charge"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={battery_info}
+        defaultValue={state_of_charge}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               device_id,
-              battery_info: value,
-              charger_info,
+              state_of_charge: value,
               charging,
               cost,
-              desired_status,
+              desired_state_of_charge,
               flexibility,
-              status,
+              charger_name,
+              model,
+              capacity,
+              health,
             };
             const result = onChange(modelFields);
-            value = result?.battery_info ?? value;
+            value = result?.state_of_charge ?? value;
           }
-          if (errors.battery_info?.hasError) {
-            runValidationTasks("battery_info", value);
+          if (errors.state_of_charge?.hasError) {
+            runValidationTasks("state_of_charge", value);
           }
-          setBattery_info(value);
+          setState_of_charge(value);
         }}
-        onBlur={() => runValidationTasks("battery_info", battery_info)}
-        errorMessage={errors.battery_info?.errorMessage}
-        hasError={errors.battery_info?.hasError}
-        {...getOverrideProps(overrides, "battery_info")}
-      ></TextField>
-      <TextField
-        label="Charger info"
-        isRequired={false}
-        isReadOnly={false}
-        defaultValue={charger_info}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              device_id,
-              battery_info,
-              charger_info: value,
-              charging,
-              cost,
-              desired_status,
-              flexibility,
-              status,
-            };
-            const result = onChange(modelFields);
-            value = result?.charger_info ?? value;
-          }
-          if (errors.charger_info?.hasError) {
-            runValidationTasks("charger_info", value);
-          }
-          setCharger_info(value);
-        }}
-        onBlur={() => runValidationTasks("charger_info", charger_info)}
-        errorMessage={errors.charger_info?.errorMessage}
-        hasError={errors.charger_info?.hasError}
-        {...getOverrideProps(overrides, "charger_info")}
+        onBlur={() => runValidationTasks("state_of_charge", state_of_charge)}
+        errorMessage={errors.state_of_charge?.errorMessage}
+        hasError={errors.state_of_charge?.hasError}
+        {...getOverrideProps(overrides, "state_of_charge")}
       ></TextField>
       <TextField
         label="Charging"
@@ -252,13 +235,15 @@ export default function BatteryDataUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               device_id,
-              battery_info,
-              charger_info,
+              state_of_charge,
               charging: value,
               cost,
-              desired_status,
+              desired_state_of_charge,
               flexibility,
-              status,
+              charger_name,
+              model,
+              capacity,
+              health,
             };
             const result = onChange(modelFields);
             value = result?.charging ?? value;
@@ -283,13 +268,15 @@ export default function BatteryDataUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               device_id,
-              battery_info,
-              charger_info,
+              state_of_charge,
               charging,
               cost: value,
-              desired_status,
+              desired_state_of_charge,
               flexibility,
-              status,
+              charger_name,
+              model,
+              capacity,
+              health,
             };
             const result = onChange(modelFields);
             value = result?.cost ?? value;
@@ -305,35 +292,39 @@ export default function BatteryDataUpdateForm(props) {
         {...getOverrideProps(overrides, "cost")}
       ></TextField>
       <TextField
-        label="Desired status"
+        label="Desired state of charge"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={desired_status}
+        defaultValue={desired_state_of_charge}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               device_id,
-              battery_info,
-              charger_info,
+              state_of_charge,
               charging,
               cost,
-              desired_status: value,
+              desired_state_of_charge: value,
               flexibility,
-              status,
+              charger_name,
+              model,
+              capacity,
+              health,
             };
             const result = onChange(modelFields);
-            value = result?.desired_status ?? value;
+            value = result?.desired_state_of_charge ?? value;
           }
-          if (errors.desired_status?.hasError) {
-            runValidationTasks("desired_status", value);
+          if (errors.desired_state_of_charge?.hasError) {
+            runValidationTasks("desired_state_of_charge", value);
           }
-          setDesired_status(value);
+          setDesired_state_of_charge(value);
         }}
-        onBlur={() => runValidationTasks("desired_status", desired_status)}
-        errorMessage={errors.desired_status?.errorMessage}
-        hasError={errors.desired_status?.hasError}
-        {...getOverrideProps(overrides, "desired_status")}
+        onBlur={() =>
+          runValidationTasks("desired_state_of_charge", desired_state_of_charge)
+        }
+        errorMessage={errors.desired_state_of_charge?.errorMessage}
+        hasError={errors.desired_state_of_charge?.hasError}
+        {...getOverrideProps(overrides, "desired_state_of_charge")}
       ></TextField>
       <TextField
         label="Flexibility"
@@ -345,13 +336,15 @@ export default function BatteryDataUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               device_id,
-              battery_info,
-              charger_info,
+              state_of_charge,
               charging,
               cost,
-              desired_status,
+              desired_state_of_charge,
               flexibility: value,
-              status,
+              charger_name,
+              model,
+              capacity,
+              health,
             };
             const result = onChange(modelFields);
             value = result?.flexibility ?? value;
@@ -367,35 +360,136 @@ export default function BatteryDataUpdateForm(props) {
         {...getOverrideProps(overrides, "flexibility")}
       ></TextField>
       <TextField
-        label="Status"
+        label="Charger name"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={status}
+        defaultValue={charger_name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               device_id,
-              battery_info,
-              charger_info,
+              state_of_charge,
               charging,
               cost,
-              desired_status,
+              desired_state_of_charge,
               flexibility,
-              status: value,
+              charger_name: value,
+              model,
+              capacity,
+              health,
             };
             const result = onChange(modelFields);
-            value = result?.status ?? value;
+            value = result?.charger_name ?? value;
           }
-          if (errors.status?.hasError) {
-            runValidationTasks("status", value);
+          if (errors.charger_name?.hasError) {
+            runValidationTasks("charger_name", value);
           }
-          setStatus(value);
+          setCharger_name(value);
         }}
-        onBlur={() => runValidationTasks("status", status)}
-        errorMessage={errors.status?.errorMessage}
-        hasError={errors.status?.hasError}
-        {...getOverrideProps(overrides, "status")}
+        onBlur={() => runValidationTasks("charger_name", charger_name)}
+        errorMessage={errors.charger_name?.errorMessage}
+        hasError={errors.charger_name?.hasError}
+        {...getOverrideProps(overrides, "charger_name")}
+      ></TextField>
+      <TextField
+        label="Model"
+        isRequired={false}
+        isReadOnly={false}
+        defaultValue={model}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              device_id,
+              state_of_charge,
+              charging,
+              cost,
+              desired_state_of_charge,
+              flexibility,
+              charger_name,
+              model: value,
+              capacity,
+              health,
+            };
+            const result = onChange(modelFields);
+            value = result?.model ?? value;
+          }
+          if (errors.model?.hasError) {
+            runValidationTasks("model", value);
+          }
+          setModel(value);
+        }}
+        onBlur={() => runValidationTasks("model", model)}
+        errorMessage={errors.model?.errorMessage}
+        hasError={errors.model?.hasError}
+        {...getOverrideProps(overrides, "model")}
+      ></TextField>
+      <TextField
+        label="Capacity"
+        isRequired={false}
+        isReadOnly={false}
+        defaultValue={capacity}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              device_id,
+              state_of_charge,
+              charging,
+              cost,
+              desired_state_of_charge,
+              flexibility,
+              charger_name,
+              model,
+              capacity: value,
+              health,
+            };
+            const result = onChange(modelFields);
+            value = result?.capacity ?? value;
+          }
+          if (errors.capacity?.hasError) {
+            runValidationTasks("capacity", value);
+          }
+          setCapacity(value);
+        }}
+        onBlur={() => runValidationTasks("capacity", capacity)}
+        errorMessage={errors.capacity?.errorMessage}
+        hasError={errors.capacity?.hasError}
+        {...getOverrideProps(overrides, "capacity")}
+      ></TextField>
+      <TextField
+        label="Health"
+        isRequired={false}
+        isReadOnly={false}
+        defaultValue={health}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              device_id,
+              state_of_charge,
+              charging,
+              cost,
+              desired_state_of_charge,
+              flexibility,
+              charger_name,
+              model,
+              capacity,
+              health: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.health ?? value;
+          }
+          if (errors.health?.hasError) {
+            runValidationTasks("health", value);
+          }
+          setHealth(value);
+        }}
+        onBlur={() => runValidationTasks("health", health)}
+        errorMessage={errors.health?.errorMessage}
+        hasError={errors.health?.hasError}
+        {...getOverrideProps(overrides, "health")}
       ></TextField>
       <Flex
         justifyContent="space-between"

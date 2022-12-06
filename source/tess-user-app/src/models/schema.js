@@ -1,5 +1,134 @@
 export const schema = {
     "models": {
+        "EvData": {
+            "name": "EvData",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "device_id": {
+                    "name": "device_id",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "state_of_charge": {
+                    "name": "state_of_charge",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "charging": {
+                    "name": "charging",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "cost": {
+                    "name": "cost",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "current_limit": {
+                    "name": "current_limit",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "load": {
+                    "name": "load",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "charger_name": {
+                    "name": "charger_name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "model": {
+                    "name": "model",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "manufacturer": {
+                    "name": "manufacturer",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "input_voltage": {
+                    "name": "input_voltage",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "health": {
+                    "name": "health",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "EvData",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "SolarData": {
             "name": "SolarData",
             "fields": {
@@ -111,15 +240,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "battery_info": {
-                    "name": "battery_info",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "charger_info": {
-                    "name": "charger_info",
+                "state_of_charge": {
+                    "name": "state_of_charge",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -139,8 +261,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "desired_status": {
-                    "name": "desired_status",
+                "desired_state_of_charge": {
+                    "name": "desired_state_of_charge",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -153,8 +275,29 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "status": {
-                    "name": "status",
+                "charger_name": {
+                    "name": "charger_name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "model": {
+                    "name": "model",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "capacity": {
+                    "name": "capacity",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "health": {
+                    "name": "health",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -219,31 +362,12 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "away": {
-                    "name": "away",
+                "schedule": {
+                    "name": "schedule",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "home": {
-                    "name": "home",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "sleep": {
-                    "name": "sleep",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "vacation": {
-                    "name": "vacation",
-                    "isArray": false,
-                    "type": "String",
+                    "type": {
+                        "nonModel": "EvSchedFields"
+                    },
                     "isRequired": false,
                     "attributes": []
                 },
@@ -306,31 +430,12 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "away": {
-                    "name": "away",
+                "schedule": {
+                    "name": "schedule",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "home": {
-                    "name": "home",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "sleep": {
-                    "name": "sleep",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "vacation": {
-                    "name": "vacation",
-                    "isArray": false,
-                    "type": "String",
+                    "type": {
+                        "nonModel": "HcSchedFields"
+                    },
                     "isRequired": false,
                     "attributes": []
                 },
@@ -523,8 +628,117 @@ export const schema = {
             ]
         }
     },
-    "enums": {},
-    "nonModels": {},
+    "enums": {
+        "ScheduleType": {
+            "name": "ScheduleType",
+            "values": [
+                "HOME",
+                "AWAY",
+                "SLEEP",
+                "VACATION"
+            ]
+        }
+    },
+    "nonModels": {
+        "EvSchedFields": {
+            "name": "EvSchedFields",
+            "fields": {
+                "comfort": {
+                    "name": "comfort",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "state_of_charge": {
+                    "name": "state_of_charge",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "desired_time_to_leave": {
+                    "name": "desired_time_to_leave",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "time_to_finish_charge": {
+                    "name": "time_to_finish_charge",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "health": {
+                    "name": "health",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "type": {
+                    "name": "type",
+                    "isArray": false,
+                    "type": {
+                        "enum": "ScheduleType"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
+        },
+        "HcSchedFields": {
+            "name": "HcSchedFields",
+            "fields": {
+                "comfort": {
+                    "name": "comfort",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "min_temp": {
+                    "name": "min_temp",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "max_temp": {
+                    "name": "max_temp",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "start_time": {
+                    "name": "start_time",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "end_time": {
+                    "name": "end_time",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "type": {
+                    "name": "type",
+                    "isArray": false,
+                    "type": {
+                        "enum": "ScheduleType"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
+        }
+    },
     "codegenVersion": "3.3.2",
-    "version": "5dbcfc267083f0e48a4314b119bda8dc"
+    "version": "98b75c4fd62835976c743f146cc6b6d5"
 };

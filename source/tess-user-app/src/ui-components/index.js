@@ -6,6 +6,8 @@
 
 export { default as studioTheme } from "./studioTheme";
 export { default as NewForm1 } from "./NewForm1";
+export { default as EvDataCreateForm } from "./EvDataCreateForm";
+export { default as EvDataUpdateForm } from "./EvDataUpdateForm";
 export { default as SolarDataCreateForm } from "./SolarDataCreateForm";
 export { default as SolarDataUpdateForm } from "./SolarDataUpdateForm";
 export { default as BatteryDataCreateForm } from "./BatteryDataCreateForm";
