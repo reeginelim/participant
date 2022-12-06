@@ -1,3 +1,52 @@
+type SolarData @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  device_id: String
+  inverter: String
+  inverter_model: String
+  pv_in: String
+  pv_model: String
+  pv_sys: String
+}
+
+type BatteryData @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  device_id: String
+  battery_info: String
+  charger_info: String
+  charging: String
+  cost: String
+  desired_status: String
+  flexibility: String
+  status: String
+}
+
+type EvSchedule @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  device_id: String
+  away: String
+  home: String
+  sleep: String
+  vacation: String
+}
+
+type HcSchedule @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  device_id: String
+  away: String
+  home: String
+  sleep: String
+  vacation: String
+}
+
+type HcData @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  device_id: String
+  cost: String
+  in_temp: String
+  load: String
+  status: String
+}
+
 type TestDataModel @model @auth(rules: [{allow: public}]) {
   id: ID!
   description: String

@@ -4,8 +4,13 @@ import { schema } from './schema';
 
 
 
-const { TestDataModel } = initSchema(schema);
+const { SolarData, BatteryData, EvSchedule, HcSchedule, HcData, TestDataModel } = initSchema(schema);
 
 export {
+  SolarData,
+  BatteryData,
+  EvSchedule,
+  HcSchedule,
+  HcData,
   TestDataModel
 };

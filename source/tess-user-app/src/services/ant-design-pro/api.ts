@@ -7,17 +7,6 @@ import { request } from 'umi';
 /** 获取当前的用户 GET /api/currentUser */
 export async function currentUser(options?: { [key: string]: any }) {
   return Auth.currentUserInfo();
-  //console.log('testtesttest!!!!!!!');
-  //Auth.currentUserInfo().then((val) => console.log(val));
-  // try {
-  //   var cur = await Auth.currentUserInfo();
-  //   var ret: API.CurrentUser = {
-  //     name: cur.name,
-  //   };
-  //   return ret;
-  // } catch (error) {
-  //   return undefined;
-  // }
 }
 
 /** 退出登录接口 POST /api/login/outLogin */
@@ -27,25 +16,12 @@ export async function outLogin(options?: { [key: string]: any }) {
   } catch (error) {
     console.log('error signing out: ', error);
   }
-  // return request<Record<string, any>>('/api/login/outLogin', {
-  //   method: 'POST',
-  //   ...(options || {}),
-  // });
 }
 
 /** 登录接口 POST /api/login/account */
 export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
-  // return request<API.LoginResult>('/api/login/account', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   data: body,
-  //   ...(options || {}),
-  // });
   try {
     const user = await Auth.signIn(body.username, body.password);
-    console.log('user!!!!!!!!', user);
     return user;
   } catch (error) {
     console.log('error signing in', error);

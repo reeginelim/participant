@@ -29,21 +29,16 @@ export async function getInitialState(): Promise<{
   loading?: boolean;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
-  console.log('testtesttest!!!!!!!');
-  // Auth.currentUserInfo().then((val) => console.log(val));
   const fetchUserInfo = async () => {
     try {
       const msg = await queryCurrentUser();
-      console.log('msg!!!!', msg);
       const ret: API.CurrentUser = {
         name: msg.username,
         access: 'user',
       };
-      console.log('ret!!!!!', ret);
       return ret;
     } catch (error) {
       history.push(loginPath);
-      console.log('here');
     }
     return undefined;
   };
