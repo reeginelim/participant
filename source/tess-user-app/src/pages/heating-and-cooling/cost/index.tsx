@@ -1,7 +1,7 @@
 import { useRequest } from 'umi';
 import { Card, Statistic, Row, Col } from 'antd';
 import { Line } from '@ant-design/charts';
-import type { DataItem } from './data';
+import type { DataItem } from './data.d';
 import { fakeChartData } from './service';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Amplify, Auth } from 'aws-amplify';
