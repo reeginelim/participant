@@ -5,8 +5,8 @@ import React from 'react';
 interface DataType {
   key: string;
   name: string;
-  status: string; 
-  load: number
+  status: string;
+  load: number;
   cost: string;
 }
 
@@ -15,7 +15,7 @@ const columns: ColumnsType<DataType> = [
     title: 'Device Type',
     dataIndex: 'name',
     key: 'name',
-    render: text => <a>{text}</a>,
+    render: (text) => <a>{text}</a>,
   },
   {
     title: 'Status',
@@ -37,46 +37,48 @@ const columns: ColumnsType<DataType> = [
 const data: DataType[] = [
   {
     key: '1',
-    name: 'Heating & Cooling',
-    status: 'On',
-    load: 100, 
-    cost: '80/hr'
+    name: 'Battery Storage',
 
+    status: 'On',
+    load: 100,
+    cost: '80/hr',
   },
   {
     key: '2',
-    name: 'Water Heater',
+    name: 'Electric Vehicle',
+
     status: 'On',
-    load: 100, 
-    cost: '80/hr'
+    load: 100,
+    cost: '80/hr',
   },
   {
     key: '3',
-    name: 'Solar Panels',
+    name: 'Electric Vehicle Charger',
+
     status: 'On',
-    load: 100, 
-    cost: '80/hr'
+    load: 100,
+    cost: '80/hr',
   },
   {
     key: '4',
-    name: 'Electric Vehicle',
+    name: 'Heating & Cooling',
     status: 'On',
-    load: 100, 
-    cost: '80/hr'
+    load: 100,
+    cost: '80/hr',
   },
   {
     key: '5',
-    name: 'Electric Vehicle Charger',
+    name: 'Solar Panels',
     status: 'On',
-    load: 100, 
-    cost: '80/hr'
+    load: 100,
+    cost: '80/hr',
   },
   {
     key: '6',
-    name: 'Battery Storage',
+    name: 'Water Heater',
     status: 'On',
-    load: 100, 
-    cost: '80/hr'
+    load: 100,
+    cost: '80/hr',
   },
 ];
 
