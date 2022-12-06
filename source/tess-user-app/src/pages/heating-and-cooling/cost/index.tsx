@@ -1,9 +1,12 @@
 import { useRequest } from 'umi';
 import { Card, Statistic, Row, Col } from 'antd';
 import { Line } from '@ant-design/charts';
-import type { DataItem } from './data.d';
+import type { DataItem } from './data';
 import { fakeChartData } from './service';
 import { PageContainer } from '@ant-design/pro-layout';
+import { Amplify, Auth } from 'aws-amplify';
+import awsconfig from '../../../aws-exports';
+Amplify.configure(awsconfig);
 const PriceHistory = ({ priceHistoryLineChartData }: { priceHistoryLineChartData: DataItem[] }) => {
   const { loading, data } = useRequest(fakeChartData);
   console.log('data', data);

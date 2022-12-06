@@ -54,36 +54,33 @@ export default defineConfig({
     },
     {
       path: '/dashboard',
-      name: 'Home',
-      icon: 'dashboard',
+      name: 'Dashboard',
       component: './dashboard',
     },
     {
-      path: '/water-heater',
-      name: 'Water Heater',
-      icon: 'profile',
+      path: '/battery',
+      name: 'Battery',
       routes: [
         {
-          path: '/water-heater',
-          redirect: '/waterheater/general',
+          path: '/battery',
+          redirect: '/battery/general',
         },
         {
           name: 'General Info',
           icon: 'smile',
-          path: '/water-heater/general',
-          component: './waterheater/general',
+          path: '/battery/general',
+          component: './battery/general',
         },
         {
           name: 'Cost',
           icon: 'smile',
-          path: '/water-heater/cost',
-          component: './waterheater/cost',
+          path: '/battery/cost',
+          component: './battery/cost',
         },
       ],
     },
     {
       name: 'EV & Charger',
-      icon: 'user',
       path: '/electric-vehicle-charger',
       routes: [
         {
@@ -111,32 +108,7 @@ export default defineConfig({
       ],
     },
     {
-      path: '/battery',
-      name: 'Battery',
-      icon: 'profile',
-      routes: [
-        {
-          path: '/battery',
-          redirect: '/battery/general',
-        },
-        {
-          name: 'General Info',
-          icon: 'smile',
-          path: '/battery/general',
-          component: './battery/general',
-        },
-        {
-          name: 'Cost',
-          icon: 'smile',
-          path: '/battery/cost',
-          component: './battery/cost',
-        },
-      ],
-    },
-
-    {
       name: 'Heating & Cooling',
-      icon: 'user',
       path: '/heating-and-cooling',
       routes: [
         {
@@ -144,27 +116,26 @@ export default defineConfig({
           redirect: '/heating-and-cooling/general',
         },
         {
-          name: 'General',
+          name: 'General Info',
           path: '/heating-and-cooling/general',
           component: './heating-and-cooling/general',
         },
         {
-          name: 'Scheduler',
+          name: 'Schedule',
           icon: 'smile',
-          path: '/heating-and-cooling/scheduler',
-          component: './heating-and-cooling/scheduler',
+          path: '/heating-and-cooling/schedule',
+          component: './heating-and-cooling/schedule',
         },
         {
-          name: 'Price History',
-          path: '/heating-and-cooling/price-history',
-          component: './heating-and-cooling/price-history',
+          name: 'Cost',
+          path: '/heating-and-cooling/cost',
+          component: './heating-and-cooling/cost',
         },
       ],
     },
     {
       path: '/solar-panels',
       name: 'Solar Panels',
-      icon: 'profile',
       routes: [
         {
           path: '/solar-panels',
@@ -184,6 +155,29 @@ export default defineConfig({
         },
       ],
     },
+    {
+      path: '/water-heater',
+      name: 'Water Heater',
+      routes: [
+        {
+          path: '/water-heater',
+          redirect: '/waterheater/general',
+        },
+        {
+          name: 'General Info',
+          icon: 'smile',
+          path: '/water-heater/general',
+          component: './waterheater/general',
+        },
+        {
+          name: 'Cost',
+          icon: 'smile',
+          path: '/water-heater/cost',
+          component: './waterheater/cost',
+        },
+      ],
+    },
+
     // New page routes need to be placed before 404,
     // or the page will always display 404
 

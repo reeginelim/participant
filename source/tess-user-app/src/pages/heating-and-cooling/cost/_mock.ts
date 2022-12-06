@@ -1,6 +1,6 @@
 import moment from 'moment';
 import type { Request, Response } from 'express';
-import type { PriceHistoryData } from './data.d';
+import type { PriceHistoryData } from './data';
 
 const priceHistoryLineChartData = [];
 for (let i = 0; i < 20; i += 1) {

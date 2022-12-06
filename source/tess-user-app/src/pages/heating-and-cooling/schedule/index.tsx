@@ -2,7 +2,7 @@ import { Card } from 'antd';
 import React, { useState } from 'react';
 import { useRequest } from 'umi';
 import type { RouteChildrenProps } from 'react-router';
-import type { tabKeyType } from './data.d';
+import type { tabKeyType } from './data';
 import { queryCurrent } from './service';
 import styles from './Center.less';
 import BasicScheduler from './components/Basic';
