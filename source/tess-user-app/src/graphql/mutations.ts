@@ -2,6 +2,84 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createEvData = /* GraphQL */ `
+  mutation CreateEvData(
+    $input: CreateEvDataInput!
+    $condition: ModelEvDataConditionInput
+  ) {
+    createEvData(input: $input, condition: $condition) {
+      id
+      device_id
+      state_of_charge
+      charging
+      cost
+      current_limit
+      load
+      charger_name
+      model
+      manufacturer
+      input_voltage
+      health
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateEvData = /* GraphQL */ `
+  mutation UpdateEvData(
+    $input: UpdateEvDataInput!
+    $condition: ModelEvDataConditionInput
+  ) {
+    updateEvData(input: $input, condition: $condition) {
+      id
+      device_id
+      state_of_charge
+      charging
+      cost
+      current_limit
+      load
+      charger_name
+      model
+      manufacturer
+      input_voltage
+      health
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteEvData = /* GraphQL */ `
+  mutation DeleteEvData(
+    $input: DeleteEvDataInput!
+    $condition: ModelEvDataConditionInput
+  ) {
+    deleteEvData(input: $input, condition: $condition) {
+      id
+      device_id
+      state_of_charge
+      charging
+      cost
+      current_limit
+      load
+      charger_name
+      model
+      manufacturer
+      input_voltage
+      health
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const createSolarData = /* GraphQL */ `
   mutation CreateSolarData(
     $input: CreateSolarDataInput!
@@ -73,13 +151,15 @@ export const createBatteryData = /* GraphQL */ `
     createBatteryData(input: $input, condition: $condition) {
       id
       device_id
-      battery_info
-      charger_info
+      state_of_charge
       charging
       cost
-      desired_status
+      desired_state_of_charge
       flexibility
-      status
+      charger_name
+      model
+      capacity
+      health
       createdAt
       updatedAt
       _version
@@ -96,13 +176,15 @@ export const updateBatteryData = /* GraphQL */ `
     updateBatteryData(input: $input, condition: $condition) {
       id
       device_id
-      battery_info
-      charger_info
+      state_of_charge
       charging
       cost
-      desired_status
+      desired_state_of_charge
       flexibility
-      status
+      charger_name
+      model
+      capacity
+      health
       createdAt
       updatedAt
       _version
@@ -119,13 +201,15 @@ export const deleteBatteryData = /* GraphQL */ `
     deleteBatteryData(input: $input, condition: $condition) {
       id
       device_id
-      battery_info
-      charger_info
+      state_of_charge
       charging
       cost
-      desired_status
+      desired_state_of_charge
       flexibility
-      status
+      charger_name
+      model
+      capacity
+      health
       createdAt
       updatedAt
       _version
@@ -142,10 +226,14 @@ export const createEvSchedule = /* GraphQL */ `
     createEvSchedule(input: $input, condition: $condition) {
       id
       device_id
-      away
-      home
-      sleep
-      vacation
+      schedule {
+        comfort
+        state_of_charge
+        desired_time_to_leave
+        time_to_finish_charge
+        health
+        type
+      }
       createdAt
       updatedAt
       _version
@@ -162,10 +250,14 @@ export const updateEvSchedule = /* GraphQL */ `
     updateEvSchedule(input: $input, condition: $condition) {
       id
       device_id
-      away
-      home
-      sleep
-      vacation
+      schedule {
+        comfort
+        state_of_charge
+        desired_time_to_leave
+        time_to_finish_charge
+        health
+        type
+      }
       createdAt
       updatedAt
       _version
@@ -182,10 +274,14 @@ export const deleteEvSchedule = /* GraphQL */ `
     deleteEvSchedule(input: $input, condition: $condition) {
       id
       device_id
-      away
-      home
-      sleep
-      vacation
+      schedule {
+        comfort
+        state_of_charge
+        desired_time_to_leave
+        time_to_finish_charge
+        health
+        type
+      }
       createdAt
       updatedAt
       _version
@@ -202,10 +298,14 @@ export const createHcSchedule = /* GraphQL */ `
     createHcSchedule(input: $input, condition: $condition) {
       id
       device_id
-      away
-      home
-      sleep
-      vacation
+      schedule {
+        comfort
+        min_temp
+        max_temp
+        start_time
+        end_time
+        type
+      }
       createdAt
       updatedAt
       _version
@@ -222,10 +322,14 @@ export const updateHcSchedule = /* GraphQL */ `
     updateHcSchedule(input: $input, condition: $condition) {
       id
       device_id
-      away
-      home
-      sleep
-      vacation
+      schedule {
+        comfort
+        min_temp
+        max_temp
+        start_time
+        end_time
+        type
+      }
       createdAt
       updatedAt
       _version
@@ -242,10 +346,14 @@ export const deleteHcSchedule = /* GraphQL */ `
     deleteHcSchedule(input: $input, condition: $condition) {
       id
       device_id
-      away
-      home
-      sleep
-      vacation
+      schedule {
+        comfort
+        min_temp
+        max_temp
+        start_time
+        end_time
+        type
+      }
       createdAt
       updatedAt
       _version

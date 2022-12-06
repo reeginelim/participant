@@ -2,6 +2,97 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getEvData = /* GraphQL */ `
+  query GetEvData($id: ID!) {
+    getEvData(id: $id) {
+      id
+      device_id
+      state_of_charge
+      charging
+      cost
+      current_limit
+      load
+      charger_name
+      model
+      manufacturer
+      input_voltage
+      health
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listEvData = /* GraphQL */ `
+  query ListEvData(
+    $filter: ModelEvDataFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listEvData(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        device_id
+        state_of_charge
+        charging
+        cost
+        current_limit
+        load
+        charger_name
+        model
+        manufacturer
+        input_voltage
+        health
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncEvData = /* GraphQL */ `
+  query SyncEvData(
+    $filter: ModelEvDataFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncEvData(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        device_id
+        state_of_charge
+        charging
+        cost
+        current_limit
+        load
+        charger_name
+        model
+        manufacturer
+        input_voltage
+        health
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getSolarData = /* GraphQL */ `
   query GetSolarData($id: ID!) {
     getSolarData(id: $id) {
@@ -83,13 +174,15 @@ export const getBatteryData = /* GraphQL */ `
     getBatteryData(id: $id) {
       id
       device_id
-      battery_info
-      charger_info
+      state_of_charge
       charging
       cost
-      desired_status
+      desired_state_of_charge
       flexibility
-      status
+      charger_name
+      model
+      capacity
+      health
       createdAt
       updatedAt
       _version
@@ -108,13 +201,15 @@ export const listBatteryData = /* GraphQL */ `
       items {
         id
         device_id
-        battery_info
-        charger_info
+        state_of_charge
         charging
         cost
-        desired_status
+        desired_state_of_charge
         flexibility
-        status
+        charger_name
+        model
+        capacity
+        health
         createdAt
         updatedAt
         _version
@@ -142,13 +237,15 @@ export const syncBatteryData = /* GraphQL */ `
       items {
         id
         device_id
-        battery_info
-        charger_info
+        state_of_charge
         charging
         cost
-        desired_status
+        desired_state_of_charge
         flexibility
-        status
+        charger_name
+        model
+        capacity
+        health
         createdAt
         updatedAt
         _version
@@ -165,10 +262,14 @@ export const getEvSchedule = /* GraphQL */ `
     getEvSchedule(id: $id) {
       id
       device_id
-      away
-      home
-      sleep
-      vacation
+      schedule {
+        comfort
+        state_of_charge
+        desired_time_to_leave
+        time_to_finish_charge
+        health
+        type
+      }
       createdAt
       updatedAt
       _version
@@ -187,10 +288,6 @@ export const listEvSchedules = /* GraphQL */ `
       items {
         id
         device_id
-        away
-        home
-        sleep
-        vacation
         createdAt
         updatedAt
         _version
@@ -218,10 +315,6 @@ export const syncEvSchedules = /* GraphQL */ `
       items {
         id
         device_id
-        away
-        home
-        sleep
-        vacation
         createdAt
         updatedAt
         _version
@@ -238,10 +331,14 @@ export const getHcSchedule = /* GraphQL */ `
     getHcSchedule(id: $id) {
       id
       device_id
-      away
-      home
-      sleep
-      vacation
+      schedule {
+        comfort
+        min_temp
+        max_temp
+        start_time
+        end_time
+        type
+      }
       createdAt
       updatedAt
       _version
@@ -260,10 +357,6 @@ export const listHcSchedules = /* GraphQL */ `
       items {
         id
         device_id
-        away
-        home
-        sleep
-        vacation
         createdAt
         updatedAt
         _version
@@ -291,10 +384,6 @@ export const syncHcSchedules = /* GraphQL */ `
       items {
         id
         device_id
-        away
-        home
-        sleep
-        vacation
         createdAt
         updatedAt
         _version
