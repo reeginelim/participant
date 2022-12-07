@@ -33,12 +33,12 @@ const Basic: FC = () => {
   }
 
   const marks = {
-    0: '0°F',
-    100: {
+    40: '40°F',
+    130: {
       style: {
         color: '#f50',
       },
-      label: <strong>150°F</strong>,
+      label: <strong>130°F</strong>,
     },
   };
 
@@ -51,7 +51,7 @@ const Basic: FC = () => {
           <Descriptions.Item label="Current load">100 kW</Descriptions.Item>
           <Descriptions.Item label="Current temperature">100 °F</Descriptions.Item>
         </Descriptions>
-        <h3>Set desired temperature: </h3><Slider marks={marks} defaultValue={30} tooltip={{ open: true }} />
+        <h3>Set desired temperature: </h3><Slider marks={marks} min= {40} max = {130} step = {5} defaultValue={30} tooltip={{ open: true }} />
         <Divider style={{ marginBottom: 35}} />
         <Descriptions title="Additional Info" style={{ marginBottom: 32 }}>
           <Descriptions.Item label="Manufacturer">Acme Water Heating</Descriptions.Item>

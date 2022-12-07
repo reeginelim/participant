@@ -55,7 +55,7 @@ const Basic: FC = () => {
           <Descriptions.Item label="Desired State of Charge">100% (8 hours)</Descriptions.Item>
         </Descriptions>
         <h3>Flexibility: </h3>
-        <Slider marks={marks} defaultValue={30} tooltip={{ open: true }} />
+        <Slider marks={marks} defaultValue={30} step = {5} tooltip={{ open: true }} />
         <Divider style={{ marginBottom: 35 }} />
         <Descriptions title="Additional Info" style={{ marginBottom: 32 }}>
           <Descriptions.Item label="Charger">Tesla PowerWall</Descriptions.Item>

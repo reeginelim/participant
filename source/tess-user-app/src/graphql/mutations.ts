@@ -20,11 +20,7 @@ export const createEvData = /* GraphQL */ `
       manufacturer
       input_voltage
       health
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -46,11 +42,7 @@ export const updateEvData = /* GraphQL */ `
       manufacturer
       input_voltage
       health
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -72,11 +64,7 @@ export const deleteEvData = /* GraphQL */ `
       manufacturer
       input_voltage
       health
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -93,11 +81,7 @@ export const createSolarData = /* GraphQL */ `
       pv_in
       pv_model
       pv_sys
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -114,11 +98,7 @@ export const updateSolarData = /* GraphQL */ `
       pv_in
       pv_model
       pv_sys
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -135,11 +115,7 @@ export const deleteSolarData = /* GraphQL */ `
       pv_in
       pv_model
       pv_sys
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -160,11 +136,7 @@ export const createBatteryData = /* GraphQL */ `
       model
       capacity
       health
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -185,11 +157,7 @@ export const updateBatteryData = /* GraphQL */ `
       model
       capacity
       health
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -210,11 +178,7 @@ export const deleteBatteryData = /* GraphQL */ `
       model
       capacity
       health
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -234,11 +198,7 @@ export const createEvSchedule = /* GraphQL */ `
         health
         type
       }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -258,11 +218,7 @@ export const updateEvSchedule = /* GraphQL */ `
         health
         type
       }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -282,11 +238,7 @@ export const deleteEvSchedule = /* GraphQL */ `
         health
         type
       }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -306,11 +258,7 @@ export const createHcSchedule = /* GraphQL */ `
         end_time
         type
       }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -330,11 +278,7 @@ export const updateHcSchedule = /* GraphQL */ `
         end_time
         type
       }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -354,11 +298,7 @@ export const deleteHcSchedule = /* GraphQL */ `
         end_time
         type
       }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -374,11 +314,7 @@ export const createHcData = /* GraphQL */ `
       in_temp
       load
       status
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -394,11 +330,7 @@ export const updateHcData = /* GraphQL */ `
       in_temp
       load
       status
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -414,11 +346,7 @@ export const deleteHcData = /* GraphQL */ `
       in_temp
       load
       status
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -430,11 +358,7 @@ export const createTestDataModel = /* GraphQL */ `
     createTestDataModel(input: $input, condition: $condition) {
       id
       description
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -446,11 +370,7 @@ export const updateTestDataModel = /* GraphQL */ `
     updateTestDataModel(input: $input, condition: $condition) {
       id
       description
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
@@ -462,11 +382,7 @@ export const deleteTestDataModel = /* GraphQL */ `
     deleteTestDataModel(input: $input, condition: $condition) {
       id
       description
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+  
     }
   }
 `;
