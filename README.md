@@ -1,36 +1,50 @@
 Welcome the TESS Participant App
 
-DESCRIBE_PROJECT_HERE
+# Architecture
+Framework: Ant Pro Design v5.
+Database: AWS DynamoDB, AWS Amplify Datastore
+APIs: Graphql API 
+Authentication Protocol: Amplify Authenticator
+
 
 # Online Documentation
 
-You can find the latest PROJECT documentation, including a programming guide, on the [project web page](PROJECT_WEBPAGE). This README file only constains basic setup instructions.
-
-# Building PROJECT
-
-PROJECT is built using TOOLS. To build PROJECT and use the examples, run the following:
-
+## Deploy
 ~~~
-$ COMMANDS...
+yarn build
+~~~
+~~~
+yarn start
 ~~~
 
-More detailed instructions are available from the project web page at [Building PROJECT](PROJECT_WEBPAGE#Build). For general developer guidelines and tips, see the [PostRoad Energy Contribution Guide](https://github.com/postroad-energy/.github/wiki).
+## Accessing backend using Amplify CLI
 
-# Overview
+Install amplify cli in order to work with your backend locally
+~~~
+npm install -g @aws-amplify/cli
+~~~
+Pull your amplify project 
+~~~
+amplify pull --appId d2n4vdiwp97yst --envName dev
+~~~
+Install dependencies
+This will generate an ‘amplify’ folder in your app directory and Aws-exports.js, ‘models’ folder, ‘ui-components’ folder in the src directory
+~~~
+yarn add aws-amplify @aws-amplify/ui-react  
+~~~
+Generate GraphQL documents based off current datastore 
+This will generate a graphql folder under the src directory containing the query,mutation and subscription javascript files that the frontend will use to access dynamoDB
 
-PROJECT_DEVELOPER_ORIENTATION
+Note: Use suggested values when running the command
 
-# Example
+Note: To rerun the command you need to remove the graphql.yml file in the src directory
+~~~
+amplify codegen add 
+~~~
 
-DESCRIBE_EXAMPLES
-
-# Testing
-
-DESCRIBE_TESTING_PROCEDURE
-
-# Contribution
-
-Please review the [PostRoad Energy Contribution Guide](https://github.com/postroad-energy/.github/wiki) for information on how to get started contributing to the project.
+# Helpful Links
+#### AWS AMPLIFY Documentation
+https://docs.amplify.aws/console/data/data-model/#datastore-and-graphql 
 
 # Code Structure
 ```
@@ -73,3 +87,8 @@ Please review the [PostRoad Energy Contribution Guide](https://github.com/postro
 ├── README.md
 └── package.json
 ```
+# Contribution
+Please review the [PostRoad Energy Contribution Guide](https://github.com/postroad-energy/.github/wiki) for information on how to get started contributing to the project.
+
+
+More detailed instructions are available from the project web page at [Building PROJECT](PROJECT_WEBPAGE#Build). For general developer guidelines and tips, see the [PostRoad Energy Contribution Guide](https://github.com/postroad-energy/.github/wiki).
