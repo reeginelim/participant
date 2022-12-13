@@ -55,11 +55,13 @@ export default defineConfig({
     {
       path: '/dashboard',
       name: 'Dashboard',
+      icon: 'dashboard',
       component: './dashboard',
     },
     {
       path: '/battery',
       name: 'Battery',
+      icon: 'dashboard',
       routes: [
         {
           path: '/battery',
@@ -82,6 +84,7 @@ export default defineConfig({
     {
       name: 'EV & Charger',
       path: '/electric-vehicle-charger',
+      icon: 'dashboard',
       routes: [
         {
           path: '/electric-vehicle-charger',
@@ -110,6 +113,7 @@ export default defineConfig({
     {
       name: 'Heating & Cooling',
       path: '/heating-and-cooling',
+      icon: 'dashboard',
       routes: [
         {
           path: '/heating-and-cooling',
@@ -136,6 +140,7 @@ export default defineConfig({
     {
       path: '/solar-panels',
       name: 'Solar Panels',
+      icon: 'dashboard',
       routes: [
         {
           path: '/solar-panels',
@@ -158,6 +163,7 @@ export default defineConfig({
     {
       path: '/water-heater',
       name: 'Water Heater',
+      icon: 'dashboard',
       routes: [
         {
           path: '/water-heater',

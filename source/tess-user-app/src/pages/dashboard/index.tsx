@@ -42,45 +42,6 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-// const dataSource: DataType[] = [
-//   {
-//     name: 'Heating & Cooling',
-//     status: 'On',
-//     load: 100,
-//     cost: '80/hr',
-//   },
-//   {
-//     name: 'Water Heater',
-//     status: 'On',
-//     load: 100,
-//     cost: '80/hr',
-//   },
-//   {
-//     name: 'Solar Panels',
-//     status: 'On',
-//     load: 100,
-//     cost: '80/hr',
-//   },
-//   {
-//     name: 'Electric Vehicle',
-//     status: 'On',
-//     load: 100,
-//     cost: '80/hr',
-//   },
-//   {
-//     name: 'Electric Vehicle Charger',
-//     status: 'On',
-//     load: 100,
-//     cost: '80/hr',
-//   },
-//   {
-//     name: 'Battery Storage',
-//     status: 'On',
-//     load: 100,
-//     cost: '80/hr',
-//   },
-// ];
-
 const App: React.FC = () => {
   const [data, setData] = useState(); // data should be an array
   const [loading, setLoading] = useState(false);
