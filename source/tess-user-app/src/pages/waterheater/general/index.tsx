@@ -18,19 +18,6 @@ const Basic: FC = () => {
     basicProgress: [],
   };
   let goodsData: typeof basicGoods = [];
-  if (basicGoods.length) {
-    let num = 0;
-    let amount = 0;
-    basicGoods.forEach((item) => {
-      num += Number(item.num);
-      amount += Number(item.amount);
-    });
-    goodsData = basicGoods.concat({
-      id: '总计',
-      num,
-      amount,
-    });
-  }
 
   const marks = {
     40: '40°F',

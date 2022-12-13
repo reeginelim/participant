@@ -36,7 +36,7 @@ const Basic: FC = () => {
       amount += Number(item.amount);
     });
     goodsData = basicGoods.concat({
-      id: '总计',
+      id: 'total',
       num,
       amount,
     });
@@ -60,7 +60,6 @@ const Basic: FC = () => {
               <Button type="primary">Update</Button>
             </Input.Group>
           </Descriptions.Item>
-          {/* <Descriptions.Item label="状态">已取货</Descriptions.Item> */}
         </Descriptions>
         <Divider style={{ marginBottom: 32 }} />
         <Descriptions title="Additional Settings" style={{ marginBottom: 32 }}>
@@ -78,7 +77,7 @@ const Basic: FC = () => {
               <Button type="primary">Update</Button>
             </Input.Group>
           </Descriptions.Item>
-          {/* <Descriptions.Item label="联系电话">18100000000</Descriptions.Item> */}
+          {}
         </Descriptions>
       </Card>
     </PageContainer>

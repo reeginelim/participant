@@ -194,8 +194,6 @@ export default defineConfig({
   access: {},
   // Theme for antd: https://ant.design/docs/react/customize-theme-cn
   theme: {
-    // 如果不想要 configProvide 动态设置主题需要把这个设置为 default
-    // 只有设置为 variable， 才能使用 configProvide 动态设置主色调
     // https://ant.design/docs/react/customize-theme-variable-cn
     'root-entry-name': 'variable',
   },
@@ -208,14 +206,12 @@ export default defineConfig({
   manifest: {
     basePath: '/',
   },
-  // Fast Refresh 热更新
+
   fastRefresh: {},
   openAPI: [
     {
       requestLibPath: "import { request } from 'umi'",
-      // 或者使用在线的版本
-      // schemaPath: "https://gw.alipayobjects.com/os/antfincdn/M%24jrzTTYJN/oneapi.json"
-      schemaPath: join(__dirname, 'oneapi.json'),
+           schemaPath: join(__dirname, 'oneapi.json'),
       mock: false,
     },
     {

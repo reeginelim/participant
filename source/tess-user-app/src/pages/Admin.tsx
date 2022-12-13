@@ -36,7 +36,7 @@ const Admin: React.FC = () => {
         <a href="https://pro.ant.design/docs/block-cn" target="_blank" rel="noopener noreferrer">
           use block
         </a>
-        。
+        ...
       </p>
     </PageHeaderWrapper>
   );

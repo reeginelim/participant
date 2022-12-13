@@ -1,6 +1,6 @@
 import { request } from 'umi';
-import type { AnalysisData } from './data';
+import type { PriceHistoryData } from './data.d';
 
-export async function fakeChartData(): Promise<{ data: AnalysisData }> {
-  return request('/api/fake_analysis_chart_data');
+export async function fakeChartData(): Promise<{ data: PriceHistoryData }> {
+  return request('/api/fake-price-history-data');
 }

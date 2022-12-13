@@ -49,4 +49,36 @@ export default {
   'menu.editor.flow': 'Flow Editor',
   'menu.editor.mind': 'Mind Editor',
   'menu.editor.koni': 'Koni Editor',
+  
+  'menu.Dashboard': 'Dashboard',
+
+  'menu.Water Heater': 'Water Heater',
+  'menu.Water Heater.Cost': 'Cost',
+  'menu.Water Heater.General Info': 'General',
+  'menu.Water Heater.Schedule': 'Schedule',
+  
+  'menu.Battery': 'Battery',
+  'menu.Battery.Cost': 'Cost',
+  'menu.Battery.General Info': 'General',
+  'menu.Battery.Schedule': 'Schedule',
+
+  'menu.Heating & Cooling': 'Heating & Cooling',
+  'menu.Heating & Cooling.Cost': 'Cost',
+  'menu.Heating & Cooling.General Info': 'General',
+  'menu.Heating & Cooling.Schedule': 'Schedule',
+
+  //solar panel
+  'menu.Solar Panels': 'Solar Panels',
+  'menu.Solar Panels.Cost': 'Cost',
+  'menu.Solar Panels.General Info': 'General',
+  'menu.Solar Panels.Schedule': 'Schedule',
+
+  //ev
+  'menu.EV & Charger': 'EV & Charger',
+  'menu.EV & Charger.Cost': 'Cost',
+  'menu.EV & Charger.Schedule': 'Schedule',
+  'menu.EV & Charger.General Info': 'General',
+
+
+
 };

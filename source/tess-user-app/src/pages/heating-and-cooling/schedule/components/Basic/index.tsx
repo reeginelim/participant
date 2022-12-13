@@ -44,8 +44,8 @@ const BasicForm = (props) => {
       type: props.scene.toUpperCase(),
     };
     const data: postData = {
-      id: '0019009988', // transaction id, should be different for each post data.
-      device_id: '6677', // TODO: change mock data
+      id: '20024567', // transaction id, should be different for each post data.
+      device_id: '66778', // TODO: change mock data
       schedule: schedData,
     };
     // console.log('postdata!!!!', data);

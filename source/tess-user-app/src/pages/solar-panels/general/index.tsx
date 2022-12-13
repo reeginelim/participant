@@ -45,25 +45,6 @@ const Info: FC<{
   </div>
 );
 
-const ListContent = ({
-  data: { owner, createdAt, percent, status },
-}: {
-  data: BasicListItemDataType;
-}) => (
-  <div className={styles.listContent}>
-    <div className={styles.listContentItem}>
-      <span>Owner</span>
-      <p>{owner}</p>
-    </div>
-    <div className={styles.listContentItem}>
-      <span>开始时间</span>
-      <p>{moment(createdAt).format('YYYY-MM-DD HH:mm')}</p>
-    </div>
-    <div className={styles.listContentItem}>
-      <Progress percent={percent} status={status} strokeWidth={6} style={{ width: 180 }} />
-    </div>
-  </div>
-);
 
 export const BasicList: FC = () => {
   const [done, setDone] = useState<boolean>(false);
@@ -115,47 +96,6 @@ export const BasicList: FC = () => {
     postRun('remove', { id });
   };
 
-  const editAndDelete = (key: string | number, currentItem: BasicListItemDataType) => {
-    if (key === 'edit') showEditModal(currentItem);
-    else if (key === 'delete') {
-      Modal.confirm({
-        title: '删除任务',
-        content: '确定删除该任务吗？',
-        okText: '确认',
-        cancelText: '取消',
-        onOk: () => deleteItem(currentItem.id),
-      });
-    }
-  };
-
-  const extraContent = (
-    <div className={styles.extraContent}>
-      <RadioGroup defaultValue="all">
-        <RadioButton value="all">全部</RadioButton>
-        <RadioButton value="progress">进行中</RadioButton>
-        <RadioButton value="waiting">等待中</RadioButton>
-      </RadioGroup>
-      <Search className={styles.extraContentSearch} placeholder="请输入" onSearch={() => ({})} />
-    </div>
-  );
-
-  const MoreBtn: React.FC<{
-    item: BasicListItemDataType;
-  }> = ({ item }) => (
-    <Dropdown
-      overlay={
-        <Menu onClick={({ key }) => editAndDelete(key, item)}>
-          <Menu.Item key="edit">编辑</Menu.Item>
-          <Menu.Item key="delete">删除</Menu.Item>
-        </Menu>
-      }
-    >
-      <a>
-        更多 <DownOutlined />
-      </a>
-    </Dropdown>
-  );
-
   const handleDone = () => {
     setDone(false);
     setVisible(false);
@@ -172,59 +112,17 @@ export const BasicList: FC = () => {
     <PageContainer>
     <Card bordered={false}>
       <Descriptions title="Solar Panel" style={{ marginBottom: 32 }}>
-        <Descriptions.Item label="PV Input(kWh)"> </Descriptions.Item>
-        <Descriptions.Item label="Inverter"> </Descriptions.Item>
-        <Descriptions.Item label="PV System (Capacity)"> </Descriptions.Item>
-        <Descriptions.Item label="PV Model"> </Descriptions.Item>
-        <Descriptions.Item label="Inverter Model"> </Descriptions.Item>
+        <Descriptions.Item label="PV Input(kWh)"> 150</Descriptions.Item>
+        <Descriptions.Item label="Inverter">  String Inverter </Descriptions.Item>
+        <Descriptions.Item label="PV System (Capacity)"> 10 kW</Descriptions.Item>
+        <Descriptions.Item label="PV Model">Renogy </Descriptions.Item>
+        <Descriptions.Item label="Inverter Model"> Hybrid Solar Inverter UL1741</Descriptions.Item>
       </Descriptions>
       
       <Divider style={{ marginBottom: 35}} />
       
     </Card>
   </PageContainer>
-
-
-
-          /* <Card
-            className={styles.listCard}
-            bordered={false}
-            title="基本列表"
-            style={{ marginTop: 24 }}
-            bodyStyle={{ padding: '0 32px 40px 32px' }}
-            extra={extraContent}
-          >
-            <List
-              size="large"
-              rowKey="id"
-              loading={loading}
-              pagination={paginationProps}
-              dataSource={list}
-              renderItem={(item) => (
-                <List.Item
-                  actions={[
-                    <a
-                      key="edit"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        showEditModal(item);
-                      }}
-                    >
-                      编辑
-                    </a>,
-                    <MoreBtn key="more" item={item} />,
-                  ]}
-                >
-                  <List.Item.Meta
-                    avatar={<Avatar src={item.logo} shape="square" size="large" />}
-                    title={<a href={item.href}>{item.title}</a>}
-                    description={item.subDescription}
-                  />
-                  <ListContent data={item} />
-                </List.Item>
-              )}
-            />
-          </Card> */
   );
 };
 
