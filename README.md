@@ -55,7 +55,6 @@ Please review the [PostRoad Energy Contribution Guide](https://github.com/postro
 │ │ │ ├── mutations.js 
 │ │ │ ├── subscriptions.js
 │ ├── pages # Page entry and common templates
-│ │   ├── account # Pages for account
 │ │   ├── battery # Pages for battery
 │ │   ├── dashboard # Pages for dashboard
 │ │   ├── electric-vehicle-charger # Pages for EV charger
