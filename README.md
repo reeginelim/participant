@@ -32,7 +32,7 @@ DESCRIBE_TESTING_PROCEDURE
 
 Please review the [PostRoad Energy Contribution Guide](https://github.com/postroad-energy/.github/wiki) for information on how to get started contributing to the project.
 
-Cose Structure
+# Code Structure
 ```
 ├── config # umi configuration, including routing, construction and other configurations
 ├── mock # local mock data
