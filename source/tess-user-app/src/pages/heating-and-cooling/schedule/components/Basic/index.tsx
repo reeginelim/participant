@@ -45,7 +45,7 @@ const BasicForm = (props) => {
     };
     const data: postData = {
       id: '0019009988', // transaction id, should be different for each post data.
-      device_id: '6677',
+      device_id: '6677', // TODO: change mock data
       schedule: schedData,
     };
     // console.log('postdata!!!!', data);

@@ -46,9 +46,10 @@ const App: React.FC = () => {
   const [data, setData] = useState(); // data should be an array
   const [loading, setLoading] = useState(false);
   const convert = (input) => {
-    // Convert fetched data format to table
+    //Convert fetched data format to table
     return [
       {
+        // TODO: change mock data
         key: '1',
         name: input.data.getHcSchedule.id,
         status: 'On',

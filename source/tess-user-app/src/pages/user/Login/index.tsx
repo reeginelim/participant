@@ -12,7 +12,7 @@ import {
   Text,
   Button,
 } from '@aws-amplify/ui-react';
-require('@aws-amplify/ui-react/styles.css');
+require('@aws-amplify/ui-react/styles.css'); // TODO: MFSU warnings.
 const LoginMessage: React.FC<{
   content: string;
 }> = ({ content }) => (
