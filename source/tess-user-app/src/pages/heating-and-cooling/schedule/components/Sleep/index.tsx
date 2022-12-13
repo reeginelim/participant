@@ -1,7 +1,7 @@
 import BasicScheduler from '../Basic';
 
-const SleepScheduler = () => {
-  return <BasicScheduler />;
+const SleepScheduler = (props) => {
+  return <BasicScheduler scene={props.scene} />;
 };
 
 export default SleepScheduler;
