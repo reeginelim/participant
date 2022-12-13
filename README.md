@@ -31,16 +31,16 @@ Pull your amplify project
 amplify pull --appId d2n4vdiwp97yst --envName dev
 ~~~
 Install dependencies
-This will generate an ‘amplify’ folder in your app directory and Aws-exports.js, ‘models’ folder, ‘ui-components’ folder in the src directory
+This will generate an ```amplify``` folder in your app directory and ```Aws-exports.js, models and ui-components``` folder in the src directory
 ~~~
 yarn add aws-amplify @aws-amplify/ui-react  
 ~~~
 Generate GraphQL documents based off current datastore 
-This will generate a graphql folder under the src directory containing the query,mutation and subscription javascript files that the frontend will use to access dynamoDB
+This will generate a ```graphql``` folder under the src directory containing the ```query.js, mutation.js and subscription.js``` files that the frontend will use to access dynamoDB
 
 Note: Use suggested values when running the command
 
-Note: To rerun the command you need to remove the graphql.yml file in the src directory
+Note: To rerun the command you need to remove the ```.graphqlconfig.yml``` file in the src directory
 ~~~
 amplify codegen add 
 ~~~
