@@ -2,8 +2,11 @@ Welcome the TESS Participant App
 
 # Architecture
 Framework: Ant Pro Design v5.
+
 Database: AWS DynamoDB, AWS Amplify Datastore
+
 APIs: Graphql API 
+
 Authentication Protocol: Amplify Authenticator
 
 
