@@ -22,7 +22,7 @@ jobs:
           python-version: '3.8'
 
       - name: Install SemVer library
-        run: pip install semver
+        run: python3 -m pip install semver
 
       - name: Determine latest tag
         id: latest_tag
@@ -33,9 +33,9 @@ jobs:
         run: |
           PREV_TAG=${{ steps.latest_tag.outputs.TAG }}
           echo "Previous tag: $PREV_TAG"
-          MAJOR=$(semver get major $PREV_TAG)
-          MINOR=$(semver get minor $PREV_TAG)
-          PATCH=$(semver get patch $PREV_TAG)
+          MAJOR=$(python3 -m semver get major $PREV_TAG)
+          MINOR=$(python3 -m semver get minor $PREV_TAG)
+          PATCH=$(python3 -m semver get patch $PREV_TAG)
           echo "Major: $MAJOR, Minor: $MINOR, Patch: $PATCH"
           PATCH=$((PATCH + 1))
           NEXT_TAG="$MAJOR.$MINOR.$PATCH"
