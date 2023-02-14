@@ -1,0 +1,58 @@
+name: Update tag and create release on merge
+
+on:
+  pull_request:
+    types: [closed]
+  push:
+    branches:
+      - main
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  update_tag_and_create_release:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event.pull_request.merged
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install SemVer library
+        run: pip install semver
+
+      - name: Determine latest tag
+        id: latest_tag
+        run: echo ::set-output name=TAG::$(git describe --abbrev=0 --tags)
+
+      - name: Determine next version
+        id: next_version
+        run: |
+          PREV_TAG=${{ steps.latest_tag.outputs.TAG }}
+          echo "Previous tag: $PREV_TAG"
+          MAJOR=$(semver get major $PREV_TAG)
+          MINOR=$(semver get minor $PREV_TAG)
+          PATCH=$(semver get patch $PREV_TAG)
+          echo "Major: $MAJOR, Minor: $MINOR, Patch: $PATCH"
+          PATCH=$((PATCH + 1))
+          NEXT_TAG="$MAJOR.$MINOR.$PATCH"
+          echo "Next version: $NEXT_TAG"
+          echo ::set-output name=VERSION::$NEXT_TAG
+
+      - name: Create new tag
+        run: |
+          NEXT_TAG=${{ steps.next_version.outputs.VERSION }}
+          git tag $NEXT_TAG
+          git push origin $NEXT_TAG
+
+      - name: Create new release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.next_version.outputs.VERSION }}
+          release_name: Release ${{ steps.next_version.outputs.VERSION }}
+          body: This is a new release.
