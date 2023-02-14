@@ -22,9 +22,13 @@ jobs:
           python-version: '3.8'
 
       - name: Install SemVer library
-        run: |
-          pip3 install semver
-          sudo apt-get install python3-semver
+        run: pip3 install semver
+
+      - name: Install semver
+        run: npm install --global semver
+
+      - name: Test semver
+        run: semver --help
 
       - name: Determine latest tag
         id: latest_tag
