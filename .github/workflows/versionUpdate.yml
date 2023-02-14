@@ -53,4 +53,4 @@ jobs:
         with:
           tag_name: ${{ steps.next_version.outputs.VERSION }}
           release_name: Release ${{ steps.next_version.outputs.VERSION }}
-          body: This is a new release.
+          body: This is a new test release.
