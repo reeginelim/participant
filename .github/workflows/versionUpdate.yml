@@ -32,7 +32,9 @@ jobs:
 
       - name: Determine latest tag
         id: latest_tag
-        run: echo ::set-output name=TAG::$(git describe --abbrev=0 --tags)
+        run: |
+          git fetch --prune --unshallow --tags
+          echo ::set-output name=TAG::$(git describe --abbrev=0 --tags)
 
       - name: Determine next version
         id: next_version
