@@ -1,4 +1,4 @@
-name: Update staging branch on release
+name: Update core staging branch on release
 
 on:
   release:
@@ -22,14 +22,14 @@ jobs:
       with:
         repository: postroad-energy/tess-core
         ref: staging # update this to the name of the staging branch in the other repository
-        token: ${{ secrets.ACCESS_TOKEN }} # update this to the name of the secret containing the access token for the other repository
+        token: ${{ secrets.GITHUB_TOKEN }} # update this to the name of the secret containing the access token for the other repository
 
     - name: Update text file with latest release details
       run: |
         details="${{ steps.get-details.outputs.details }}"
         repository=$(echo "$details" | cut -d'=' -f1)
-        sed -i "s/^$repository=.*$/$details/" release.txt
-        if ! grep -q "^$repository=" release.txt; then echo "$details" >> release.txt; fi
-        git add release.txt
+        sed -i "s/^$repository=.*$/$details/" versions.txt
+        if ! grep -q "^$repository=" versions.txt; then echo "$details" >> versions.txt; fi
+        git add versions.txt
         git commit -m "Update release details for $details"
         git push origin staging
