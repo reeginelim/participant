@@ -3,7 +3,6 @@ name: Update tag and create release on merge
 on:
   pull_request:
     types: [closed]
-  push:
     branches:
       - prod
 
@@ -13,7 +12,6 @@ env:
 jobs:
   update_tag_and_create_release:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event.pull_request.merged
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
