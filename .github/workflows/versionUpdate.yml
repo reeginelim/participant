@@ -8,7 +8,7 @@ on:
       - prod
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.SEMVER_TOKEN }}
 
 jobs:
   update_tag_and_create_release:
