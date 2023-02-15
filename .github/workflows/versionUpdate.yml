@@ -41,12 +41,7 @@ jobs:
         run: |
           PREV_TAG=${{ steps.latest_tag.outputs.TAG }}
           echo "Previous tag: $PREV_TAG"
-          MAJOR=$(semver --major "$PREV_TAG")
-          MINOR=$(semver --minor "$PREV_TAG")
-          PATCH=$(semver --patch "$PREV_TAG")
-          echo "Major: $MAJOR, Minor: $MINOR, Patch: $PATCH"
-          PATCH=$((PATCH + 1))
-          NEXT_TAG="$MAJOR.$MINOR.$PATCH"
+          NEXT_TAG=$(semver -i patch $PREV_TAG)
           echo "Next version: $NEXT_TAG"
           echo ::set-output name=VERSION::$NEXT_TAG
 
