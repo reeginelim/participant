@@ -29,7 +29,7 @@ jobs:
     - name: Update text file with latest release details
       run: |
         details="${{ steps.get-details.outputs.details }}"
-        sed -i "s/^participant=*/$details/" versions.txt
+        sed -i "s/^participant=[0-9]*.[0-9]*.[0-9]*/$details/" versions.txt
         if ! grep -q "^participant=" versions.txt; then echo "$details" >> versions.txt; fi
         git add versions.txt
         git commit -m "Update release details for $details"
