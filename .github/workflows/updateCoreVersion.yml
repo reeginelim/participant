@@ -17,7 +17,7 @@ jobs:
       id: get-details
       run: |
         git fetch --prune --unshallow --tags
-        echo ::set-output name=details::$(echo "${GITHUB_REPOSITORY}=$(git describe --abbrev=0 --tags)")
+        echo ::set-output name=details::$(echo "participant=$(git describe --abbrev=0 --tags)")
 
     - name: Checkout staging branch in other repository
       uses: actions/checkout@v2
