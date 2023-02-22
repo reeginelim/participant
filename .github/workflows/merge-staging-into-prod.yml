@@ -1,0 +1,43 @@
+name: Merge Staging branch into Prod branch
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - prod
+
+jobs:
+  merge-staging-into-prod:
+    runs-on: ubuntu-latest
+    steps:
+      # Steps for merging staging into main
+
+      # 1. Validate that tests staging test pass
+      - name: Run tests
+        run: echo "::debug::Put testing logic for staging here."
+
+      # 2. Merge Prod branch into Main
+      # Checkout main branch
+      - name: Checkout the main branch
+        if: success()
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      # Merge prod into main
+      - name: Merge prod into main
+        run: |
+          git merge prod
+
+      # 3. Merge Staging branch into Prod
+      # Checkout main branch
+      - name: Checkout the prod branch
+        if: success()
+        uses: actions/checkout@v3
+        with:
+          ref: prod
+
+      # Merge staging into prod
+      - name: Merge staging into prod
+        run: |
+          git merge staging
