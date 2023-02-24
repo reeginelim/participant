@@ -27,17 +27,19 @@ jobs:
       # Merge prod into main
       - name: Merge prod into main
         run: |
+          git checkout main
           git merge prod
 
       # 3. Merge Staging branch into Prod
       # Checkout main branch
-      - name: Checkout the prod branch
-        if: success()
-        uses: actions/checkout@v3
-        with:
-          ref: prod
+      # - name: Checkout the prod branch
+      #   if: success()
+      #   uses: actions/checkout@v3
+      #   with:
+      #     ref: prod
 
-      # Merge staging into prod
-      - name: Merge staging into prod
-        run: |
-          git merge staging
+      # # Merge staging into prod
+      # - name: Merge staging into prod
+      #   run: |
+      #     git checkout prod
+      #     git merge staging
