@@ -1,49 +1,26 @@
-name: Backup of latest stable version
+name: Backup Prod to Main within certain timeframe
 
-# Backup latest stable production branch into main
-# Workflow run when there is a push into main
-# Workflow also runs on the 1st of every month to ensure that the latest stable build is always current to the latest month
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: "0 0 1 * *"
+    - cron: "0 0 1 * *" # Backup on the 1st of every month
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  backup_prod:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the main branch
+      - name: Checkout Prod
         uses: actions/checkout@v3
+
+      - name: Merge branch
+        uses: devmasx/merge-branch@1.4.0
         with:
-          ref: main
-
-      # - name: Check the last commit date of the main branch
-      #   id: check-last-commit
-      #   run: |
-      #     last_commit_date=$(git log -1 --format=%ct)
-      #     current_date=$(date +%s)
-      #     days_since_last_commit=$(( (current_date - last_commit_date) / 86400 ))
-
-      # - name: Merge prod into main if the main branch is outdated
-      #   if: steps.check-last-commit.outputs.days_since_last_commit > 30
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: prod
-
-      # - name: Check the last commit date of the main branch
-      #   run: |
-      #     last_commit_date=$(git log -1 --format=%ct)
-      #     current_date=$(date +%s)
-      #     days_since_last_commit=$(( (current_date - last_commit_date) / 86400 ))
-
-      # - name: Merge prod into main if the main branch is outdated
-      #   if: steps.check_last_commit.outputs.days_since_last_commit > 30
-      #   uses: actions/checkout@v3
-      #   with:
-      #     ref: prod
-
-      - name: Merge main into prod
-        run: |
-          git merge prod
+          type: now
+          from_branch: prod
+          target_branch: main
+          github_token: ${{ github.token }}
