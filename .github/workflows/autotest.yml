@@ -2,31 +2,37 @@ name: Test code quality
 
 on:
   pull_request:
-    branches: [staging, prod]
+    branches:
+      - staging
+      - prod
+      - "TESS-**"
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18.x'
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
 
-    - name: Install dependencies
-      working-directory: ./source/app
-      run: npm install
+      - name: Test run
+        run: echo "Testing"
 
-    - name: Run Jest tests
-      working-directory: ./source/app
-      run: npm run test
+      - name: Install dependencies
+        working-directory: ./source/app
+        run: npm install
 
-    - name: Run ESLint
-      working-directory: ./source/app
-      run: npm run lint
+      - name: Run Jest tests
+        working-directory: ./source/app
+        run: npm run test
+
+      - name: Run ESLint
+        working-directory: ./source/app
+        run: npm run lint
 #
 #    - name: Check ESLint and Jest passing rate
 #      working-directory: ./source/app

@@ -1,11 +1,8 @@
-name: Backup Prod to Main within certain timeframe
+name: Scheduled backup of Prod into Main every month
 
 on:
   schedule:
-    - cron: "0 0 1 * *" # Backup on the 1st of every month
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - cron: "0 0 1 * *" # Backup every month on the 1st
 
 permissions:
   contents: write
@@ -16,6 +13,8 @@ jobs:
     steps:
       - name: Checkout Prod
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MY_TOKEN }}
 
       - name: Merge branch
         uses: devmasx/merge-branch@1.4.0
@@ -23,4 +22,4 @@ jobs:
           type: now
           from_branch: prod
           target_branch: main
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.MY_TOKEN }}
