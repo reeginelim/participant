@@ -1,4 +1,4 @@
-name: Update tag and create release on merge
+name: Update tag and create release on merge to main
 
 on:
   pull_request:
@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: "3.10"
 
       - name: Install SemVer library
         run: pip3 install semver
@@ -56,4 +56,4 @@ jobs:
         with:
           tag_name: ${{ steps.next_version.outputs.VERSION }}
           release_name: Release ${{ steps.next_version.outputs.VERSION }}
-          body: This is the latest release.
+          body: This is a new test release.

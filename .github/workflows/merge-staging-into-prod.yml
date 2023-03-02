@@ -1,0 +1,26 @@
+name: Merge Prod into Staging before pull request into Prod
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  contents: write
+
+jobs:
+  merge_prod_into_main:
+    if: github.event.pull_request.base.ref == 'prod' && github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Prod
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Merge branch
+        uses: devmasx/merge-branch@1.4.0
+        with:
+          type: now
+          from_branch: prod
+          target_branch: main
+          github_token: ${{ secrets.PAT_TOKEN }}

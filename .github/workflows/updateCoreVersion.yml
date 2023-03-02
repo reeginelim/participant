@@ -1,4 +1,4 @@
-name: Update core staging branch on release
+name: Update postroad-energy/tess-core staging branch on zip release
 
 on:
   release:
@@ -8,31 +8,31 @@ jobs:
   update-staging:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        ref: prod # update this to the main branch name of the current repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: prod # update this to the main branch name of the current repository
 
-    - name: Get repository name and latest tag
-      id: get-details
-      run: |
-        git fetch --tags
-        echo ::set-output name=details::$(echo "settlement=$(git describe --abbrev=0 --tags)")
+      - name: Get repository name and latest tag
+        id: get-details
+        run: |
+          git fetch --tags
+          echo ::set-output name=details::$(echo "participant=$(git describe --abbrev=0 --tags)")
 
-    - name: Checkout staging branch in other repository
-      uses: actions/checkout@v2
-      with:
-        repository: postroad-energy/tess-core
-        ref: staging # update this to the name of the staging branch in the other repository
-        token: ${{ secrets.SEMVER_TOKEN }} # update this to the name of the secret containing the access token for the other repository
+      - name: Checkout staging branch in other repository
+        uses: actions/checkout@v3
+        with:
+          repository: postroad-energy/tess-core
+          ref: staging # update this to the name of the staging branch in the other repository
+          token: ${{ secrets.SEMVER_TOKEN }} # update this to the name of the secret containing the access token for the other repository
 
-    - name: Update text file with latest release details
-      run: |
-        git config --global user.email ${{ secrets.EMAIL }}
-        git config --global user.name ${{ secrets.NAME }}
-        details="${{ steps.get-details.outputs.details }}"
-        sed -i "s/^settlement=[0-9]*.[0-9]*.[0-9]*/$details/" versions.txt
-        if ! grep -q "^settlement=" versions.txt; then echo "$details" >> versions.txt; fi
-        git add versions.txt
-        git commit -m "Update release details for $details"
-        git push origin staging
+      - name: Update text file with latest release details
+        run: |
+          git config --global user.email ${{ secrets.EMAIL }}
+          git config --global user.name ${{ secrets.NAME }}
+          details="${{ steps.get-details.outputs.details }}"
+          sed -i "s/^participant=[0-9]*.[0-9]*.[0-9]*/$details/" versions.txt
+          if ! grep -q "^participant=" versions.txt; then echo "$details" >> versions.txt; fi
+          git add versions.txt
+          git commit -m "Update release details for $details"
+          git push origin staging
