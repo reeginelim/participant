@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          ref: main # update this to the main branch name of the current repository
+          ref: prod # update this to the main branch name of the current repository
 
       - name: Get repository name and latest tag
         id: get-details
@@ -20,7 +20,7 @@ jobs:
           echo ::set-output name=details::$(echo "participant=$(git describe --abbrev=0 --tags)")
 
       - name: Checkout staging branch in other repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: postroad-energy/tess-core
           ref: staging # update this to the name of the staging branch in the other repository
