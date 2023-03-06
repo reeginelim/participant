@@ -1,0 +1,25 @@
+name: Scheduled backup of Prod into Main every month
+
+on:
+  schedule:
+    - cron: "0 0 1 * *" # Backup every month on the 1st
+
+permissions:
+  contents: write
+
+jobs:
+  backup_prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Prod
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Merge branch
+        uses: devmasx/merge-branch@1.4.0
+        with:
+          type: now
+          from_branch: prod
+          target_branch: main
+          github_token: ${{ secrets.PAT_TOKEN }}

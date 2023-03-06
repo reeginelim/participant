@@ -1,0 +1,59 @@
+name: Update tag and create release on merge to main
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - prod
+
+env:
+  GITHUB_TOKEN: ${{ secrets.SEMVER_TOKEN }}
+
+jobs:
+  update_tag_and_create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install SemVer library
+        run: pip3 install semver
+
+      - name: Install semver
+        run: npm install --global semver
+
+      - name: Test semver
+        run: semver --help
+
+      - name: Determine latest tag
+        id: latest_tag
+        run: |
+          git fetch --prune --unshallow --tags
+          echo ::set-output name=TAG::$(git describe --abbrev=0 --tags)
+
+      - name: Determine next version
+        id: next_version
+        run: |
+          PREV_TAG=${{ steps.latest_tag.outputs.TAG }}
+          echo "Previous tag: $PREV_TAG"
+          NEXT_TAG=$(semver -i patch $PREV_TAG)
+          echo "Next version: $NEXT_TAG"
+          echo ::set-output name=VERSION::$NEXT_TAG
+
+      - name: Create new tag
+        run: |
+          NEXT_TAG=${{ steps.next_version.outputs.VERSION }}
+          git tag $NEXT_TAG
+          git push origin $NEXT_TAG
+
+      - name: Create new release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.next_version.outputs.VERSION }}
+          release_name: Release ${{ steps.next_version.outputs.VERSION }}
+          body: This is a new test release.
