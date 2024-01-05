@@ -93,20 +93,37 @@ def __(pd, plt, results):
                           "y":(results["Achiever"]-results["Explorer"]-results["Socializer"]+results["Influencer"])/(results["Achiever"]+results["Explorer"]+results["Socializer"]+results["Influencer"])})
     _locus["count"] = 1
     _locus = _locus.groupby(["x","y"]).sum().reset_index()
+    # plt.figure(figsize=(10,10))
     _locus.plot.scatter(x="x",y="y",s="count",title="Personality locus")
+    plt.plot([-1,1],[0,0],'k',linewidth=0.5)
+    plt.plot([0,0],[-1,1],'k',linewidth=0.5)
     plt.text(0.5,0.55,"Achiever")
     plt.text(0.5,-0.65,"Explorer")
     plt.text(-0.5,-0.65,"Socializer")
     plt.text(-0.5,0.55,"Influencer")
-    plt.xlim([-1,1])
-    plt.ylim([-1,1])
-    plt.show()
+    plt.text(1.1,0,"System focus",
+             rotation=90,
+             verticalalignment="center",
+             horizontalalignment="center")
+    plt.text(-1.1,0,"Individual focus",
+             rotation=90,
+             verticalalignment="center",
+             horizontalalignment="center")
+    plt.text(0,1.1,"Action focus",
+             verticalalignment="center",
+             horizontalalignment="center")
+    plt.text(0,-1.1,"Interaction focus",
+             verticalalignment="center",
+             horizontalalignment="center")
+    plt.xlim([-1.2,1.2])
+    plt.ylim([-1.2,1.2])
+    plt.gca()
     return
 
 
 @app.cell
 def __(characteristics, results):
-    results[list(characteristics["Personality"])].sum().plot.pie(title="Personalities")
+    results[list(characteristics["Personality"])].sum().plot.pie(title="PersonalitiesAc")
     return
 
 
