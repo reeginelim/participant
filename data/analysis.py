@@ -97,10 +97,10 @@ def __(pd, plt, results):
     _locus.plot.scatter(x="x",y="y",s="count",title="Personality locus")
     plt.plot([-1,1],[0,0],'k',linewidth=0.5)
     plt.plot([0,0],[-1,1],'k',linewidth=0.5)
-    plt.text(0.5,0.55,"Achiever")
-    plt.text(0.5,-0.65,"Explorer")
-    plt.text(-0.5,-0.65,"Socializer")
-    plt.text(-0.5,0.55,"Influencer")
+    plt.text(0.5,0.55,"Achiever",horizontalalignment="center")
+    plt.text(0.5,-0.65,"Explorer",horizontalalignment="center")
+    plt.text(-0.5,-0.65,"Socializer",horizontalalignment="center")
+    plt.text(-0.5,0.55,"Influencer",horizontalalignment="center")
     plt.text(1.1,0,"System focus",
              rotation=90,
              verticalalignment="center",
