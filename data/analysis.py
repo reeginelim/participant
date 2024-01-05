@@ -164,13 +164,6 @@ def __(characteristics, mo, plt, results):
 
 
 @app.cell
-def __(results):
-    #Marketing susceptible
-    results[results["Age group"]=="Millenial"]["Marketing susceptible"].hist()
-    return
-
-
-@app.cell
 def __(mo, plt, results):
     _plots = []
     for _group in ["Risk aversion","Marketing susceptible","Age group","Home ownership","Tech savviness"]:
