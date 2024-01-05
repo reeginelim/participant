@@ -94,9 +94,9 @@ def __(pd, plt, results):
     locus["count"] = 1
     _locus = locus.groupby(["x","y"]).sum().reset_index()
     # plt.figure(figsize=(10,10))
-    _locus.plot.scatter(x="x",y="y",s="count",title="Personality locus")
-    plt.plot(locus["x"].mean(),locus["y"].mean(),"*g",markersize=10,label="Mean locus")
-    plt.plot(locus["x"].median(),locus["y"].median(),"xg",markersize=10,label="Median locus")
+    _locus.plot.scatter(x="x",y="y",s=_locus["count"]**1.7,color="lightblue",title="Participation locus")
+    plt.plot(locus["x"].mean(),locus["y"].mean(),"xg",markersize=10,label="Mean locus")
+    plt.plot(locus["x"].median(),locus["y"].median(),"+g",markersize=10,label="Median locus")
     plt.plot([-1,1],[0,0],'k',linewidth=0.5)
     plt.plot([0,0],[-1,1],'k',linewidth=0.5)
     plt.text(0.5,0.55,"Achiever",horizontalalignment="center")
@@ -111,25 +111,19 @@ def __(pd, plt, results):
              rotation=90,
              verticalalignment="center",
              horizontalalignment="center")
-    plt.text(0,1.1,"Action focus",
+    plt.text(0,1.1,"Action motive",
              verticalalignment="center",
              horizontalalignment="center")
-    plt.text(0,-1.1,"Interaction focus",
+    plt.text(0,-1.1,"Interaction motive",
              verticalalignment="center",
              horizontalalignment="center")
     plt.xlim([-1.2,1.2])
     plt.ylim([-1.2,1.2])
-    plt.xlabel(None)
-    plt.ylabel(None)
+    plt.xlabel("Attention")
+    plt.ylabel("Motivation")
     plt.legend(loc='upper left')
     plt.gca()
     return locus,
-
-
-@app.cell
-def __(locus):
-    locus["x"].mean(),locus["y"].mean()
-    return
 
 
 @app.cell
