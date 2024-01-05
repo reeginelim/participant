@@ -117,6 +117,8 @@ def __(pd, plt, results):
              horizontalalignment="center")
     plt.xlim([-1.2,1.2])
     plt.ylim([-1.2,1.2])
+    plt.xlabel(None)
+    plt.ylabel(None)
     plt.gca()
     return
 
