@@ -94,7 +94,7 @@ def __(pd, plt, results):
     _locus["count"] = 1
     _locus = _locus.groupby(["x","y"]).sum().reset_index()
     # plt.figure(figsize=(10,10))
-    _locus.plot.scatter(x="x",y="y",s="count",title="Attention locus")
+    _locus.plot.scatter(x="x",y="y",s="count",title="Personality locus")
     plt.plot([-1,1],[0,0],'k',linewidth=0.5)
     plt.plot([0,0],[-1,1],'k',linewidth=0.5)
     plt.text(0.5,0.55,"Achiever",horizontalalignment="center")
