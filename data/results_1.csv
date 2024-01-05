@@ -1,0 +1,508 @@
+Achiever,Explorer,Socializer,Influencer,Marketing susceptible,Risk aversion,Age group,Tech savviness,Home ownership
+3,4,0,1,More susceptible,Less risk averse,Silent,Follower,Owner
+4,2,1,1,Least susceptible,Least risk averse,Gen-X (older),Follower,Owner
+4,2,1,1,Most susceptible,Most risk averse,Millenial,Trendy,Renter
+3,3,1,1,Least susceptible,Least risk averse,Gen-X (older),Experimenter,Owner
+2,0,3,3,Most susceptible,Least risk averse,Millenial,Follower,Owner
+3,4,1,0,Most susceptible,Least risk averse,Gen-Z,Trendy,Owner
+3,0,1,4,More susceptible,Most risk averse,Gen-X (younger),Experimenter,Owner
+1,4,1,2,Less susceptible,Less risk averse,Millenial,Trendy,Owner
+2,4,1,1,Less susceptible,Less risk averse,Gen-X (older),Follower,Owner
+5,2,0,1,Less susceptible,Least risk averse,Millenial,Follower,Renter
+1,2,1,4,Less susceptible,Less risk averse,Silent,Follower,Owner
+7,1,0,0,Less susceptible,Most risk averse,Millenial,Trendy,Renter
+2,1,4,1,More susceptible,Least risk averse,Millenial,Trendy,Renter
+3,2,1,2,Less susceptible,Least risk averse,Gen-Z,Experimenter,Renter
+2,3,1,2,Most susceptible,Less risk averse,Gen-Z,Follower,Renter
+2,4,0,2,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+1,4,3,0,Less susceptible,Least risk averse,Gen-X (younger),Luddite,Renter
+3,2,1,2,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+5,2,0,1,More susceptible,Most risk averse,Gen-X (older),Experimenter,Owner
+1,3,1,3,Less susceptible,More risk averse,Gen-X (younger),Trendy,Renter
+2,4,1,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Renter
+2,4,1,1,Less susceptible,More risk averse,Gen-X (younger),Experimenter,Owner
+4,3,0,1,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+3,1,2,2,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+5,2,0,1,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+6,2,0,0,Less susceptible,Less risk averse,Gen-X (older),Experimenter,Renter
+3,2,0,3,Less susceptible,Most risk averse,Gen-Z,Trendy,Renter
+2,2,2,2,Less susceptible,Most risk averse,Gen-X (younger),Follower,Owner
+0,4,1,3,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+3,4,1,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+4,1,0,3,Less susceptible,Least risk averse,Millenial,Experimenter,Owner
+4,3,0,1,Less susceptible,Least risk averse,Millenial,Follower,Renter
+3,1,0,4,Less susceptible,Less risk averse,Gen-X (younger),Experimenter,Owner
+4,2,1,1,Less susceptible,Most risk averse,Millenial,Experimenter,Renter
+5,2,0,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+5,1,0,2,More susceptible,More risk averse,Millenial,Experimenter,Renter
+3,2,1,2,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+4,1,3,0,Most susceptible,Most risk averse,Millenial,Trendy,Owner
+2,6,0,0,Less susceptible,Least risk averse,Gen-X (older),Follower,Owner
+3,3,1,1,Less susceptible,Least risk averse,Gen-X (younger),Follower,Owner
+1,2,2,3,More susceptible,Least risk averse,Gen-Z,Experimenter,Renter
+5,1,1,1,More susceptible,More risk averse,Boomer,Trendy,Owner
+3,3,0,2,Less susceptible,Less risk averse,Millenial,Trendy,Owner
+4,3,1,0,Least susceptible,Less risk averse,Gen-Z,Luddite,Renter
+3,3,0,2,Most susceptible,More risk averse,Boomer,Follower,Owner
+5,2,1,0,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+1,2,2,3,Less susceptible,Less risk averse,Gen-X (younger),Trendy,Renter
+1,5,0,2,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+3,3,1,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+3,4,0,1,Least susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+4,4,0,0,More susceptible,Least risk averse,Millenial,Experimenter,Renter
+3,3,2,0,Less susceptible,Less risk averse,Gen-X (older),Trendy,Owner
+2,3,1,2,Most susceptible,Most risk averse,Gen-Z,Trendy,Renter
+2,1,4,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Renter
+2,2,2,2,More susceptible,Most risk averse,Silent,Follower,Owner
+2,3,1,2,Less susceptible,Most risk averse,Silent,Trendy,Owner
+4,3,1,0,Most susceptible,Least risk averse,Millenial,Trendy,Renter
+3,2,2,1,Less susceptible,Least risk averse,Gen-Z,Follower,Renter
+5,1,0,2,More susceptible,More risk averse,Silent,Follower,Owner
+3,0,2,3,Most susceptible,Least risk averse,Gen-Z,Trendy,Owner
+3,1,1,3,Less susceptible,Least risk averse,Gen-Z,Follower,Renter
+4,1,1,2,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+3,2,1,2,More susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+3,1,3,1,Less susceptible,Most risk averse,Gen-Z,Experimenter,Owner
+1,2,3,2,Less susceptible,Less risk averse,Boomer,Luddite,Renter
+3,2,2,1,Most susceptible,Least risk averse,Boomer,Follower,Owner
+4,0,3,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+5,2,1,0,Less susceptible,Least risk averse,Millenial,Experimenter,Owner
+3,5,0,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Renter
+4,2,1,1,Less susceptible,Most risk averse,Gen-X (younger),Experimenter,Owner
+3,4,1,0,Less susceptible,Most risk averse,Gen-Z,Trendy,Renter
+5,3,0,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+4,1,2,1,Least susceptible,More risk averse,Gen-X (younger),Experimenter,Owner
+4,1,1,2,Less susceptible,Most risk averse,Millenial,Trendy,Owner
+4,2,0,2,Most susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+2,4,1,1,Less susceptible,Less risk averse,Gen-X (younger),Experimenter,Owner
+5,2,1,0,Less susceptible,Most risk averse,Gen-X (older),Trendy,Renter
+3,4,1,0,Less susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+2,3,1,2,Most susceptible,Least risk averse,Millenial,Experimenter,Renter
+4,2,2,0,Less susceptible,Most risk averse,Gen-X (younger),Follower,Owner
+2,3,0,3,More susceptible,Less risk averse,Boomer,Trendy,Owner
+3,3,1,1,Most susceptible,More risk averse,Millenial,Trendy,Renter
+3,2,2,1,Most susceptible,Less risk averse,Gen-X (older),Experimenter,Owner
+4,0,0,4,Less susceptible,Less risk averse,Gen-X (younger),Follower,Owner
+2,1,0,5,Less susceptible,Most risk averse,Gen-X (older),Experimenter,Owner
+2,2,3,1,Less susceptible,Less risk averse,Gen-X (older),Trendy,Renter
+2,3,1,2,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+4,3,1,0,Less susceptible,More risk averse,Gen-Z,Trendy,Renter
+5,0,1,2,Less susceptible,Least risk averse,Gen-X (older),Experimenter,Owner
+3,2,2,1,Most susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+1,4,2,1,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+4,3,0,1,Less susceptible,Most risk averse,Millenial,Follower,Renter
+4,4,0,0,Most susceptible,Least risk averse,Millenial,Experimenter,Renter
+1,2,2,3,Less susceptible,Least risk averse,Silent,Follower,Renter
+2,1,3,2,More susceptible,Most risk averse,Millenial,Experimenter,Owner
+5,0,1,2,More susceptible,More risk averse,Millenial,Trendy,Renter
+2,1,3,2,Less susceptible,More risk averse,Millenial,Trendy,Renter
+4,2,0,2,Less susceptible,Less risk averse,Boomer,Follower,Owner
+2,1,1,4,Least susceptible,Least risk averse,Millenial,Trendy,Owner
+1,2,2,3,Less susceptible,Most risk averse,Millenial,Luddite,Renter
+5,1,1,1,More susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+2,4,2,0,Less susceptible,Most risk averse,Gen-Z,Experimenter,Renter
+2,4,1,1,Less susceptible,Least risk averse,Silent,Luddite,Owner
+4,2,1,1,Less susceptible,More risk averse,Gen-X (younger),Follower,Renter
+4,2,0,2,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+1,5,1,1,Less susceptible,Most risk averse,Gen-Z,Trendy,Owner
+2,2,2,2,Less susceptible,Most risk averse,Gen-X (older),Trendy,Renter
+3,2,2,1,Most susceptible,More risk averse,Boomer,Trendy,Owner
+6,1,0,1,Less susceptible,Less risk averse,Gen-X (older),Experimenter,Owner
+1,4,2,1,Less susceptible,More risk averse,Gen-X (younger),Experimenter,Owner
+3,3,0,2,Less susceptible,Most risk averse,Gen-X (older),Experimenter,Owner
+4,3,0,1,Most susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+3,5,0,0,Most susceptible,Least risk averse,Gen-X (younger),Follower,Owner
+2,0,2,4,Less susceptible,More risk averse,Gen-Z,Follower,Renter
+2,2,0,4,Less susceptible,More risk averse,Gen-X (older),Experimenter,Renter
+4,2,0,2,Most susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+3,2,3,0,More susceptible,Least risk averse,Gen-X (younger),Follower,Renter
+2,3,2,1,Most susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+3,4,0,1,Most susceptible,Most risk averse,Millenial,Follower,Owner
+3,3,1,1,Least susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+3,2,3,0,Most susceptible,Least risk averse,Millenial,Follower,Renter
+2,3,1,2,Less susceptible,Least risk averse,Gen-Z,Experimenter,Renter
+3,4,0,1,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Renter
+2,5,1,0,Most susceptible,Least risk averse,Gen-X (younger),Follower,Renter
+6,1,0,1,Less susceptible,Less risk averse,Gen-X (younger),Trendy,Owner
+3,2,0,3,Less susceptible,Least risk averse,Millenial,Follower,Renter
+2,3,3,0,Less susceptible,More risk averse,Boomer,Trendy,Owner
+5,3,0,0,Most susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+1,3,3,1,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+4,2,1,1,Less susceptible,Most risk averse,Boomer,Follower,Renter
+3,5,0,0,More susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+5,3,0,0,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+3,3,0,2,Less susceptible,Less risk averse,Millenial,Follower,Renter
+1,3,4,0,Least susceptible,Least risk averse,Gen-X (younger),Experimenter,Renter
+1,5,2,0,Less susceptible,Most risk averse,Gen-Z,Follower,Renter
+4,2,1,1,Less susceptible,Less risk averse,Millenial,Trendy,Renter
+5,1,0,2,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+4,4,0,0,Less susceptible,Most risk averse,Millenial,Trendy,Owner
+3,3,2,0,Most susceptible,Least risk averse,Boomer,Follower,Renter
+3,4,0,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+5,2,0,1,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+3,5,0,0,Least susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+4,2,1,1,Most susceptible,Less risk averse,Millenial,Trendy,Owner
+5,3,0,0,Most susceptible,Less risk averse,Millenial,Experimenter,Renter
+5,1,1,1,Least susceptible,Least risk averse,Gen-X (older),Trendy,Renter
+2,5,1,0,Less susceptible,More risk averse,Millenial,Trendy,Renter
+4,2,0,2,Least susceptible,Most risk averse,Gen-Z,Follower,Renter
+2,3,2,1,Less susceptible,Least risk averse,Gen-X (younger),Follower,Renter
+4,3,0,1,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+2,3,0,3,More susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+3,2,1,2,Less susceptible,More risk averse,Gen-X (older),Experimenter,Owner
+5,2,0,1,More susceptible,Least risk averse,Millenial,Trendy,Renter
+3,3,1,1,Most susceptible,More risk averse,Millenial,Follower,Renter
+5,2,1,0,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+4,4,0,0,Less susceptible,Least risk averse,Gen-X (younger),Follower,Renter
+3,3,1,1,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+6,1,1,0,Less susceptible,More risk averse,Boomer,Experimenter,Renter
+3,2,0,3,Least susceptible,Least risk averse,Millenial,Experimenter,Owner
+2,5,0,1,More susceptible,Most risk averse,Gen-X (younger),Experimenter,Owner
+2,5,0,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Owner
+3,2,1,2,Less susceptible,Most risk averse,Boomer,Experimenter,Owner
+3,2,1,2,Less susceptible,Less risk averse,Gen-X (younger),Experimenter,Owner
+3,3,0,2,Least susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+4,4,0,0,Less susceptible,Most risk averse,Gen-X (younger),Experimenter,Owner
+4,0,3,1,Most susceptible,Less risk averse,Gen-X (older),Trendy,Owner
+4,1,0,3,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+3,3,0,2,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+1,6,0,1,Less susceptible,Less risk averse,Millenial,Trendy,Renter
+3,5,0,0,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+5,2,1,0,Least susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+4,2,2,0,Less susceptible,Most risk averse,Millenial,Trendy,Owner
+3,1,2,2,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+3,1,2,2,Most susceptible,More risk averse,Gen-X (younger),Luddite,Renter
+4,3,0,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Renter
+1,1,5,1,Less susceptible,More risk averse,Boomer,Trendy,Renter
+3,2,1,2,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+3,5,0,0,Most susceptible,Most risk averse,Gen-X (older),Trendy,Renter
+4,3,1,0,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+4,4,0,0,More susceptible,Most risk averse,Boomer,Trendy,Owner
+6,0,1,1,Less susceptible,Most risk averse,Gen-Z,Experimenter,Renter
+4,1,2,1,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+5,2,1,0,Less susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+3,3,1,1,Least susceptible,Most risk averse,Boomer,Trendy,Owner
+3,5,0,0,Most susceptible,Most risk averse,Boomer,Experimenter,Owner
+2,3,3,0,Less susceptible,Less risk averse,Gen-Z,Trendy,Renter
+3,3,0,2,Most susceptible,Less risk averse,Gen-X (older),Trendy,Owner
+2,3,1,2,Less susceptible,Less risk averse,Silent,Trendy,Renter
+4,1,1,2,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Renter
+5,1,2,0,More susceptible,More risk averse,Millenial,Trendy,Owner
+3,4,0,1,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+3,1,1,3,Less susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+3,2,1,2,Less susceptible,More risk averse,Gen-X (younger),Trendy,Renter
+4,4,0,0,Most susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+3,3,1,1,Less susceptible,More risk averse,Gen-X (older),Follower,Owner
+5,2,0,1,Less susceptible,Most risk averse,Millenial,Experimenter,Renter
+3,1,2,2,Less susceptible,Least risk averse,Millenial,Follower,Owner
+4,1,1,2,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+4,2,0,2,Less susceptible,Less risk averse,Gen-X (younger),Experimenter,Renter
+4,2,1,1,Most susceptible,Less risk averse,Gen-X (younger),Trendy,Owner
+4,1,2,1,More susceptible,Least risk averse,Millenial,Trendy,Renter
+4,2,1,1,Less susceptible,More risk averse,Millenial,Follower,Owner
+2,2,3,1,Less susceptible,More risk averse,Silent,Luddite,Owner
+5,2,0,1,Most susceptible,Less risk averse,Gen-X (younger),Experimenter,Owner
+5,2,0,1,More susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+5,1,1,1,Most susceptible,Less risk averse,Millenial,Trendy,Owner
+2,4,2,0,Less susceptible,Least risk averse,Gen-X (younger),Follower,Owner
+4,2,0,2,Most susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+4,3,0,1,More susceptible,Most risk averse,Millenial,Trendy,Renter
+3,4,1,0,More susceptible,Most risk averse,Silent,Trendy,Renter
+4,2,0,2,More susceptible,Least risk averse,Silent,Follower,Owner
+5,1,2,0,Most susceptible,Most risk averse,Boomer,Trendy,Owner
+4,3,1,0,Least susceptible,Most risk averse,Gen-X (older),Trendy,Owner
+4,2,1,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+1,4,1,2,Less susceptible,Most risk averse,Millenial,Trendy,Renter
+2,5,0,1,Less susceptible,Less risk averse,Gen-Z,Trendy,Owner
+4,1,0,3,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Renter
+3,4,0,1,Least susceptible,Most risk averse,Silent,Experimenter,Owner
+3,3,0,2,More susceptible,Less risk averse,Boomer,Follower,Owner
+5,2,0,1,Less susceptible,More risk averse,Millenial,Trendy,Renter
+2,2,3,1,Less susceptible,Less risk averse,Millenial,Trendy,Owner
+3,3,1,1,Less susceptible,More risk averse,Millenial,Experimenter,Owner
+4,1,1,2,Less susceptible,More risk averse,Millenial,Experimenter,Renter
+1,2,1,4,Least susceptible,Most risk averse,Gen-Z,Follower,Owner
+4,3,0,1,More susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+4,1,2,1,More susceptible,Most risk averse,Gen-Z,Experimenter,Renter
+5,1,0,2,Less susceptible,Less risk averse,Millenial,Experimenter,Owner
+5,2,0,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Renter
+2,4,1,1,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+3,5,0,0,Least susceptible,Least risk averse,Millenial,Follower,Renter
+2,3,1,2,Least susceptible,Least risk averse,Silent,Follower,Renter
+1,3,3,1,Most susceptible,Most risk averse,Silent,Trendy,Renter
+5,3,0,0,Less susceptible,Most risk averse,Millenial,Experimenter,Owner
+3,4,0,1,Less susceptible,Less risk averse,Gen-X (younger),Trendy,Owner
+3,3,0,2,Least susceptible,Less risk averse,Millenial,Experimenter,Owner
+2,3,3,0,Least susceptible,Less risk averse,Gen-X (older),Experimenter,Owner
+3,3,2,0,More susceptible,More risk averse,Millenial,Experimenter,Renter
+4,3,0,1,Most susceptible,Least risk averse,Millenial,Trendy,Renter
+5,2,0,1,Less susceptible,Less risk averse,Millenial,Trendy,Renter
+4,3,1,0,Less susceptible,More risk averse,Gen-Z,Experimenter,Owner
+4,4,0,0,Less susceptible,Least risk averse,Gen-Z,Experimenter,Renter
+2,2,2,2,Less susceptible,More risk averse,Gen-X (older),Trendy,Renter
+2,2,1,3,More susceptible,Most risk averse,Gen-X (younger),Follower,Renter
+0,4,3,1,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+2,1,3,2,Most susceptible,More risk averse,Millenial,Trendy,Renter
+4,3,0,1,Less susceptible,Most risk averse,Gen-X (younger),Follower,Owner
+3,3,1,1,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+3,4,1,0,Most susceptible,More risk averse,Gen-X (younger),Follower,Renter
+2,4,1,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+2,1,2,3,More susceptible,Less risk averse,Millenial,Trendy,Renter
+2,5,1,0,Less susceptible,Least risk averse,Gen-X (younger),Follower,Renter
+2,3,0,3,Less susceptible,Less risk averse,Gen-X (younger),Experimenter,Owner
+3,4,0,1,Less susceptible,More risk averse,Gen-X (younger),Follower,Renter
+3,3,1,1,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+2,2,1,3,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+5,3,0,0,Less susceptible,Most risk averse,Gen-X (older),Experimenter,Renter
+4,2,2,0,Less susceptible,More risk averse,Boomer,Follower,Owner
+3,2,2,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Owner
+1,3,2,2,Less susceptible,Less risk averse,Gen-X (older),Trendy,Renter
+6,0,1,1,Less susceptible,Most risk averse,Millenial,Trendy,Renter
+1,6,1,0,Less susceptible,Least risk averse,Gen-X (younger),Follower,Owner
+3,2,0,3,Most susceptible,Least risk averse,Millenial,Experimenter,Owner
+4,1,1,2,Most susceptible,Less risk averse,Millenial,Experimenter,Owner
+5,0,2,1,Less susceptible,Least risk averse,Gen-Z,Follower,Owner
+4,2,2,0,Less susceptible,Least risk averse,Gen-Z,Trendy,Renter
+2,5,0,1,More susceptible,Least risk averse,Silent,Follower,Owner
+2,1,3,2,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+3,4,1,0,Less susceptible,Most risk averse,Boomer,Experimenter,Owner
+2,4,2,0,Most susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+2,5,0,1,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+4,3,0,1,Less susceptible,Least risk averse,Silent,Trendy,Owner
+2,3,2,1,Least susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+2,4,2,0,Less susceptible,Least risk averse,Boomer,Experimenter,Owner
+4,2,1,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Renter
+3,2,2,1,Less susceptible,Less risk averse,Millenial,Trendy,Owner
+5,1,2,0,Less susceptible,Most risk averse,Millenial,Luddite,Owner
+4,2,2,0,Less susceptible,Least risk averse,Silent,Trendy,Owner
+3,3,1,1,Less susceptible,Most risk averse,Gen-X (older),Trendy,Owner
+2,3,3,0,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+3,3,0,2,Most susceptible,Least risk averse,Gen-X (older),Experimenter,Owner
+4,2,2,0,Least susceptible,Most risk averse,Millenial,Follower,Renter
+4,4,0,0,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+1,3,2,2,Less susceptible,Least risk averse,Millenial,Experimenter,Owner
+4,2,1,1,Less susceptible,Least risk averse,Silent,Experimenter,Owner
+4,3,0,1,More susceptible,Least risk averse,Millenial,Experimenter,Owner
+3,2,2,1,Most susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+2,4,1,1,Less susceptible,Less risk averse,Boomer,Trendy,Renter
+4,3,1,0,Less susceptible,Least risk averse,Gen-Z,Trendy,Owner
+4,0,3,1,More susceptible,More risk averse,Boomer,Trendy,Renter
+2,4,1,1,Most susceptible,More risk averse,Millenial,Experimenter,Renter
+2,5,0,1,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+3,3,0,2,Less susceptible,Less risk averse,Gen-X (older),Trendy,Renter
+3,4,0,1,Less susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+3,0,3,2,More susceptible,Less risk averse,Millenial,Trendy,Renter
+2,2,1,3,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+4,4,0,0,Less susceptible,Least risk averse,Gen-Z,Follower,Owner
+3,2,1,2,Least susceptible,Least risk averse,Gen-Z,Follower,Renter
+5,2,0,1,Less susceptible,Least risk averse,Gen-X (younger),Follower,Owner
+1,4,1,2,Less susceptible,Most risk averse,Millenial,Trendy,Renter
+1,2,4,1,Less susceptible,Least risk averse,Gen-Z,Experimenter,Renter
+2,2,4,0,Most susceptible,More risk averse,Millenial,Trendy,Owner
+3,5,0,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+4,2,1,1,Less susceptible,Less risk averse,Millenial,Experimenter,Owner
+1,6,1,0,Most susceptible,Least risk averse,Millenial,Trendy,Renter
+2,3,1,2,Less susceptible,Most risk averse,Gen-X (older),Experimenter,Owner
+4,2,1,1,Less susceptible,Least risk averse,Millenial,Follower,Owner
+4,1,0,3,Less susceptible,Less risk averse,Gen-X (younger),Follower,Renter
+2,1,5,0,Least susceptible,Least risk averse,Boomer,Trendy,Renter
+3,1,1,3,Less susceptible,Less risk averse,Millenial,Experimenter,Renter
+2,6,0,0,Less susceptible,Less risk averse,Gen-X (older),Trendy,Renter
+2,2,3,1,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+3,5,0,0,Most susceptible,Least risk averse,Silent,Follower,Owner
+1,3,2,2,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+4,2,1,1,Less susceptible,Least risk averse,Gen-Z,Follower,Renter
+5,2,1,0,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+2,4,1,1,Most susceptible,Least risk averse,Gen-Z,Trendy,Renter
+3,2,3,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+2,4,2,0,Less susceptible,Least risk averse,Gen-Z,Trendy,Renter
+3,5,0,0,Most susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+4,4,0,0,Less susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+6,2,0,0,Less susceptible,Least risk averse,Silent,Trendy,Owner
+3,4,0,1,Most susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+1,7,0,0,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+4,2,1,1,Most susceptible,Least risk averse,Millenial,Trendy,Renter
+4,4,0,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+2,3,2,1,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+3,4,1,0,More susceptible,Most risk averse,Gen-Z,Experimenter,Renter
+4,2,0,2,Less susceptible,Least risk averse,Gen-X (older),Trendy,Renter
+4,2,1,1,Most susceptible,Less risk averse,Gen-X (older),Trendy,Renter
+2,2,1,3,Least susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+5,1,2,0,Less susceptible,Most risk averse,Gen-X (younger),Experimenter,Owner
+4,1,1,2,Less susceptible,Less risk averse,Millenial,Trendy,Renter
+4,2,1,1,Less susceptible,Least risk averse,Gen-X (older),Follower,Owner
+0,1,2,5,Less susceptible,Less risk averse,Gen-X (older),Trendy,Owner
+3,5,0,0,Less susceptible,Least risk averse,Gen-Z,Follower,Renter
+2,2,1,3,Less susceptible,More risk averse,Gen-X (younger),Trendy,Owner
+3,0,4,1,Less susceptible,Most risk averse,Gen-X (older),Trendy,Owner
+3,2,1,2,Most susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+3,1,2,2,Less susceptible,Less risk averse,Millenial,Experimenter,Renter
+3,2,1,2,Less susceptible,More risk averse,Gen-X (younger),Experimenter,Owner
+2,4,2,0,Most susceptible,Most risk averse,Gen-X (older),Trendy,Owner
+2,2,1,3,More susceptible,More risk averse,Gen-X (younger),Experimenter,Owner
+4,1,1,2,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Owner
+4,4,0,0,Less susceptible,Less risk averse,Gen-X (younger),Experimenter,Renter
+2,2,3,1,Most susceptible,Least risk averse,Millenial,Trendy,Owner
+3,2,2,1,Less susceptible,Least risk averse,Gen-X (older),Follower,Renter
+1,4,2,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Renter
+2,3,1,2,Less susceptible,Least risk averse,Millenial,Follower,Renter
+4,2,0,2,More susceptible,Most risk averse,Millenial,Trendy,Renter
+3,4,1,0,Less susceptible,Most risk averse,Gen-X (older),Trendy,Owner
+4,2,2,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+3,3,1,1,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+3,4,0,1,Less susceptible,Less risk averse,Silent,Trendy,Owner
+2,3,2,1,Most susceptible,Most risk averse,Millenial,Trendy,Renter
+3,3,1,1,More susceptible,Most risk averse,Gen-Z,Follower,Renter
+5,2,0,1,Least susceptible,More risk averse,Millenial,Trendy,Renter
+3,3,0,2,Less susceptible,Most risk averse,Millenial,Trendy,Renter
+2,6,0,0,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+2,1,2,3,Less susceptible,Most risk averse,Millenial,Trendy,Renter
+3,4,0,1,More susceptible,Most risk averse,Gen-X (older),Follower,Owner
+1,4,1,2,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+1,3,0,4,More susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+3,5,0,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+3,3,0,2,Less susceptible,Less risk averse,Gen-X (younger),Follower,Owner
+2,1,2,3,Less susceptible,Least risk averse,Gen-Z,Trendy,Owner
+3,4,1,0,Less susceptible,More risk averse,Boomer,Experimenter,Owner
+3,1,1,3,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+5,2,0,1,Less susceptible,Most risk averse,Millenial,Experimenter,Renter
+2,2,3,1,Less susceptible,Least risk averse,Gen-Z,Trendy,Owner
+6,1,1,0,More susceptible,Least risk averse,Millenial,Trendy,Renter
+4,3,0,1,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+4,2,1,1,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+5,3,0,0,More susceptible,Least risk averse,Gen-X (older),Trendy,Renter
+4,3,0,1,More susceptible,Most risk averse,Millenial,Trendy,Owner
+3,4,0,1,Most susceptible,Least risk averse,Millenial,Trendy,Renter
+2,1,3,2,Less susceptible,Less risk averse,Gen-Z,Trendy,Renter
+3,2,3,0,Less susceptible,Most risk averse,Millenial,Experimenter,Renter
+2,4,1,1,Less susceptible,Least risk averse,Boomer,Experimenter,Renter
+1,0,4,3,Most susceptible,More risk averse,Gen-Z,Follower,Owner
+3,3,2,0,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+3,1,2,2,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+4,2,1,1,Less susceptible,Least risk averse,Silent,Trendy,Owner
+4,2,1,1,Least susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+2,3,1,2,Less susceptible,Less risk averse,Millenial,Trendy,Renter
+3,3,0,2,Less susceptible,Most risk averse,Millenial,Trendy,Renter
+3,2,0,3,Less susceptible,Least risk averse,Gen-Z,Follower,Renter
+2,4,0,2,Less susceptible,Less risk averse,Millenial,Experimenter,Owner
+0,7,1,0,More susceptible,Most risk averse,Millenial,Follower,Owner
+2,4,1,1,Less susceptible,Least risk averse,Millenial,Trendy,Owner
+4,2,1,1,Most susceptible,Least risk averse,Millenial,Follower,Owner
+1,4,2,1,More susceptible,Least risk averse,Gen-Z,Trendy,Renter
+1,1,2,4,More susceptible,Least risk averse,Millenial,Trendy,Owner
+6,1,0,1,More susceptible,More risk averse,Millenial,Experimenter,Owner
+1,4,0,3,Less susceptible,Most risk averse,Silent,Trendy,Owner
+3,4,0,1,Least susceptible,More risk averse,Gen-X (older),Trendy,Owner
+1,4,1,2,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+5,2,1,0,More susceptible,Least risk averse,Gen-X (older),Follower,Renter
+4,2,1,1,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+3,4,0,1,Most susceptible,Less risk averse,Millenial,Trendy,Renter
+2,2,1,3,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+2,2,2,2,Most susceptible,Less risk averse,Millenial,Trendy,Owner
+4,1,1,2,Most susceptible,Most risk averse,Millenial,Trendy,Renter
+2,3,1,2,Less susceptible,Most risk averse,Gen-Z,Trendy,Renter
+3,1,0,4,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+4,3,0,1,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+4,2,1,1,Most susceptible,Most risk averse,Gen-X (older),Trendy,Owner
+5,2,0,1,Less susceptible,Most risk averse,Millenial,Experimenter,Renter
+6,0,1,1,Most susceptible,Most risk averse,Boomer,Trendy,Owner
+5,1,1,1,Less susceptible,Most risk averse,Millenial,Trendy,Owner
+1,3,2,2,Less susceptible,Least risk averse,Millenial,Follower,Owner
+2,2,2,2,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+5,0,1,2,Less susceptible,More risk averse,Millenial,Trendy,Owner
+3,1,0,4,Less susceptible,Most risk averse,Gen-X (older),Trendy,Owner
+2,1,2,3,Less susceptible,Least risk averse,Boomer,Trendy,Owner
+3,2,1,2,Less susceptible,More risk averse,Gen-X (younger),Experimenter,Owner
+4,2,1,1,Least susceptible,Least risk averse,Gen-Z,Experimenter,Owner
+3,3,1,1,Less susceptible,Less risk averse,Millenial,Experimenter,Renter
+3,2,1,2,Less susceptible,More risk averse,Millenial,Follower,Renter
+5,3,0,0,More susceptible,Most risk averse,Millenial,Trendy,Renter
+1,4,1,2,Less susceptible,Most risk averse,Boomer,Follower,Owner
+3,2,1,2,More susceptible,More risk averse,Gen-Z,Experimenter,Renter
+4,3,0,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+2,2,2,2,Least susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+4,1,1,2,Less susceptible,Most risk averse,Gen-Z,Follower,Renter
+4,4,0,0,Less susceptible,Most risk averse,Gen-X (younger),Experimenter,Renter
+4,1,0,3,Less susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+3,3,1,1,Less susceptible,More risk averse,Gen-X (younger),Experimenter,Owner
+2,6,0,0,Less susceptible,Less risk averse,Millenial,Experimenter,Owner
+3,3,0,2,Least susceptible,More risk averse,Millenial,Trendy,Owner
+2,4,0,2,Least susceptible,Least risk averse,Millenial,Experimenter,Owner
+3,2,2,1,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+3,2,2,1,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+2,3,3,0,Less susceptible,Most risk averse,Millenial,Trendy,Owner
+4,2,1,1,Less susceptible,Least risk averse,Boomer,Trendy,Owner
+4,2,1,1,Most susceptible,Least risk averse,Gen-X (older),Luddite,Owner
+4,2,0,2,Most susceptible,Least risk averse,Millenial,Follower,Owner
+5,3,0,0,Less susceptible,Least risk averse,Millenial,Trendy,Renter
+3,1,4,0,Less susceptible,Most risk averse,Gen-X (older),Follower,Owner
+3,1,2,2,Less susceptible,Least risk averse,Silent,Experimenter,Owner
+3,3,0,2,Most susceptible,Less risk averse,Gen-X (younger),Trendy,Owner
+4,3,0,1,Less susceptible,Most risk averse,Gen-X (younger),Experimenter,Owner
+2,3,1,2,Less susceptible,More risk averse,Boomer,Trendy,Owner
+2,1,4,1,Less susceptible,Most risk averse,Boomer,Trendy,Renter
+5,3,0,0,More susceptible,Least risk averse,Boomer,Experimenter,Owner
+4,4,0,0,Least susceptible,Least risk averse,Gen-X (younger),Follower,Owner
+3,2,1,2,Less susceptible,Least risk averse,Gen-Z,Experimenter,Renter
+4,3,0,1,Less susceptible,More risk averse,Millenial,Experimenter,Renter
+3,2,2,1,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+5,3,0,0,Less susceptible,Less risk averse,Gen-X (younger),Experimenter,Renter
+6,2,0,0,Most susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+4,1,2,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+5,3,0,0,Least susceptible,Least risk averse,Gen-X (younger),Follower,Renter
+3,2,2,1,Less susceptible,Most risk averse,Millenial,Trendy,Owner
+3,3,2,0,Least susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+5,2,0,1,Less susceptible,Least risk averse,Gen-X (younger),Trendy,Renter
+1,4,0,3,Less susceptible,Most risk averse,Gen-X (younger),Experimenter,Owner
+5,1,1,1,Less susceptible,Less risk averse,Millenial,Trendy,Renter
+4,3,0,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Renter
+1,3,0,4,Less susceptible,Less risk averse,Gen-X (younger),Trendy,Owner
+3,3,2,0,Least susceptible,More risk averse,Silent,Follower,Owner
+1,4,3,0,Least susceptible,Least risk averse,Millenial,Trendy,Owner
+4,2,0,2,Less susceptible,Least risk averse,Boomer,Trendy,Renter
+6,1,0,1,Less susceptible,Less risk averse,Gen-X (younger),Trendy,Owner
+3,2,0,3,Less susceptible,Least risk averse,Gen-X (older),Trendy,Owner
+3,1,3,1,Most susceptible,More risk averse,Gen-X (older),Trendy,Owner
+3,1,3,1,Less susceptible,Most risk averse,Gen-X (younger),Trendy,Owner
+3,4,0,1,More susceptible,More risk averse,Gen-X (older),Experimenter,Owner
+2,4,2,0,Least susceptible,More risk averse,Gen-Z,Trendy,Renter
+4,3,0,1,Least susceptible,Least risk averse,Boomer,Follower,Owner
+2,2,2,2,Less susceptible,Least risk averse,Millenial,Experimenter,Owner
+3,1,2,2,More susceptible,Most risk averse,Boomer,Follower,Renter
+2,2,3,1,More susceptible,Less risk averse,Silent,Follower,Owner
+3,2,2,1,Most susceptible,Most risk averse,Millenial,Trendy,Owner
+1,1,3,3,Less susceptible,Least risk averse,Boomer,Trendy,Owner
+2,4,2,0,Least susceptible,Most risk averse,Gen-X (younger),Experimenter,Renter
+1,4,2,1,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+5,2,0,1,Less susceptible,Most risk averse,Gen-X (older),Trendy,Renter
+3,4,0,1,Less susceptible,Least risk averse,Millenial,Experimenter,Owner
+3,3,2,0,Least susceptible,More risk averse,Gen-X (younger),Trendy,Owner
+2,3,1,2,More susceptible,Most risk averse,Gen-Z,Follower,Renter
+3,3,1,1,Most susceptible,Most risk averse,Gen-Z,Trendy,Owner
+4,3,0,1,Less susceptible,Least risk averse,Gen-X (older),Trendy,Renter
+4,2,2,0,Less susceptible,More risk averse,Gen-Z,Experimenter,Owner
+3,2,3,0,Most susceptible,More risk averse,Gen-Z,Trendy,Renter
+5,1,0,2,Most susceptible,Least risk averse,Gen-X (older),Trendy,Renter
+3,3,1,1,Least susceptible,Least risk averse,Gen-Z,Trendy,Renter
+3,2,2,1,Less susceptible,More risk averse,Gen-X (younger),Trendy,Owner
+3,3,2,0,More susceptible,Most risk averse,Millenial,Trendy,Renter
+3,2,2,1,Less susceptible,Less risk averse,Millenial,Trendy,Owner
+2,1,3,2,More susceptible,More risk averse,Silent,Trendy,Owner
+7,0,1,0,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+1,1,5,1,Less susceptible,Most risk averse,Gen-X (older),Experimenter,Owner
+4,2,1,1,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+1,2,3,2,Less susceptible,Less risk averse,Gen-X (younger),Trendy,Renter
+2,2,1,3,Most susceptible,Least risk averse,Millenial,Trendy,Owner
+0,7,0,1,More susceptible,More risk averse,Gen-X (older),Experimenter,Owner
+3,4,0,1,Less susceptible,Least risk averse,Gen-X (younger),Experimenter,Owner
+4,2,2,0,Less susceptible,Less risk averse,Gen-X (older),Follower,Owner
+2,3,0,3,Least susceptible,Most risk averse,Millenial,Trendy,Renter
+2,4,0,2,Most susceptible,Most risk averse,Millenial,Experimenter,Renter
+2,1,2,3,Less susceptible,Least risk averse,Millenial,Experimenter,Renter
+5,3,0,0,Most susceptible,Least risk averse,Gen-Z,Trendy,Renter
+4,1,1,2,Less susceptible,Least risk averse,Millenial,Follower,Owner
+4,3,0,1,Less susceptible,Least risk averse,Millenial,Experimenter,Owner
+3,5,0,0,Least susceptible,More risk averse,Gen-X (younger),Experimenter,Renter
+3,1,2,2,Less susceptible,Less risk averse,Boomer,Trendy,Owner
+5,1,0,2,Less susceptible,Less risk averse,Gen-Z,Trendy,Renter
+2,3,2,1,Least susceptible,Least risk averse,Millenial,Trendy,Renter
