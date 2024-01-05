@@ -89,13 +89,77 @@ def __(answers, classifier, pd):
 
 @app.cell
 def __(characteristics, results):
-    results[list(characteristics["Personality"])].sum().plot.pie()
+    results[list(characteristics["Personality"])].sum().plot.pie(title="Personalities")
     return
 
 
 @app.cell
-def __(characteristics, results):
-    results[results["Age group"]=="Millenial"][list(characteristics["Personality"])].sum().plot.pie(title="Millenial personality")
+def __(characteristics, mo, plt, results):
+    #
+    # Personalities by age group
+    #
+    _plots = []
+    for _group in characteristics["Age group"]:
+        plt.figure()
+        _data = results[results["Age group"]==_group]
+        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
+    mo.hstack(_plots)
+    return
+
+
+@app.cell
+def __(characteristics, mo, plt, results):
+    #
+    # Personalities by marketing susceptibility
+    #
+    _plots = []
+    for _group in characteristics["Marketing susceptible"]:
+        plt.figure()
+        _data = results[results["Marketing susceptible"]==_group]
+        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
+    mo.hstack(_plots)
+    return
+
+
+@app.cell
+def __(characteristics, mo, plt, results):
+    #
+    # Personalities by tech savviness
+    #
+    _plots = []
+    for _group in characteristics["Tech savviness"]:
+        plt.figure()
+        _data = results[results["Tech savviness"]==_group]
+        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
+    mo.hstack(_plots)
+    return
+
+
+@app.cell
+def __(characteristics, mo, plt, results):
+    #
+    # Personalities by risk aversion
+    #
+    _plots = []
+    for _group in characteristics["Risk aversion"]:
+        plt.figure()
+        _data = results[results["Risk aversion"]==_group]
+        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
+    mo.hstack(_plots)
+    return
+
+
+@app.cell
+def __(characteristics, mo, plt, results):
+    #
+    # Personalities by homeownership
+    #
+    _plots = []
+    for _group in characteristics["Home ownership"]:
+        plt.figure()
+        _data = results[results["Home ownership"]==_group]
+        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
+    mo.hstack(_plots)
     return
 
 
@@ -103,6 +167,17 @@ def __(characteristics, results):
 def __(results):
     #Marketing susceptible
     results[results["Age group"]=="Millenial"]["Marketing susceptible"].hist()
+    return
+
+
+@app.cell
+def __(mo, plt, results):
+    _plots = []
+    for _group in ["Risk aversion","Marketing susceptible","Age group","Home ownership","Tech savviness"]:
+        plt.figure()
+        _plots.append(results[_group].hist())
+        _plots[-1].set_title(_group)
+    mo.hstack(_plots)
     return
 
 
