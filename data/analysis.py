@@ -89,12 +89,14 @@ def __(answers, classifier, pd):
 
 @app.cell
 def __(pd, plt, results):
-    _locus = pd.DataFrame({"x":(results["Achiever"]+results["Explorer"]-results["Socializer"] - results["Influencer"])/(results["Achiever"]+results["Explorer"]+results["Socializer"]+results["Influencer"]),
+    locus = pd.DataFrame({"x":(results["Achiever"]+results["Explorer"]-results["Socializer"] - results["Influencer"])/(results["Achiever"]+results["Explorer"]+results["Socializer"]+results["Influencer"]),
                           "y":(results["Achiever"]-results["Explorer"]-results["Socializer"]+results["Influencer"])/(results["Achiever"]+results["Explorer"]+results["Socializer"]+results["Influencer"])})
-    _locus["count"] = 1
-    _locus = _locus.groupby(["x","y"]).sum().reset_index()
+    locus["count"] = 1
+    _locus = locus.groupby(["x","y"]).sum().reset_index()
     # plt.figure(figsize=(10,10))
     _locus.plot.scatter(x="x",y="y",s="count",title="Personality locus")
+    plt.plot(locus["x"].mean(),locus["y"].mean(),"*g",markersize=10,label="Mean locus")
+    plt.plot(locus["x"].median(),locus["y"].median(),"xg",markersize=10,label="Median locus")
     plt.plot([-1,1],[0,0],'k',linewidth=0.5)
     plt.plot([0,0],[-1,1],'k',linewidth=0.5)
     plt.text(0.5,0.55,"Achiever",horizontalalignment="center")
@@ -119,7 +121,14 @@ def __(pd, plt, results):
     plt.ylim([-1.2,1.2])
     plt.xlabel(None)
     plt.ylabel(None)
+    plt.legend(loc='upper left')
     plt.gca()
+    return locus,
+
+
+@app.cell
+def __(locus):
+    locus["x"].mean(),locus["y"].mean()
     return
 
 
