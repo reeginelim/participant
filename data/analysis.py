@@ -88,6 +88,23 @@ def __(answers, classifier, pd):
 
 
 @app.cell
+def __(pd, plt, results):
+    _locus = pd.DataFrame({"x":(results["Achiever"]+results["Explorer"]-results["Socializer"] - results["Influencer"])/(results["Achiever"]+results["Explorer"]+results["Socializer"]+results["Influencer"]),
+                          "y":(results["Achiever"]-results["Explorer"]-results["Socializer"]+results["Influencer"])/(results["Achiever"]+results["Explorer"]+results["Socializer"]+results["Influencer"])})
+    _locus["count"] = 1
+    _locus = _locus.groupby(["x","y"]).sum().reset_index()
+    _locus.plot.scatter(x="x",y="y",s="count",title="Personality locus")
+    plt.text(0.5,0.55,"Achiever")
+    plt.text(0.5,-0.65,"Explorer")
+    plt.text(-0.5,-0.65,"Socializer")
+    plt.text(-0.5,0.55,"Influencer")
+    plt.xlim([-1,1])
+    plt.ylim([-1,1])
+    plt.show()
+    return
+
+
+@app.cell
 def __(characteristics, results):
     results[list(characteristics["Personality"])].sum().plot.pie(title="Personalities")
     return
