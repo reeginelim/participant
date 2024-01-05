@@ -10,7 +10,7 @@ def __(pd):
     # Load questions
     #
     questions = pd.read_csv("questions.csv")
-    questions
+    # questions
     return questions,
 
 
@@ -21,7 +21,7 @@ def __(pd):
     #
     answers = pd.read_csv("answers_1.csv",
                          usecols = range(1,15))
-    answers
+    # answers
     return answers,
 
 
@@ -47,7 +47,6 @@ def __(questions):
         for b,c in x.items():
             for d in c.values():
                 classifier[d] = (a,b)
-    classifier
     return (
         a,
         b,
@@ -83,8 +82,14 @@ def __(answers, classifier, pd):
         results.append(result)
     results = pd.DataFrame(results)
     results.to_csv("results_1.csv",header=True,index=False)
-    results
+    # results
     return answer, category, classification, m, n, result, results, row
+
+
+@app.cell
+def __(mo):
+    mo.md("# Participant attention/motivation locus")
+    return
 
 
 @app.cell
@@ -127,8 +132,20 @@ def __(pd, plt, results):
 
 
 @app.cell
+def __(mo):
+    mo.md("## Participant personalities")
+    return
+
+
+@app.cell
 def __(characteristics, results):
     results[list(characteristics["Personality"])].sum().plot.pie(title="Personalities")
+    return
+
+
+@app.cell
+def __(mo):
+    mo.md("### By age group")
     return
 
 
@@ -147,6 +164,12 @@ def __(characteristics, mo, plt, results):
 
 
 @app.cell
+def __(mo):
+    mo.md("### By susceptibility")
+    return
+
+
+@app.cell
 def __(characteristics, mo, plt, results):
     #
     # Personalities by marketing susceptibility
@@ -157,6 +180,12 @@ def __(characteristics, mo, plt, results):
         _data = results[results["Marketing susceptible"]==_group]
         _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
     mo.hstack(_plots)
+    return
+
+
+@app.cell
+def __(mo):
+    mo.md("### By tech savviness")
     return
 
 
@@ -175,6 +204,12 @@ def __(characteristics, mo, plt, results):
 
 
 @app.cell
+def __(mo):
+    mo.md("### By risk aversion")
+    return
+
+
+@app.cell
 def __(characteristics, mo, plt, results):
     #
     # Personalities by risk aversion
@@ -189,6 +224,12 @@ def __(characteristics, mo, plt, results):
 
 
 @app.cell
+def __(mo):
+    mo.md("### By home ownership")
+    return
+
+
+@app.cell
 def __(characteristics, mo, plt, results):
     #
     # Personalities by homeownership
@@ -199,6 +240,12 @@ def __(characteristics, mo, plt, results):
         _data = results[results["Home ownership"]==_group]
         _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
     mo.hstack(_plots)
+    return
+
+
+@app.cell
+def __(mo):
+    mo.md("## Participant characteristics")
     return
 
 
