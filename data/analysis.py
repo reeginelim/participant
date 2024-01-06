@@ -121,7 +121,7 @@ def __(
     #
     PERSONALITY = "Personality"
     RISKAVERSION = "Risk aversion"
-    SUSCEPTIBLE = "Marketing susceptible"
+    SUSCEPTIBILITY = "Susceptibility"
     AGEGROUP = "Age group"
     STATE = "State"
     OWNERSHIP = "Home ownership"
@@ -130,7 +130,7 @@ def __(
     characteristics = {
         PERSONALITY: questions.loc[PERSONALITY_ROWS[0]].dropna().index[1:],
         RISKAVERSION: questions.loc[RISKAVERSION_ROWS[0]].dropna().index[1:],
-        SUSCEPTIBLE: questions.loc[SUSCEPTIBLE_ROWS[0]].dropna().index[1:],
+        SUSCEPTIBILITY: questions.loc[SUSCEPTIBLE_ROWS[0]].dropna().index[1:],
         AGEGROUP: questions.loc[AGEGROUP_ROWS[0]].dropna().index[1:],
         OWNERSHIP: questions.loc[OWNERSHIP_ROWS[0]].dropna().index[1:],
         TECHSAVVY: questions.loc[TECHSAVVY_ROWS[0]].dropna().index[1:],
@@ -154,7 +154,7 @@ def __(
         PERSONALITY,
         RISKAVERSION,
         STATE,
-        SUSCEPTIBLE,
+        SUSCEPTIBILITY,
         TECHSAVVY,
         a,
         b,
@@ -308,8 +308,8 @@ def __(locus, mo, np):
 
 
 @app.cell
-def __(mo):
-    mo.md("## Participant personalities")
+def __(PERSONALITY, mo):
+    mo.md(f"## {PERSONALITY}")
     return
 
 
@@ -320,8 +320,8 @@ def __(PERSONALITY, characteristics, results):
 
 
 @app.cell
-def __(mo):
-    mo.md("### By age group")
+def __(AGEGROUP, mo):
+    mo.md(f"### {AGEGROUP}")
     return
 
 
@@ -362,8 +362,8 @@ def __(
 
 
 @app.cell
-def __(mo):
-    mo.md("### By susceptibility")
+def __(SUSCEPTIBILITY, mo):
+    mo.md(f"### {SUSCEPTIBILITY}")
     return
 
 
@@ -374,7 +374,7 @@ def __(
     MORESUSCEPTIBLE,
     MOSTSUSCEPTIBLE,
     PERSONALITY,
-    SUSCEPTIBLE,
+    SUSCEPTIBILITY,
     characteristics,
     mo,
     plt,
@@ -384,9 +384,9 @@ def __(
     # Personalities by marketing susceptibility
     #
     _plots = {}
-    for _group in characteristics[SUSCEPTIBLE]:
+    for _group in characteristics[SUSCEPTIBILITY]:
         plt.figure()
-        _data = results[results[SUSCEPTIBLE] == _group]
+        _data = results[results[SUSCEPTIBILITY] == _group]
         _plots[_group] = (
             _data[list(characteristics[PERSONALITY])]
             .sum()
@@ -404,8 +404,8 @@ def __(
 
 
 @app.cell
-def __(mo):
-    mo.md("### By tech savviness")
+def __(TECHSAVVY, mo):
+    mo.md(f"### {TECHSAVVY}")
     return
 
 
@@ -441,8 +441,8 @@ def __(
 
 
 @app.cell
-def __(mo):
-    mo.md("### By risk aversion")
+def __(RISKAVERSION, mo):
+    mo.md(f"### {RISKAVERSION}")
     return
 
 
@@ -478,8 +478,8 @@ def __(
 
 
 @app.cell
-def __(mo):
-    mo.md("### By home ownership")
+def __(OWNERSHIP, mo):
+    mo.md(f"### {OWNERSHIP}")
     return
 
 
@@ -512,7 +512,7 @@ def __(
 
 @app.cell
 def __(mo):
-    mo.md("## Participant characteristics")
+    mo.md("## Participant responses")
     return
 
 
