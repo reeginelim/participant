@@ -95,15 +95,26 @@ def __():
 
 
 @app.cell
-def __(pd):
+def __(mo, pd):
+    answersets = pd.read_csv("answersets.csv",index_col="answerset")
+    _options = dict([(f"{x['source'].title()} ({x['date']})",n) for n,x in answersets.iterrows()])
+    answerset = mo.ui.dropdown(options = _options,value = list(_options)[0],label = "Choose a dataset: ")
+    # list(_options)[0]
+    answerset
+    return answerset, answersets
+
+
+@app.cell
+def __(answerset, pd):
     #
     # Load answers
     #
-    answers = pd.read_csv("answers_1.csv",
+    ANSWERSET = answerset.value
+    answers = pd.read_csv(f"answers_{ANSWERSET}.csv",
                           usecols = range(1,15),
                          )
     # answers
-    return answers,
+    return ANSWERSET, answers
 
 
 @app.cell
@@ -143,10 +154,10 @@ def __(
         )
 
     classifier = {}
-    for a, x in _classifier.items():
-        for b, c in x.items():
-            for d in c.values():
-                classifier[d] = (a, b)
+    for _a, _x in _classifier.items():
+        for _b, _c in _x.items():
+            for _d in _c.values():
+                classifier[_d] = (_a, _b)
     # classifier
     return (
         AGEGROUP,
@@ -156,47 +167,42 @@ def __(
         STATE,
         SUSCEPTIBILITY,
         TECHSAVVY,
-        a,
-        b,
-        c,
         characteristic,
         characteristics,
         classifier,
-        d,
         values,
-        x,
     )
 
 
 @app.cell
-def __(PERSONALITY, answers, characteristics, classifier, pd):
+def __(ANSWERSET, PERSONALITY, answers, characteristics, classifier, pd):
     #
     # Classify answers
     #
     results = []
-    for n, row in answers.dropna().iterrows():
-        result = dict(
+    for _n, _x in answers.dropna().iterrows():
+        _y = dict(
             zip(
                 characteristics[PERSONALITY],
                 [0] * len(characteristics[PERSONALITY]),
             )
         )
-        for m, answer in enumerate(row[0:]):
+        for _m, _a in enumerate(_x[0:]):
             try:
-                category = classifier[answer][0]
-                classification = classifier[answer][1]
+                category = classifier[_a][0]
+                classification = classifier[_a][1]
                 if category in [PERSONALITY]:
-                    result[classification] += 1
+                    _y[classification] += 1
                 else:
-                    result[category] = classification
+                    _y[category] = classification
             except:
-                if m != 11:
-                    print("NOTFOUND:", n, answers.columns[m], answer)
-        results.append(result)
+                if _m != 11:
+                    print("NOTFOUND:", _n, answers.columns[_m], _a)
+        results.append(_y)
     results = pd.DataFrame(results)
-    results.to_csv("results_1.csv", header=True, index=False)
+    results.to_csv(f"results_{ANSWERSET}.csv", header=True, index=False)
     # results
-    return answer, category, classification, m, n, result, results, row
+    return category, classification, results
 
 
 @app.cell
@@ -238,7 +244,7 @@ def __(ACHIEVER, EXPLORER, INFLUENCER, SOCIALIZER, pd, plt, results):
         y="y",
         s=_locus["count"] ** 1.7,
         color="lightblue",
-        title="Participation locus",
+        title=f"Participation locus (N={len(locus)})",
     )
     plt.plot(
         locus["x"].mean(),
@@ -303,7 +309,14 @@ def __(ACHIEVER, EXPLORER, INFLUENCER, SOCIALIZER, pd, plt, results):
 def __(locus, mo, np):
     _x = locus["x"]
     _y = locus["y"]
-    mo.md(f"Attention-motivation correlation: {np.corrcoef(_x,_y)[0,1].round(4)}")
+    mo.md(
+        f"""<table>
+    <caption>Correlation coefficients</caption>
+    <tr><th>Variables<hr/></th><th>Value<hr/></th></tr>
+    <tr><th>Attention &mdash; Motivation</th><td>{np.corrcoef(_x,_y)[0,1]:.3f}</td></tr> 
+    </table>
+    """
+    ).center()
     return
 
 
@@ -316,6 +329,27 @@ def __(PERSONALITY, mo):
 @app.cell
 def __(PERSONALITY, characteristics, results):
     results[list(characteristics[PERSONALITY])].sum().plot.pie(title=PERSONALITY)
+    return
+
+
+@app.cell
+def __(PERSONALITY, characteristics, mo, np, results):
+    _v = list(characteristics[PERSONALITY])
+    _m = np.array(results[_v].to_dict("tight")["data"])
+    _cc = np.corrcoef(_m, rowvar=False)
+    mo.md(
+        f"""<table>
+    <caption>Correlation coefficients</caption>
+    <tr><th>Variables<hr/></th><th>Value<hr/></th></tr>
+    <tr><th>{_v[0]} &mdash; {_v[1]}</th><td>{_cc[0][1]:.3f}</td></tr> 
+    <tr><th>{_v[0]} &mdash; {_v[2]}</th><td>{_cc[0][2]:.3f}</td></tr> 
+    <tr><th>{_v[0]} &mdash; {_v[3]}</th><td>{_cc[0][3]:.3f}</td></tr> 
+    <tr><th>{_v[1]} &mdash; {_v[2]}</th><td>{_cc[1][2]:.3f}</td></tr> 
+    <tr><th>{_v[1]} &mdash; {_v[3]}</th><td>{_cc[1][3]:.3f}</td></tr> 
+    <tr><th>{_v[2]} &mdash; {_v[3]}</th><td>{_cc[2][3]:.3f}</td></tr> 
+    </table>
+    """
+    ).center()
     return
 
 
@@ -358,6 +392,11 @@ def __(
             mo.hstack([_plots[GENXOLDER], _plots[BOOMER], _plots[SILENT]]),
         ]
     )
+    return
+
+
+@app.cell
+def __():
     return
 
 
