@@ -1,1 +1,21 @@
-TODO: All data files to build and use this project should be put in this folder. Please provide an overview of the structure of this folder and a brief orientation for contributors. Keep in mind that some data may be too large or too sensitive to be posted in this repository.  In those cases, it may be necessary to enable LFS or create a separate private repository for the data required by the tools.  In exceptional cases it may be necessary to use online storage such as AWS S3. 
+# Running in `marimo`
+
+## Initial setup
+
+~~~
+python3 -m venv .
+. bin/activate
+python3 -m pip install pip --upgrade -r requirements.txt
+~~~
+
+## Run marimo app
+
+~~~
+marimo run analysis.py
+~~~
+
+## Edit marimo app
+
+~~~
+marimo edit analysis.py
+~~~
