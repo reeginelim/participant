@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.1.69"
+__generated_with = "0.1.71"
 app = marimo.App(width="full")
 
 
@@ -15,39 +15,147 @@ def __(pd):
 
 
 @app.cell
+def __(questions):
+    #
+    # Columns labels
+    #
+    ACHIEVER = questions.columns[1]
+    EXPLORER = questions.columns[2]
+    SOCIALIZER = questions.columns[3]
+    INFLUENCER = questions.columns[4]
+    LEASTRISK = questions.columns[5]
+    LESSRISK = questions.columns[6]
+    MORERISK = questions.columns[7]
+    MOSTRISK = questions.columns[8]
+    MOSTSUSCEPTIBLE = questions.columns[9]
+    MORESUSCEPTIBLE = questions.columns[10]
+    LESSSUSCEPTIBLE = questions.columns[11]
+    LEASTSUSCEPTIBLE = questions.columns[12]
+    GENZ = questions.columns[13]
+    MILLENIAL = questions.columns[14]
+    GENXYOUNGER = questions.columns[15]
+    GENXOLDER = questions.columns[16]
+    BOOMER = questions.columns[17]
+    SILENT = questions.columns[18]
+    OWNER = questions.columns[19]
+    RENTER = questions.columns[20]
+    EXPERIMENTER = questions.columns[21]
+    TRENDY = questions.columns[22]
+    FOLLOWER = questions.columns[23]
+    LUDDITE = questions.columns[24]
+    return (
+        ACHIEVER,
+        BOOMER,
+        EXPERIMENTER,
+        EXPLORER,
+        FOLLOWER,
+        GENXOLDER,
+        GENXYOUNGER,
+        GENZ,
+        INFLUENCER,
+        LEASTRISK,
+        LEASTSUSCEPTIBLE,
+        LESSRISK,
+        LESSSUSCEPTIBLE,
+        LUDDITE,
+        MILLENIAL,
+        MORERISK,
+        MORESUSCEPTIBLE,
+        MOSTRISK,
+        MOSTSUSCEPTIBLE,
+        OWNER,
+        RENTER,
+        SILENT,
+        SOCIALIZER,
+        TRENDY,
+    )
+
+
+@app.cell
+def __():
+    #
+    # Row labels
+    #
+    PERSONALITY_ROWS = list(range(8))
+    RISKAVERSION_ROWS = [8]
+    SUSCEPTIBLE_ROWS = [9]
+    AGEGROUP_ROWS = [10]
+    STATE_ROWS = [11]
+    OWNERSHIP_ROWS = [12]
+    TECHSAVVY_ROWS = [13]
+    return (
+        AGEGROUP_ROWS,
+        OWNERSHIP_ROWS,
+        PERSONALITY_ROWS,
+        RISKAVERSION_ROWS,
+        STATE_ROWS,
+        SUSCEPTIBLE_ROWS,
+        TECHSAVVY_ROWS,
+    )
+
+
+@app.cell
 def __(pd):
     #
     # Load answers
     #
     answers = pd.read_csv("answers_1.csv",
-                         usecols = range(1,15))
+                          usecols = range(1,15),
+                         )
     # answers
     return answers,
 
 
 @app.cell
-def __(questions):
-    # 
+def __(
+    AGEGROUP_ROWS,
+    OWNERSHIP_ROWS,
+    PERSONALITY_ROWS,
+    RISKAVERSION_ROWS,
+    SUSCEPTIBLE_ROWS,
+    TECHSAVVY_ROWS,
+    questions,
+):
+    #
     # Build classifier
     #
+    PERSONALITY = "Personality"
+    RISKAVERSION = "Risk aversion"
+    SUSCEPTIBLE = "Marketing susceptible"
+    AGEGROUP = "Age group"
+    STATE = "State"
+    OWNERSHIP = "Home ownership"
+    TECHSAVVY = "Tech savviness"
+
     characteristics = {
-        "Personality" : {"Achiever","Explorer","Socializer","Influencer"},
-        "Risk aversion" : {"Least risk averse","Less risk averse","More risk averse","Most risk averse"},
-        "Marketing susceptible" : {"Most susceptible","More susceptible","Less susceptible","Least susceptible"},
-        "Age group" : {"Gen-Z","Millenial","Gen-X (younger)","Gen-X (older)","Boomer","Silent"},
-        "Home ownership" : {"Owner","Renter"},
-        "Tech savviness" : {"Experimenter","Trendy","Follower","Luddite"},
+        PERSONALITY: questions.loc[PERSONALITY_ROWS[0]].dropna().index[1:],
+        RISKAVERSION: questions.loc[RISKAVERSION_ROWS[0]].dropna().index[1:],
+        SUSCEPTIBLE: questions.loc[SUSCEPTIBLE_ROWS[0]].dropna().index[1:],
+        AGEGROUP: questions.loc[AGEGROUP_ROWS[0]].dropna().index[1:],
+        OWNERSHIP: questions.loc[OWNERSHIP_ROWS[0]].dropna().index[1:],
+        TECHSAVVY: questions.loc[TECHSAVVY_ROWS[0]].dropna().index[1:],
     }
+
     _classifier = {}
-    for characteristic,values in characteristics.items():
-        _classifier[characteristic] = questions.loc[range(len(questions)),list(values)].dropna().to_dict()
-    # [(a,[(b,list(c.values())) for b,c in x.items()]) for a,x in classifier.items()]
+    for characteristic, values in characteristics.items():
+        _classifier[characteristic] = (
+            questions.loc[range(len(questions)), list(values)].dropna().to_dict()
+        )
+
     classifier = {}
-    for a,x in _classifier.items():
-        for b,c in x.items():
+    for a, x in _classifier.items():
+        for b, c in x.items():
             for d in c.values():
-                classifier[d] = (a,b)
+                classifier[d] = (a, b)
+    # classifier
     return (
+        AGEGROUP,
+        OWNERSHIP,
+        PERSONALITY,
+        RISKAVERSION,
+        STATE,
+        SUSCEPTIBLE,
+        TECHSAVVY,
         a,
         b,
         c,
@@ -61,27 +169,32 @@ def __(questions):
 
 
 @app.cell
-def __(answers, classifier, pd):
+def __(PERSONALITY, answers, characteristics, classifier, pd):
     #
     # Classify answers
     #
-    results=[]
-    for n,row in answers.dropna().iterrows():
-        result = {"Achiever":0,"Explorer":0,"Socializer":0,"Influencer":0}
-        for m,answer in enumerate(row[0:]):
+    results = []
+    for n, row in answers.dropna().iterrows():
+        result = dict(
+            zip(
+                characteristics[PERSONALITY],
+                [0] * len(characteristics[PERSONALITY]),
+            )
+        )
+        for m, answer in enumerate(row[0:]):
             try:
                 category = classifier[answer][0]
                 classification = classifier[answer][1]
-                if category in ["Personality"]:
+                if category in [PERSONALITY]:
                     result[classification] += 1
-                else:    
+                else:
                     result[category] = classification
             except:
                 if m != 11:
-                    print("NOTFOUND:",n,answers.columns[m],answer)
+                    print("NOTFOUND:", n, answers.columns[m], answer)
         results.append(result)
     results = pd.DataFrame(results)
-    results.to_csv("results_1.csv",header=True,index=False)
+    results.to_csv("results_1.csv", header=True, index=False)
     # results
     return answer, category, classification, m, n, result, results, row
 
@@ -93,42 +206,105 @@ def __(mo):
 
 
 @app.cell
-def __(pd, plt, results):
-    locus = pd.DataFrame({"x":(results["Achiever"]+results["Explorer"]-results["Socializer"] - results["Influencer"])/(results["Achiever"]+results["Explorer"]+results["Socializer"]+results["Influencer"]),
-                          "y":(results["Achiever"]-results["Explorer"]-results["Socializer"]+results["Influencer"])/(results["Achiever"]+results["Explorer"]+results["Socializer"]+results["Influencer"])})
+def __(ACHIEVER, EXPLORER, INFLUENCER, SOCIALIZER, pd, plt, results):
+    _total = (
+        results[ACHIEVER]
+        + results[EXPLORER]
+        + results[SOCIALIZER]
+        + results[INFLUENCER]
+    )
+    locus = pd.DataFrame(
+        {
+            "x": (
+                results[ACHIEVER]
+                + results[EXPLORER]
+                - results[SOCIALIZER]
+                - results[INFLUENCER]
+            )
+            / _total,
+            "y": (
+                results[ACHIEVER]
+                - results[EXPLORER]
+                - results[SOCIALIZER]
+                + results[INFLUENCER]
+            )
+            / _total,
+        }
+    )
     locus["count"] = 1
-    _locus = locus.groupby(["x","y"]).sum().reset_index()
-    # plt.figure(figsize=(10,10))
-    _locus.plot.scatter(x="x",y="y",s=_locus["count"]**1.7,color="lightblue",title="Participation locus")
-    plt.plot(locus["x"].mean(),locus["y"].mean(),"xg",markersize=10,label="Mean locus")
-    plt.plot(locus["x"].median(),locus["y"].median(),"+g",markersize=10,label="Median locus")
-    plt.plot([-1,1],[0,0],'k',linewidth=0.5)
-    plt.plot([0,0],[-1,1],'k',linewidth=0.5)
-    plt.text(0.5,0.55,"Achiever",horizontalalignment="center")
-    plt.text(0.5,-0.65,"Explorer",horizontalalignment="center")
-    plt.text(-0.5,-0.65,"Socializer",horizontalalignment="center")
-    plt.text(-0.5,0.55,"Influencer",horizontalalignment="center")
-    plt.text(1.1,0,"System focus",
-             rotation=90,
-             verticalalignment="center",
-             horizontalalignment="center")
-    plt.text(-1.1,0,"Individual focus",
-             rotation=90,
-             verticalalignment="center",
-             horizontalalignment="center")
-    plt.text(0,1.1,"Action motive",
-             verticalalignment="center",
-             horizontalalignment="center")
-    plt.text(0,-1.1,"Interaction motive",
-             verticalalignment="center",
-             horizontalalignment="center")
-    plt.xlim([-1.2,1.2])
-    plt.ylim([-1.2,1.2])
+    _locus = locus.groupby(["x", "y"]).sum().reset_index()
+    _locus.plot.scatter(
+        x="x",
+        y="y",
+        s=_locus["count"] ** 1.7,
+        color="lightblue",
+        title="Participation locus",
+    )
+    plt.plot(
+        locus["x"].mean(),
+        locus["y"].mean(),
+        "xg",
+        markersize=10,
+        label="Mean locus",
+    )
+    plt.plot(
+        locus["x"].median(),
+        locus["y"].median(),
+        "+g",
+        markersize=10,
+        label="Median locus",
+    )
+    plt.plot([-1, 1], [0, 0], "k", linewidth=0.5)
+    plt.plot([0, 0], [-1, 1], "k", linewidth=0.5)
+    plt.text(0.5, 0.55, ACHIEVER, horizontalalignment="center")
+    plt.text(0.5, -0.65, EXPLORER, horizontalalignment="center")
+    plt.text(-0.5, -0.65, SOCIALIZER, horizontalalignment="center")
+    plt.text(-0.5, 0.55, INFLUENCER, horizontalalignment="center")
+    plt.text(
+        1.1,
+        0,
+        "System focus",
+        rotation=90,
+        verticalalignment="center",
+        horizontalalignment="center",
+    )
+    plt.text(
+        -1.1,
+        0,
+        "Individual focus",
+        rotation=90,
+        verticalalignment="center",
+        horizontalalignment="center",
+    )
+    plt.text(
+        0,
+        1.1,
+        "Action motive",
+        verticalalignment="center",
+        horizontalalignment="center",
+    )
+    plt.text(
+        0,
+        -1.1,
+        "Interaction motive",
+        verticalalignment="center",
+        horizontalalignment="center",
+    )
+    plt.xlim([-1.2, 1.2])
+    plt.ylim([-1.2, 1.2])
     plt.xlabel("Attention")
     plt.ylabel("Motivation")
-    plt.legend(loc='upper left')
+    plt.legend(loc="upper left")
     plt.gca()
     return locus,
+
+
+@app.cell
+def __(locus, mo, np):
+    _x = locus["x"]
+    _y = locus["y"]
+    mo.md(f"Attention-motivation correlation: {np.corrcoef(_x,_y)[0,1].round(4)}")
+    return
 
 
 @app.cell
@@ -138,8 +314,8 @@ def __(mo):
 
 
 @app.cell
-def __(characteristics, results):
-    results[list(characteristics["Personality"])].sum().plot.pie(title="Personalities")
+def __(PERSONALITY, characteristics, results):
+    results[list(characteristics[PERSONALITY])].sum().plot.pie(title=PERSONALITY)
     return
 
 
@@ -150,16 +326,38 @@ def __(mo):
 
 
 @app.cell
-def __(characteristics, mo, plt, results):
+def __(
+    AGEGROUP,
+    BOOMER,
+    GENXOLDER,
+    GENXYOUNGER,
+    GENZ,
+    MILLENIAL,
+    PERSONALITY,
+    SILENT,
+    characteristics,
+    mo,
+    plt,
+    results,
+):
     #
     # Personalities by age group
     #
-    _plots = []
-    for _group in characteristics["Age group"]:
+    _plots = {}
+    for _group in characteristics[AGEGROUP]:
         plt.figure()
-        _data = results[results["Age group"]==_group]
-        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
-    mo.hstack(_plots)
+        _data = results[results[AGEGROUP] == _group]
+        _plots[_group] = (
+            _data[list(characteristics[PERSONALITY])]
+            .sum()
+            .plot.pie(title=f"{_group} (N={len(_data)})")
+        )
+    mo.vstack(
+        [
+            mo.hstack([_plots[GENZ], _plots[MILLENIAL], _plots[GENXYOUNGER]]),
+            mo.hstack([_plots[GENXOLDER], _plots[BOOMER], _plots[SILENT]]),
+        ]
+    )
     return
 
 
@@ -170,16 +368,38 @@ def __(mo):
 
 
 @app.cell
-def __(characteristics, mo, plt, results):
+def __(
+    LEASTSUSCEPTIBLE,
+    LESSSUSCEPTIBLE,
+    MORESUSCEPTIBLE,
+    MOSTSUSCEPTIBLE,
+    PERSONALITY,
+    SUSCEPTIBLE,
+    characteristics,
+    mo,
+    plt,
+    results,
+):
     #
     # Personalities by marketing susceptibility
     #
-    _plots = []
-    for _group in characteristics["Marketing susceptible"]:
+    _plots = {}
+    for _group in characteristics[SUSCEPTIBLE]:
         plt.figure()
-        _data = results[results["Marketing susceptible"]==_group]
-        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
-    mo.hstack(_plots)
+        _data = results[results[SUSCEPTIBLE] == _group]
+        _plots[_group] = (
+            _data[list(characteristics[PERSONALITY])]
+            .sum()
+            .plot.pie(title=f"{_group} (N={len(_data)})")
+        )
+    mo.hstack(
+        [
+            _plots[LEASTSUSCEPTIBLE],
+            _plots[LESSSUSCEPTIBLE],
+            _plots[MORESUSCEPTIBLE],
+            _plots[MOSTSUSCEPTIBLE],
+        ]
+    )
     return
 
 
@@ -190,16 +410,33 @@ def __(mo):
 
 
 @app.cell
-def __(characteristics, mo, plt, results):
+def __(
+    EXPERIMENTER,
+    FOLLOWER,
+    LUDDITE,
+    PERSONALITY,
+    TECHSAVVY,
+    TRENDY,
+    characteristics,
+    mo,
+    plt,
+    results,
+):
     #
     # Personalities by tech savviness
     #
-    _plots = []
-    for _group in characteristics["Tech savviness"]:
+    _plots = {}
+    for _group in characteristics[TECHSAVVY]:
         plt.figure()
-        _data = results[results["Tech savviness"]==_group]
-        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
-    mo.hstack(_plots)
+        _data = results[results[TECHSAVVY] == _group]
+        _plots[_group] = (
+            _data[list(characteristics[PERSONALITY])]
+            .sum()
+            .plot.pie(title=f"{_group} (N={len(_data)})")
+        )
+    mo.hstack(
+        [_plots[EXPERIMENTER], _plots[TRENDY], _plots[FOLLOWER], _plots[LUDDITE]]
+    )
     return
 
 
@@ -210,16 +447,33 @@ def __(mo):
 
 
 @app.cell
-def __(characteristics, mo, plt, results):
+def __(
+    LEASTRISK,
+    LESSRISK,
+    MORERISK,
+    MOSTRISK,
+    PERSONALITY,
+    RISKAVERSION,
+    characteristics,
+    mo,
+    plt,
+    results,
+):
     #
     # Personalities by risk aversion
     #
-    _plots = []
-    for _group in characteristics["Risk aversion"]:
+    _plots = {}
+    for _group in characteristics[RISKAVERSION]:
         plt.figure()
-        _data = results[results["Risk aversion"]==_group]
-        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
-    mo.hstack(_plots)
+        _data = results[results[RISKAVERSION] == _group]
+        _plots[_group] = (
+            _data[list(characteristics[PERSONALITY])]
+            .sum()
+            .plot.pie(title=f"{_group} (N={len(_data)})")
+        )
+    mo.hstack(
+        [_plots[LEASTRISK], _plots[LESSRISK], _plots[MORERISK], _plots[MOSTRISK]]
+    )
     return
 
 
@@ -230,16 +484,29 @@ def __(mo):
 
 
 @app.cell
-def __(characteristics, mo, plt, results):
+def __(
+    OWNER,
+    OWNERSHIP,
+    PERSONALITY,
+    RENTER,
+    characteristics,
+    mo,
+    plt,
+    results,
+):
     #
     # Personalities by homeownership
     #
-    _plots = []
-    for _group in characteristics["Home ownership"]:
+    _plots = {}
+    for _group in characteristics[OWNERSHIP]:
         plt.figure()
-        _data = results[results["Home ownership"]==_group]
-        _plots.append(_data[list(characteristics["Personality"])].sum().plot.pie(title=f"{_group} personality (N={len(_data)})"))
-    mo.hstack(_plots)
+        _data = results[results[OWNERSHIP] == _group]
+        _plots[_group] = (
+            _data[list(characteristics[PERSONALITY])]
+            .sum()
+            .plot.pie(title=f"{_group} (N={len(_data)})")
+        )
+    mo.hstack([_plots[OWNER], _plots[RENTER]])
     return
 
 
@@ -250,13 +517,33 @@ def __(mo):
 
 
 @app.cell
-def __(mo, plt, results):
+def __(PERSONALITY, characteristics, mo, pd, plt, results):
     _plots = []
-    for _group in ["Risk aversion","Marketing susceptible","Age group","Home ownership","Tech savviness"]:
+    for _group in results:
         plt.figure()
-        _plots.append(results[_group].hist())
-        _plots[-1].set_title(_group)
-    mo.hstack(_plots)
+        if _group in characteristics[PERSONALITY]:
+            _plots.append(results[_group].hist(bins=range(8), width=0.5))
+            _plots[-1].set_title(_group)
+        else:
+            _data = pd.DataFrame(results[_group]).set_index(_group)
+            _data["count"] = 1
+            _counts = _data.groupby(_group).sum().to_dict()["count"]
+            _counts, _bins = [_counts[x] for x in characteristics[_group]], list(
+                characteristics[_group]
+            )
+            _plot = plt.bar(
+                x=range(0, len(_bins)),
+                height=_counts,
+                tick_label=_bins,
+                width=0.5,
+            )
+            _plots.append(_plot)
+    mo.vstack(
+        [
+            mo.hstack(_plots[:4]),
+            mo.hstack(_plots[4:]),
+        ]
+    )
     return
 
 
@@ -264,8 +551,9 @@ def __(mo, plt, results):
 def __():
     import marimo as mo
     import pandas as pd
+    import numpy as np
     import matplotlib.pyplot as plt
-    return mo, pd, plt
+    return mo, np, pd, plt
 
 
 if __name__ == "__main__":
