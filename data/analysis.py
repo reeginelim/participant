@@ -99,13 +99,28 @@ def __(mo, pd):
     answersets = pd.read_csv("answersets.csv",index_col="answerset")
     _options = dict([(f"{x['source'].title()} ({x['date']})",n) for n,x in answersets.iterrows()])
     answerset = mo.ui.dropdown(options = _options,value = list(_options)[0],label = "Choose a dataset: ")
-    # list(_options)[0]
     answerset
     return answerset, answersets
 
 
 @app.cell
-def __(answerset, pd):
+def __(mo):
+    regions = {
+        "New England" : ["Maine","Massachusetts","Rhode Island","New Hampshire","Connecticut","Vermont"],
+        "Pacific Coast" : ["California","Oregon","Washington","Hawaii","Alaska"],
+        "South" : ["Florida","Georgia","South Carolina","Mississippi","Alabama","Louisiana","Kentucky","Tennessee","Arkansas"],
+        "Atlantic Coast" : ["New York","New Jersey","Delaware","Maryland","Pennsylvania","Virginia","Washington DC","West Virginia","North Carolina"],
+        "Midwest" : ["Ohio","Indiana","Michigan","Illinois","Wisconsin","Minnesota","Kansas","Nebraska","Iowa","Missouri","North Dakota","South Dakota"],
+        "Mountains" : ["Wyoming","Idaho","Montana","Utah","Colorado"],
+        "Southwest" : ["Oklahoma","Texas","New Mexico","Arizona","Nevada"],
+    }
+    region = mo.ui.dropdown(options = regions, label = "Choose a region: ")
+    region
+    return region, regions
+
+
+@app.cell
+def __(answerset, pd, region):
     #
     # Load answers
     #
@@ -113,6 +128,13 @@ def __(answerset, pd):
     answers = pd.read_csv(f"answers_{ANSWERSET}.csv",
                           usecols = range(1,15),
                          )
+
+    # limit results to selected region
+    if region.value:
+        answers = answers.loc[answers["Which state do you live in?"].isin(region.value)]
+        answers.groupby("Which state do you live in?").count()
+        answers.groupby("Which state do you live in?")["Which state do you live in?"].count().plot.pie(figsize=(10,10))
+        
     # answers
     return ANSWERSET, answers
 
@@ -242,7 +264,7 @@ def __(ACHIEVER, EXPLORER, INFLUENCER, SOCIALIZER, pd, plt, results):
     _locus.plot.scatter(
         x="x",
         y="y",
-        s=_locus["count"] ** 1.7,
+        s=_locus["count"]/len(locus)*1000,
         color="lightblue",
         title=f"Participation locus (N={len(locus)})",
     )
@@ -570,21 +592,24 @@ def __(PERSONALITY, characteristics, mo, pd, plt, results):
             _data = pd.DataFrame(results[_group]).set_index(_group)
             _data["count"] = 1
             _counts = (_data.groupby(_group).sum() / len(_data) ).to_dict()["count"]
-            _counts, _bins = [_counts[x] for x in characteristics[_group]], list(
-                characteristics[_group]
-            )
-            _plot = plt.bar(
-                x=range(0, len(_bins)),
-                height=_counts,
-                tick_label=_bins,
-                width=0.5,
-            )
-            plt.grid()
-            plt.ylabel("Frequency (pu)")
-            plt.ylim([0,1])
-            plt.yticks([x/10 for x in range(11)])
-            plt.title(_group)
-            _plots.append(_plot)
+            try:
+                _counts, _bins = [_counts[x] for x in characteristics[_group]], list(
+                    characteristics[_group]
+                )
+                _plot = plt.bar(
+                    x=range(0, len(_bins)),
+                    height=_counts,
+                    tick_label=_bins,
+                    width=0.5,
+                )
+                plt.grid()
+                plt.ylabel("Frequency (pu)")
+                plt.ylim([0,1])
+                plt.yticks([x/10 for x in range(11)])
+                plt.title(_group)
+                _plots.append(_plot)
+            except:
+                pass
     mo.vstack(
         [
             mo.hstack(_plots[:4]),
@@ -600,6 +625,7 @@ def __():
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
+    pd.options.display.max_rows=99
     return mo, np, pd, plt
 
 
