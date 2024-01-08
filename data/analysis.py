@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.1.71"
+__generated_with = "0.1.69"
 app = marimo.App(width="full")
 
 
@@ -561,12 +561,15 @@ def __(PERSONALITY, characteristics, mo, pd, plt, results):
     for _group in results:
         plt.figure()
         if _group in characteristics[PERSONALITY]:
-            _plots.append(results[_group].hist(bins=range(8), width=0.5))
+            _plots.append(results[_group].hist(bins=range(8), width=0.5, density=True))
             _plots[-1].set_title(_group)
+            plt.ylabel("Frequency (pu)")
+            plt.ylim([0,1])
+            plt.yticks([x/10 for x in range(11)])
         else:
             _data = pd.DataFrame(results[_group]).set_index(_group)
             _data["count"] = 1
-            _counts = _data.groupby(_group).sum().to_dict()["count"]
+            _counts = (_data.groupby(_group).sum() / len(_data) ).to_dict()["count"]
             _counts, _bins = [_counts[x] for x in characteristics[_group]], list(
                 characteristics[_group]
             )
@@ -576,6 +579,11 @@ def __(PERSONALITY, characteristics, mo, pd, plt, results):
                 tick_label=_bins,
                 width=0.5,
             )
+            plt.grid()
+            plt.ylabel("Frequency (pu)")
+            plt.ylim([0,1])
+            plt.yticks([x/10 for x in range(11)])
+            plt.title(_group)
             _plots.append(_plot)
     mo.vstack(
         [
