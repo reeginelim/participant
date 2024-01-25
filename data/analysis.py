@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.1.69"
+__generated_with = "0.1.79"
 app = marimo.App(width="full")
 
 
@@ -106,13 +106,13 @@ def __(mo, pd):
 @app.cell
 def __(mo):
     regions = {
-        "New England" : ["Maine","Massachusetts","Rhode Island","New Hampshire","Connecticut","Vermont"],
-        "Pacific Coast" : ["California","Oregon","Washington","Hawaii","Alaska"],
-        "South" : ["Florida","Georgia","South Carolina","Mississippi","Alabama","Louisiana","Kentucky","Tennessee","Arkansas"],
-        "Atlantic Coast" : ["New York","New Jersey","Delaware","Maryland","Pennsylvania","Virginia","Washington DC","West Virginia","North Carolina"],
-        "Midwest" : ["Ohio","Indiana","Michigan","Illinois","Wisconsin","Minnesota","Kansas","Nebraska","Iowa","Missouri","North Dakota","South Dakota"],
-        "Mountains" : ["Wyoming","Idaho","Montana","Utah","Colorado"],
-        "Southwest" : ["Oklahoma","Texas","New Mexico","Arizona","Nevada"],
+        "New England" : ["Maine", "Massachusetts", "Rhode Island", "New Hampshire", "Connecticut", "Vermont"],
+        "Pacific Coast" : ["California", "Oregon", "Washington", "Hawaii", "Alaska"],
+        "South" : ["Florida", "Georgia", "South Carolina", "Mississippi", "Alabama", "Louisiana", "Kentucky", "Tennessee", "Arkansas"],
+        "Atlantic Coast" : ["New York", "New Jersey", "Delaware", "Maryland", "Pennsylvania", "Virginia", "Washington DC", "West Virginia", "North Carolina"],
+        "Midwest" : ["Ohio", "Indiana", "Michigan", "Illinois", "Wisconsin", "Minnesota", "Kansas", "Nebraska", "Iowa", "Missouri", "North Dakota", "South Dakota"],
+        "Mountains" : ["Wyoming", "Idaho", "Montana", "Utah", "Colorado"],
+        "Southwest" : ["Oklahoma", "Texas", "New Mexico", "Arizona", "Nevada"],
     }
     region = mo.ui.dropdown(options = regions, label = "Choose a region: ")
     region
@@ -134,7 +134,7 @@ def __(answerset, pd, region):
         answers = answers.loc[answers["Which state do you live in?"].isin(region.value)]
         answers.groupby("Which state do you live in?").count()
         answers.groupby("Which state do you live in?")["Which state do you live in?"].count().plot.pie(figsize=(10,10))
-        
+
     # answers
     return ANSWERSET, answers
 
@@ -197,7 +197,15 @@ def __(
 
 
 @app.cell
-def __(ANSWERSET, PERSONALITY, answers, characteristics, classifier, pd):
+def __(
+    ANSWERSET,
+    PERSONALITY,
+    answers,
+    characteristics,
+    classifier,
+    pd,
+    region,
+):
     #
     # Classify answers
     #
@@ -222,7 +230,8 @@ def __(ANSWERSET, PERSONALITY, answers, characteristics, classifier, pd):
                     print("NOTFOUND:", _n, answers.columns[_m], _a)
         results.append(_y)
     results = pd.DataFrame(results)
-    results.to_csv(f"results_{ANSWERSET}.csv", header=True, index=False)
+    if region.value is None:
+        results.to_csv(f"results_{ANSWERSET}.csv", header=True, index=False)
     # results
     return category, classification, results
 
