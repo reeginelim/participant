@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.1.79"
+__generated_with = "0.1.45"
 app = marimo.App(width="full")
 
 
@@ -120,7 +120,7 @@ def __(mo):
 
 
 @app.cell
-def __(answerset, pd, region):
+def __(answerset, pd, plt, region):
     #
     # Load answers
     #
@@ -132,11 +132,23 @@ def __(answerset, pd, region):
     # limit results to selected region
     if region.value:
         answers = answers.loc[answers["Which state do you live in?"].isin(region.value)]
-        answers.groupby("Which state do you live in?").count()
         answers.groupby("Which state do you live in?")["Which state do you live in?"].count().plot.pie(figsize=(10,10))
 
-    # answers
+    plt.gca()
     return ANSWERSET, answers
+
+
+@app.cell
+def __(np, pd, questions):
+    answer_weights = pd.read_csv("expert_weights.csv")
+    personality_matrix = questions.iloc[:8, :5]
+    def get_personality_weight(answer):
+        question, option = np.where(personality_matrix.isin([answer]).values)
+        question = question[0] + 1
+        option = option[0] + 1
+        return dict(zip(answer_weights["Categories"][answer_weights.isin([question])["Question"]].values, answer_weights[answer_weights.columns[option]][answer_weights.isin([question])["Question"]].values))
+
+    return answer_weights, get_personality_weight, personality_matrix
 
 
 @app.cell
@@ -181,6 +193,7 @@ def __(
             for _d in _c.values():
                 classifier[_d] = (_a, _b)
     # classifier
+    # characteristics
     return (
         AGEGROUP,
         OWNERSHIP,
@@ -197,20 +210,31 @@ def __(
 
 
 @app.cell
+def __(mo):
+    wt_vs_val_toggle = mo.ui.checkbox(value=False, label="Expert Weighted")
+    wt_vs_val_toggle
+    return wt_vs_val_toggle,
+
+
+@app.cell
 def __(
     ANSWERSET,
     PERSONALITY,
     answers,
     characteristics,
     classifier,
+    get_personality_weight,
     pd,
     region,
+    wt_vs_val_toggle,
 ):
     #
     # Classify answers
     #
     results = []
     for _n, _x in answers.dropna().iterrows():
+        # print(f"{_n} answer")
+        # print("------------------------")
         _y = dict(
             zip(
                 characteristics[PERSONALITY],
@@ -218,11 +242,21 @@ def __(
             )
         )
         for _m, _a in enumerate(_x[0:]):
+            # print(f"{_m} question")
+            # print(_a)
             try:
                 category = classifier[_a][0]
+                # print("category: ", category)
                 classification = classifier[_a][1]
-                if category in [PERSONALITY]:
-                    _y[classification] += 1
+                # print("classification: ", classification)
+                if category in [PERSONALITY]:                
+                    if wt_vs_val_toggle.value:
+                        ans_wt = get_personality_weight(_a)
+                        # print(ans_wt)
+                        for cls, wt in ans_wt.items():
+                            _y[cls] += wt
+                    else:
+                        _y[classification] += 1
                 else:
                     _y[category] = classification
             except:
@@ -233,7 +267,7 @@ def __(
     if region.value is None:
         results.to_csv(f"results_{ANSWERSET}.csv", header=True, index=False)
     # results
-    return category, classification, results
+    return ans_wt, category, classification, cls, results, wt
 
 
 @app.cell
