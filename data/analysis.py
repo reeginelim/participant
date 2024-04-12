@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.1.45"
+__generated_with = "0.3.4"
 app = marimo.App(width="full")
 
 
@@ -9,7 +9,7 @@ def __(pd):
     #
     # Load questions
     #
-    questions = pd.read_csv("questions.csv")
+    questions = pd.read_csv("questions_old.csv")
     # questions
     return questions,
 
@@ -139,6 +139,11 @@ def __(answerset, pd, plt, region):
 
 
 @app.cell
+def __():
+    return
+
+
+@app.cell
 def __(np, pd, questions):
     answer_weights = pd.read_csv("expert_weights.csv")
     personality_matrix = questions.iloc[:8, :5]
@@ -147,7 +152,6 @@ def __(np, pd, questions):
         question = question[0] + 1
         option = option[0] + 1
         return dict(zip(answer_weights["Categories"][answer_weights.isin([question])["Question"]].values, answer_weights[answer_weights.columns[option]][answer_weights.isin([question])["Question"]].values))
-
     return answer_weights, get_personality_weight, personality_matrix
 
 
@@ -192,7 +196,7 @@ def __(
         for _b, _c in _x.items():
             for _d in _c.values():
                 classifier[_d] = (_a, _b)
-    # classifier
+    classifier
     # characteristics
     return (
         AGEGROUP,
@@ -214,6 +218,11 @@ def __(mo):
     wt_vs_val_toggle = mo.ui.checkbox(value=False, label="Expert Weighted")
     wt_vs_val_toggle
     return wt_vs_val_toggle,
+
+
+@app.cell
+def __():
+    return
 
 
 @app.cell
@@ -241,6 +250,7 @@ def __(
                 [0] * len(characteristics[PERSONALITY]),
             )
         )
+        # print("_y", _y)
         for _m, _a in enumerate(_x[0:]):
             # print(f"{_m} question")
             # print(_a)
@@ -266,8 +276,13 @@ def __(
     results = pd.DataFrame(results)
     if region.value is None:
         results.to_csv(f"results_{ANSWERSET}.csv", header=True, index=False)
-    # results
+    results
     return ans_wt, category, classification, cls, results, wt
+
+
+@app.cell
+def __():
+    return
 
 
 @app.cell
