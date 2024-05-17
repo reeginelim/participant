@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.3.4"
+__generated_with = "0.1.45"
 app = marimo.App(width="full")
 
 
@@ -83,7 +83,7 @@ def __(answer_selector, answers_list, answers_path, os, pd, plt, region):
 
 @app.cell
 def __(mo):
-    wt_vs_val_toggle = mo.ui.checkbox(value=False, label="Expert Weighted")
+    wt_vs_val_toggle = mo.ui.checkbox(value=False, label="Validator Weighted")
     wt_vs_val_toggle
     return wt_vs_val_toggle,
 
@@ -98,8 +98,9 @@ def __(
     wt_vs_val_toggle,
 ):
     results = []
-    for _n, _x in personality_answers.dropna().iterrows():
+    for _n, _x in personality_answers.iterrows():
         _y = dict(zip(characteristics,[0] * len(characteristics)))
+        _y["response_id"] = _x.iloc[0]
         for _m, _a in enumerate(_x[3:]):
             question_number = _m+1
             answer_number = _a
@@ -121,6 +122,11 @@ def __(
         weights,
         wt,
     )
+
+
+@app.cell
+def __():
+    return
 
 
 @app.cell
@@ -150,6 +156,7 @@ def __(ACHIEVER, EXPLORER, INFLUENCER, SOCIALIZER, pd, plt, results):
         }
     )
     locus["count"] = 1
+    locus["response_id"] = results["response_id"]
     _locus = locus.groupby(["x", "y"]).sum().reset_index()
     _locus.plot.scatter(
         x="x",
@@ -215,6 +222,12 @@ def __(ACHIEVER, EXPLORER, INFLUENCER, SOCIALIZER, pd, plt, results):
     plt.legend(loc="upper left")
     plt.gca()
     return locus,
+
+
+@app.cell
+def __(locus):
+    locus
+    return
 
 
 @app.cell
