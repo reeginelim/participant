@@ -1,15 +1,24 @@
 import marimo
 
-__generated_with = "0.1.45"
+__generated_with = "0.6.16"
 app = marimo.App(width="full")
 
 
 @app.cell
-def __(pd, personality_questions_path):
+def __(mo, pd, personality_questions_path):
     personality_questions = pd.read_csv(personality_questions_path)
     characteristics = list(personality_questions.columns)
     characteristics.pop(0)
-    return characteristics, personality_questions
+
+    file_browser = mo.ui.file_browser(label = "Answers:", filetypes=[".csv"])
+    file_browser
+    return characteristics, file_browser, personality_questions
+
+
+@app.cell
+def __(file_browser):
+    [x.path for x in file_browser.value]
+    return
 
 
 @app.cell
@@ -40,10 +49,11 @@ def __(personality_questions):
 
 
 @app.cell
-def __(answers_path, mo, os):
-    answers_list = os.listdir(answers_path)
+def __(file_browser, mo, os):
+    # answers_list = os.listdir(answers_path)
+    answers_list = dict([(os.path.basename(x),x) for x in [x.path for x in file_browser.value]])
     answer_selector = mo.ui.dropdown(
-        options=answers_list+["Total"],
+        options=list(answers_list.keys())+["Total"],
         value="Total",
         label="Select the answer for anlysis"
     )
@@ -70,7 +80,7 @@ def __(mo):
 @app.cell
 def __(answer_selector, answers_list, answers_path, os, pd, plt, region):
     if answer_selector.value == "Total":
-        personality_answers = pd.concat([pd.read_csv(os.path.join(answers_path, answer)) for answer in answers_list])
+        personality_answers = pd.concat([pd.read_csv(answer) for answer in answers_list.values()])
     else:
         personality_answers = pd.read_csv(os.path.join(answers_path, answer_selector.value))
 
@@ -122,11 +132,6 @@ def __(
         weights,
         wt,
     )
-
-
-@app.cell
-def __():
-    return
 
 
 @app.cell
@@ -225,8 +230,8 @@ def __(ACHIEVER, EXPLORER, INFLUENCER, SOCIALIZER, pd, plt, results):
 
 
 @app.cell
-def __(locus):
-    locus
+def __():
+    # locus
     return
 
 
