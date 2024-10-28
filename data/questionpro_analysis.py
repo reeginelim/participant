@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.6.16"
+__generated_with = "0.8.8"
 app = marimo.App(width="full")
 
 
@@ -78,17 +78,28 @@ def __(mo):
 
 
 @app.cell
-def __(answer_selector, answers_list, answers_path, os, pd, plt, region):
+def __(
+    answer_selector,
+    answers_list,
+    answers_path,
+    dtype_dict,
+    os,
+    pd,
+    plt,
+    region,
+):
     if answer_selector.value == "Total":
-        personality_answers = pd.concat([pd.read_csv(answer) for answer in answers_list.values()])
+        personality_answers = []
+        for ans in answers_list:
+            personality_answers.append(pd.read_csv(os.path.join(answers_path, ans), dtype=dtype_dict))
+        personality_answers = pd.concat(personality_answers)
     else:
-        personality_answers = pd.read_csv(os.path.join(answers_path, answer_selector.value))
-
+        personality_answers = pd.read_excel(os.path.join(answers_path, answer_selector.value), dtype=dtype_dict)
     if region.value:
         personality_answers = personality_answers.loc[personality_answers["Region"].isin(region.value)]
     personality_answers.groupby("Region")["Region"].count().plot.pie(figsize=(10,10))
     plt.gca()
-    return personality_answers,
+    return ans, personality_answers
 
 
 @app.cell
@@ -96,6 +107,24 @@ def __(mo):
     wt_vs_val_toggle = mo.ui.checkbox(value=False, label="Validator Weighted")
     wt_vs_val_toggle
     return wt_vs_val_toggle,
+
+
+@app.cell
+def __():
+    dtype_dict = {
+        "Response ID": "str",
+        "Timestamp (mm/dd/yyyy)": "str",
+        "Region": "str",
+        "You are one step away from reaching the next level in an online game. What would you choose to accelerate your progress towards that goal?": "Int64",
+        "What approach would you prefer to earn a free smartwatch from the fitness program organized by your community?": "Int64",
+        "Your favorite restaurant is offering a promotion. Which of the following activities would you choose to do in order to receive the giveaway?": "Int64",
+        "When playing board games with your friends which of the following options best describes your strategy?": "Int64",
+        "You participate in a lottery to win a pair of concert tickets featuring a popular band. What would you do to win the tickets?": "Int64",
+        "When engaging in a new game for the very first time which of the following options best reflects your approach to playing?": "Int64",
+        "When looking for a credit card which of the following factors holds the highest importance to you?": "Int64",
+        "When coordinating an event what matters most to you?": "Int64"
+    }
+    return dtype_dict,
 
 
 @app.cell
@@ -111,7 +140,7 @@ def __(
     for _n, _x in personality_answers.iterrows():
         _y = dict(zip(characteristics,[0] * len(characteristics)))
         _y["response_id"] = _x.iloc[0]
-        for _m, _a in enumerate(_x[3:]):
+        for _m, _a in enumerate(_x[3:11]):
             question_number = _m+1
             answer_number = _a
             if wt_vs_val_toggle.value:
@@ -119,7 +148,7 @@ def __(
                 for cls, wt in weights.items():
                     _y[cls] += wt
             else:
-                personality = get_personality(question_number, answer_number)
+                personality = get_personality(question_number, int(answer_number))
                 _y[personality] += 1
         results.append(_y)
     results = pd.DataFrame(results)
@@ -132,6 +161,12 @@ def __(
         weights,
         wt,
     )
+
+
+@app.cell
+def __(results):
+    results
+    return
 
 
 @app.cell
